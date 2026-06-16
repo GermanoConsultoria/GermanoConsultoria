@@ -1,0 +1,542 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+
+  /* RADIUS */
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* COLORS */
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+:root {
+
+  --radius: 1rem;
+
+  /* BASE */
+
+  --background: #e6f1ff;
+  --foreground: #0f172a;
+
+  /* CARDS */
+
+  --card: #e6f1ff;
+  --card-foreground: #0f172a;
+
+  /* POPOVER */
+
+  --popover: #e6f1ff;
+  --popover-foreground: #0f172a;
+
+  /* PRIMARY */
+
+  --primary: #0F3A7D;
+  --primary-foreground: #e6f1ff;
+
+  /* SECONDARY */
+
+  --secondary: #e6f1ff;
+  --secondary-foreground: #0f172a;
+
+  /* MUTED */
+
+  --muted: #e6f1ff;
+  --muted-foreground: #64748b;
+
+  /* ACCENT */
+
+  --accent: #00D9FF;
+  --accent-foreground: #001018;
+
+  /* BORDER */
+
+  --border: rgba(15,23,42,0.08);
+  --input: #e6f1ff;
+
+  /* RING */
+
+  --ring: #00D9FF;
+}
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+.dark {
+
+  /* BASE */
+
+  --background: #030712;
+  --foreground: #fafafa;
+
+  /* CARDS */
+
+  --card: rgba(17,17,20,0.7);
+  --card-foreground: #fafafa;
+
+  /* POPOVER */
+
+  --popover: #111114;
+  --popover-foreground: #fafafa;
+
+  /* PRIMARY */
+
+  --primary: #00D9FF;
+  --primary-foreground: #000000;
+
+  /* SECONDARY */
+
+  --secondary: #101827;
+  --secondary-foreground: #fafafa;
+
+  /* MUTED */
+
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+
+  /* ACCENT */
+
+  --accent: #00D9FF;
+  --accent-foreground: #000000;
+
+  /* BORDER */
+
+  --border: rgba(255,255,255,0.06);
+  --input: #27272a;
+
+  /* RING */
+
+  --ring: #00D9FF;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+
+@layer base {
+
+  * {
+    @apply outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+
+    @apply bg-background text-foreground;
+
+    font-family: 'Inter', sans-serif;
+    
+    overflow-x: hidden;
+
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  button,
+  a {
+    transition: all 0.25s ease;
+  }
+}
+
+/* =========================================================
+   COMPONENTS
+========================================================= */
+
+@layer components {
+
+  /* =========================================================
+     CONTAINER
+  ========================================================= */
+
+  .container {
+
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+
+    .container {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+
+    .container {
+
+      padding-inline: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* =========================================================
+     BUTTONS
+  ========================================================= */
+
+  .btn-primary {
+
+  @apply
+  text-primary-foreground
+  font-semibold
+  px-6
+  py-3
+  rounded-2xl
+  transition-all
+  duration-300;
+
+  background: #0F3A7D;
+
+  box-shadow:
+    0 10px 30px rgba(0, 217, 255, 0.25);
+}
+
+  .btn-secondary {
+
+    @apply
+      border
+      border-border
+      bg-card
+      text-foreground
+      px-6
+      py-3
+      rounded-2xl
+      hover:bg-muted
+      transition-all
+      duration-300;
+  }
+
+  .btn-outline {
+
+    @apply
+      border
+      border-border
+      bg-transparent
+      text-foreground
+      px-6
+      py-3
+      rounded-2xl
+      hover:bg-muted
+      transition-all
+      duration-300;
+  }
+
+  /* =========================================================
+     CARDS
+  ========================================================= */
+
+.card-elevated {
+
+  @apply
+  bg-card/80
+  backdrop-blur-xl
+  text-card-foreground
+  rounded-3xl
+  border
+  border-border
+  transition-all
+  duration-500;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.04);
+}
+.card-elevated:hover {
+
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 20px 60px rgba(0, 217, 255, 0.12);
+}
+  .card-bordered {
+
+    @apply
+      bg-card
+      border
+      border-border
+      rounded-3xl
+      transition-all
+      duration-300;
+  }
+
+  /* =========================================================
+     GLASS EFFECT
+  ========================================================= */
+
+  .glass {
+
+    @apply
+      bg-background/70
+      backdrop-blur-xl
+      border
+      border-border;
+  }
+
+  /* =========================================================
+     GRADIENTS
+  ========================================================= */
+
+  .gradient-hero {
+
+    background:
+    
+      radial-gradient(
+        circle at top left,
+        rgba(0, 217, 255, 0.18),
+        transparent 30%
+      ),
+
+      radial-gradient(
+        circle at top right,
+        rgba(59, 130, 246, 0.14),
+        transparent 35%
+      ),
+
+      radial-gradient(
+        circle at bottom center,
+        rgba(15, 58, 125, 0.22),
+        transparent 45%
+      ),
+
+      linear-gradient(
+        135deg,
+        #edf6ff 0%,
+        #f5f8fc 45%,
+        #e7eef8 100%
+        );
+  }
+  .dark .gradient-hero {
+
+    background:
+
+      radial-gradient(
+        circle at top left,
+        rgba(0,217,255,0.15),
+        transparent 35%
+      ),
+
+      radial-gradient(
+        circle at top right,
+        rgba(59,130,246,0.12),
+        transparent 40%
+      ),
+
+      radial-gradient(
+        circle at center,
+        rgba(0,217,255,0.08),
+        transparent 60%
+      ),
+
+      #030712;
+  }
+
+
+  .gradient-text {
+
+    background:
+      linear-gradient(
+        135deg,
+        var(--primary) 0%,
+        var(--accent) 100%
+      );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* =========================================================
+     SECTIONS
+  ========================================================= */
+
+  .section-spacing {
+
+    @apply
+      py-20
+      md:py-28
+      lg:py-32;
+  }
+
+  /* =========================================================
+     TYPOGRAPHY
+  ========================================================= */
+
+  .display-lg {
+
+    @apply
+      text-4xl
+      md:text-6xl
+      font-bold
+      leading-tight;
+  }
+
+  .display-md {
+
+    @apply
+      text-3xl
+      md:text-5xl
+      font-bold;
+  }
+
+  .heading-xl {
+
+    @apply
+      text-2xl
+      md:text-4xl
+      font-bold;
+  }
+
+  .heading-lg {
+
+    @apply
+      text-xl
+      md:text-2xl
+      font-semibold;
+  }
+
+  .body-lg {
+
+    @apply
+      text-lg
+      leading-relaxed;
+  }
+
+  .body-md {
+
+    @apply
+      text-base
+      leading-relaxed;
+  }
+
+  /* =========================================================
+     ANIMATIONS
+  ========================================================= */
+
+  .fade-in {
+    animation: fadeIn 0.7s ease-in-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.7s ease-out;
+  }
+
+  @keyframes fadeIn {
+
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* =========================================================
+     RESPONSIVE
+  ========================================================= */
+
+  @media (max-width: 768px) {
+
+    .display-lg {
+      font-size: 2.5rem;
+    }
+
+    .display-md {
+      font-size: 2rem;
+    }
+  }
+}
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+
+    radial-gradient(
+      circle at top left,
+      rgba(0,217,255,0.05),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at bottom right,
+      rgba(59,130,246,0.05),
+      transparent 35%
+    );
+
+  z-index: -1;
+}
