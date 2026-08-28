@@ -213,14 +213,15 @@ export default function Angelita() {
                 Atendimento imediato via WhatsApp
               </p>
 
-              <a href="https://wa.me/5519997387186">
-                <Button className="w-full bg-[#00D9FF] text-black hover:bg-white px-8 py-8 text-xl font-black rounded-2xl transition-all hover:scale-[1.02]">
-                  QUERO MELHORAR MINHA EMPRESA
-                </Button>
-              </a>
-
-            </div>
-
+           
+          <div className="flex justify-center">
+            <a href="https://wa.me/5519997387186" className="w-full max-w-md">
+              <Button className="w-full bg-[#00D9FF] text-black hover:bg-white px-6 py-6 text-base sm:text-xl font-black rounded-2xl transition-all hover:scale-[1.02] whitespace-normal break-words leading-tight">
+                QUERO MELHORAR MINHA EMPRESA
+              </Button>
+            </a>
+        </div>
+        </div>
           </div>
         </div>
       </section>

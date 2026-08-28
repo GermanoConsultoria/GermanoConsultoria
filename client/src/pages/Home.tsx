@@ -30,6 +30,7 @@ import { Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
+
 /**
  * Design Philosophy: Premium Tech-Forward
  * - Autoridade através da simplicidade
@@ -302,7 +303,7 @@ export default function Home() {
                   src={logoGtech}
                   alt="G-Con"
                   className="w-30 object-contain"
-                />
+                />  
               </div>
               <h3 className="heading-lg text-primary mb-3">G-Tech: Desenvolvimento de Apps</h3>
                <p className=" text-base md:text-lg leading-relaxed text-black dark:text-white font-medium  mb-6 ">
@@ -328,48 +329,39 @@ export default function Home() {
               
             </Card>
 
-           {/* G-CON */}
-            <Card className="card-elevated p-8 border border-3 border-gray-300 bg-[#f3f4f6] dark:bg-[#111827]">
+           {/* G-CON ONLINE */}
+              <Card className=" card-elevated p-8 border border-3 border-gray-300 bg-[#f3f4f6] dark:bg-[#111827] ">
               <div className="flex justify-start mb-4">
                 <img
-                  src={logoAngelita}
+                  src={logoGcon}
                   alt="G-Con"
                   className="w-30 object-contain"
                 />
               </div>
-
-              <h3 className="heading-lg text-primary mb-3">
-                G-Con: Consultoria Empresarial
-              </h3>
-
-              <p className="text-base md:text-lg leading-relaxed text-black dark:text-white font-medium mb-6">
-                Soluções estratégicas para organizar processos, aumentar a produtividade e impulsionar resultados. Uma consultoria prática, focada no crescimento sustentável da sua empresa.
+              <h3 className="heading-lg text-primary mb-3">G-Con: Consultoria empresarial</h3>
+               <p className=" text-base md:text-lg leading-relaxed text-black dark:text-white font-medium  mb-6 ">
+                Consultoria presencial diretamente na sua empresa, com análise do negócio, identificação de oportunidades e orientação estratégica para melhorar seus resultados.
               </p>
-
               <ul className="space-y-2 mb-6">
-                <li className="flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium">
+                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
                   <CheckCircle2 className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Mapeamento de processos</span>
+                  <span>Atendimento personalizado no local</span>
                 </li>
-
-                <li className="flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium">
-                  <TrendingUp className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Aumento de performance</span>
+                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
+                  <DollarSign className="w-4 h-4 text-[#00D9FF]" />
+                  <span>Análise da realidade da empresa</span>
                 </li>
-
-                <li className="flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium">
+                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
                   <Zap className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Foco em resultados</span>
+                  <span>Estratégias práticas e direcionadas</span>
                 </li>
               </ul>
-
-              <a href="/gcononline">
-                <Button className="btn-primary w-full">
-                  Explorar G-Con
-                </Button>
+              <a href="/GCon">
+                <Button className="btn-primary w-full"> Explorar G-Con- Consultoria empresarial
+              </Button>
               </a>
             </Card>
-
+            
             {/* G-BANK */}
               <Card className=" card-elevated p-8 border border-3 border-gray-300 bg-[#c2d2ed] dark:bg-[#324165] ">
               <div className="flex justify-start mb-4">
@@ -729,18 +721,8 @@ export default function Home() {
                 },
                 {
                   name: "Eloá Martins",
-                  role: "TI & Marketing",
+                  role: "TI ",
                   image: eloa,
-                },
-                {
-                  name: "Lais Rafaela",
-                  role: "TI & Comercial",
-                  image: rafa,
-                },
-                {
-                  name: "Matheus Felis",
-                  role: "Desenvolvedor Full Stack",
-                  image: matheus,
                 },
                 {
                   name: "Vinicius",
@@ -752,12 +734,6 @@ export default function Home() {
                   role: "Consultor",
                   image: joaquim,
                 },
-                 {
-                  name: "Sofia Eduarda",
-                  role: "Telemarketing ",
-                  image: sofia,
-                },
-                
                 {
                   name: "Felipe Ribeiro",
                   role: "Consultor",
@@ -767,11 +743,6 @@ export default function Home() {
                   name: "Ruanita Oliveira",
                   role: "Recursos Humanos",
                   image: ruanita,
-                },
-                {
-                  name: "Angelita",
-                  role: "Consultora",
-                  image: angelita,
                 },
               ].map((member, index) => (
                 <SwiperSlide key={index}>

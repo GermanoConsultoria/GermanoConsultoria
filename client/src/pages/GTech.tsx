@@ -13,10 +13,12 @@ import {
   Activity,
   Briefcase,
   Share2,
-  ExternalLink
+  ExternalLink,
+   ChevronLeft  
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import logoGtech from "@/Image/logoGtech.png";
+import { useRef } from "react";
 
 export default function GTech() {
   const [darkMode, setDarkMode] = useState(false);
@@ -69,7 +71,28 @@ export default function GTech() {
       icon: <Share2 className="w-6 h-6 text-emerald-500" />
     }
   ];
+  const scrollRef = useRef<HTMLDivElement>(null);
 
+
+    const scrollLeft = () => {
+      if (scrollRef.current) {
+        const cardWidth = window.innerWidth * 0.85 + 24; // card + gap
+        scrollRef.current.scrollBy({
+          left: -cardWidth,
+          behavior: "smooth",
+        });
+      }
+    };
+
+    const scrollRight = () => {
+      if (scrollRef.current) {
+        const cardWidth = window.innerWidth * 0.85 + 24; // card + gap
+        scrollRef.current.scrollBy({
+          left: cardWidth,
+          behavior: "smooth",
+        });
+      }
+    };
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden transition-colors duration-300">
       
@@ -142,60 +165,115 @@ export default function GTech() {
         </div>
       </section>
 
-      {/* PROJETOS / CARROSSEL */}
-      <section className="py-20 bg-background border-t border-border/40">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
-              Sistemas Desenvolvidos
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Soluções reais criadas para empresas que precisam automatizar e escalar operações.
-            </p>
-          </div>
+    
+{/* PROJETOS / CARROSSEL */}
+<section className="py-20 bg-background border-t border-border/40">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
+        Sistemas Desenvolvidos
+      </h2>
+      <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+        Soluções reais criadas para empresas que precisam automatizar e escalar operações.
+      </p>
+    </div>
 
-          {/* CARROSSEL */}
-          <div className="flex gap-6 overflow-x-auto pb-8 pt-2 snap-x snap-mandatory scroll-smooth scrollbar-thin">
-            {projetos.map((item, i) => (
-              <div
-                key={i}
-                className="
-                  snap-center
-                  min-w-[300px] md:min-w-[380px]
-                  max-w-[380px]
-                  p-6 md:p-8
-                  rounded-2xl
-                  bg-card
-                  border border-border/60
-                  border-l-4 border-l-primary
-                  shadow-md hover:shadow-xl
-                  hover:-translate-y-1
-                  transition-all duration-300
-                  flex flex-col justify-between
-                "
-              >
-                <div>
-                  <div className="flex items-center mb-4">
-                    <div className="p-3 bg-muted rounded-xl">
-                      {item.icon}
-                    </div>
-                  </div>
+    {/* WRAPPER COM SETAS */}
+    <div className="relative">
 
-                  <h3 className="text-2xl font-bold text-foreground mb-3">
-                    {item.title}
-                  </h3>
+      {/* Seta esquerda */}
+      <button
+        onClick={scrollLeft}
+        className="
+          absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4
+          z-10
+          bg-card border border-border
+          hover:bg-muted
+          text-foreground
+          rounded-full p-2
+          shadow-md
+          transition-all duration-200
+        "
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
 
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-                    {item.desc}
-                  </p>
+      {/* CARROSSEL */}
+     <div
+        ref={scrollRef}
+        className="
+          flex
+          gap-6
+          overflow-x-auto
+          snap-x
+          snap-mandatory
+          scroll-smooth
+          px-[7.5vw]
+          pb-8
+          pt-2
+          [&::-webkit-scrollbar]:hidden
+          [-ms-overflow-style:none]
+          [scrollbar-width:none]
+        "
+      >
+        {projetos.map((item, i) => (
+        <div
+            key={i}
+          className="
+              snap-center
+              w-[85vw]
+              sm:w-[380px]
+              min-h-[320px]
+              flex-shrink-0
+              p-6 md:p-8
+              rounded-2xl
+              bg-card
+              border border-border/60
+              border-l-4 border-l-primary
+              shadow-md hover:shadow-xl
+              transition-all duration-300
+              flex flex-col justify-between
+            "
+          >
+            <div>
+              <div className="flex items-center mb-4">
+                <div className="p-3 bg-muted rounded-xl">
+                  {item.icon}
                 </div>
-
-               
               </div>
-            ))}
+
+              <h3 className="text-2xl font-bold text-foreground mb-3">
+                {item.title}
+              </h3>
+
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
+                {item.desc}
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+
+      {/* Seta direita */}
+      <button
+        onClick={scrollRight}
+        className="
+          absolute right-0 top-1/2 -translate-y-1/2 translate-x-4
+          z-10
+          bg-card border border-border
+          hover:bg-muted
+          text-foreground
+          rounded-full p-2
+          shadow-md
+          transition-all duration-200
+        "
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+    </div>
+  </div>
+</section>
 
       {/* PRA QUEM É / FOCO EM CUSTOMIZAÇÃO */}
           <section className="py-20 bg-muted/30 border-t border-b border-border/40">
@@ -278,11 +356,13 @@ export default function GTech() {
               <span className="text-xl md:text-2xl font-black uppercase tracking-wide">ENTREGA GARANTIDA EM 30 DIAS</span>
             </div>
 
-            <a href="https://wa.me/5519981640280" target="_blank" rel="noopener noreferrer" className="block">
-              <Button className="w-full bg-[#00D9FF] dark:bg-primary text-black dark:text-primary-foreground hover:bg-white hover:text-black px-8 py-7 text-xl font-black rounded-2xl transition-all shadow-xl">
-                SOLICITAR MEU PROJETO AGORA
+            <div className="flex justify-center">
+            <a href="https://wa.me/5519997387186" className="w-full max-w-md">
+              <Button className="w-full bg-[#00D9FF] text-black hover:bg-white px-6 py-6 text-base sm:text-xl font-black rounded-2xl transition-all hover:scale-[1.02] whitespace-normal break-words leading-tight">
+                SOLICITAR MEU PROJETO AGORA 
               </Button>
             </a>
+        </div>
           </div>
         </div>
       </section>
