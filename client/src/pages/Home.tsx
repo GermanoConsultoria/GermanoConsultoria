@@ -7,7 +7,8 @@ import logoGcon from "@/Image/logoGcon.png";
 import logoGtech from "@/Image/logoGtech.png";
 import logoGbank from "@/Image/logoGbank.png";
 import logoAngelita from "@/Image/logoAngelita.png";
-import eloa from "@/Image/eloa.png";
+import lavinia from "@/Image/Lavinia.png";
+import gabriel from "@/Image/Gabriel.png";
 import vini from "@/Image/vini.png";
 import caique from "@/Image/caique.png";
 import rafa from "@/Image/rafa.png";
@@ -720,9 +721,14 @@ export default function Home() {
                   image: caique,
                 },
                 {
-                  name: "Eloá Martins",
+                  name: "Lavinia Bueno",
                   role: "TI ",
-                  image: eloa,
+                  image: lavinia,
+                },
+                {
+                  name: "Gabriel",
+                  role: "TI ",
+                  image: gabriel,
                 },
                 {
                   name: "Vinicius",
@@ -733,11 +739,6 @@ export default function Home() {
                   name: "Joaquim",
                   role: "Consultor",
                   image: joaquim,
-                },
-                {
-                  name: "Felipe Ribeiro",
-                  role: "Consultor",
-                  image: felipe,
                 },
                 {
                   name: "Ruanita Oliveira",
