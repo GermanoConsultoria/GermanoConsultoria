@@ -1,0 +1,11 @@
+{
+  "name": "G-PASS | G-Tech",
+  "short_name": "G-PASS",
+  "icons": [
+    { "src": "/sistemas/g-pass/favicon-192x192.png?v=3", "sizes": "192x192", "type": "image/png" },
+    { "src": "/sistemas/g-pass/favicon-512x512.png?v=3", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#4B3285",
+  "background_color": "#FFFFFF",
+  "display": "browser"
+}

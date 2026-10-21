@@ -224,6 +224,23 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      // Site principal + landing pages dos sistemas G-Tech (client/sistemas/<sistema>)
+      input: {
+        main: path.resolve(import.meta.dirname, "client", "index.html"),
+        ...Object.fromEntries(
+          fs
+            .readdirSync(path.resolve(import.meta.dirname, "client", "sistemas"))
+            .filter(name =>
+              fs.existsSync(path.resolve(import.meta.dirname, "client", "sistemas", name, "index.html"))
+            )
+            .map(name => [
+              `sistema-${name}`,
+              path.resolve(import.meta.dirname, "client", "sistemas", name, "index.html"),
+            ])
+        ),
+      },
+    },
   },
   server: {
     port: 3000,

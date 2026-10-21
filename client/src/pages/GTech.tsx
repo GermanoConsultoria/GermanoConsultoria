@@ -8,13 +8,16 @@ import {
   Rocket,
   Code,
   Laptop,
-  Droplet,
   DollarSign,
   Activity,
   Briefcase,
-  Share2,
+  ClipboardCheck,
+  Users,
+  KeyRound,
+  Clock,
+  Workflow,
   ExternalLink,
-   ChevronLeft  
+  ChevronLeft
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import logoGtech from "@/Image/logoGtech.png";
@@ -43,32 +46,55 @@ export default function GTech() {
     setDarkMode(!darkMode);
   };
 
-  // Array de projetos apenas com títulos, descrições e ícones
+  // Sistemas G-Tech: cada um abre sua landing page (client/sistemas/<sistema>) em uma nova aba.
   const projetos = [
     {
-      title: "Watcon",
-      desc: "Sistema de gestão de consumo de água para condomínios. Permite que zeladores registrem leituras mensais e a administração acompanhe o consumo.",
-      icon: <Droplet className="w-6 h-6 text-blue-500" />
+      title: "G-ADV",
+      desc: "Gestão jurídica estratégica para escritórios: prazos fatais com alertas, portal do cliente, peças e financeiro jurídico em um só lugar.",
+      icon: <Briefcase className="w-6 h-6 text-purple-500" />,
+      url: "/sistemas/g-adv/"
     },
     {
-      title: "PDV Buratin",
-      desc: "Sistema de Ponto de Venda com controle de caixa, sangria, fechamento diário/mensal, gestão de produtos, financeiro e relatórios.",
-      icon: <DollarSign className="w-6 h-6 text-green-500" />
+      title: "G-CHECK",
+      desc: "Gestão de rotinas operacionais e checklists, com controle, padronização e produtividade para a sua operação.",
+      icon: <ClipboardCheck className="w-6 h-6 text-teal-500" />,
+      url: "/sistemas/g-check/"
     },
     {
-      title: "G-Clin",
-      desc: "Sistema de gestão clínica para agendamentos, finanças e comunicação automatizada com pacientes via API do WhatsApp.",
-      icon: <Activity className="w-6 h-6 text-red-500" />
+      title: "G-CLIN",
+      desc: "Sistema de gestão médica e odontológica: cuidado com o paciente, organização clínica e controle financeiro.",
+      icon: <Activity className="w-6 h-6 text-red-500" />,
+      url: "/sistemas/g-clin/"
     },
     {
-      title: "GADV",
-      desc: "Gestão completa para escritórios de advocacia com organização de processos judiciais, controle de clientes e prazos fatais.",
-      icon: <Briefcase className="w-6 h-6 text-purple-500" />
+      title: "G-CRM",
+      desc: "Organize contatos, funil de vendas, negociações, tarefas e resultados comerciais da sua equipe.",
+      icon: <Users className="w-6 h-6 text-orange-500" />,
+      url: "/sistemas/g-crm/"
     },
     {
-      title: "ZapSales",
-      desc: "Automação avançada para WhatsApp focada em funis de vendas, atendimento multi-agente e alta conversão de leads.",
-      icon: <Share2 className="w-6 h-6 text-emerald-500" />
+      title: "G-PASS",
+      desc: "Cofre corporativo de senhas: centralização de credenciais, compartilhamento controlado, 2FA e auditoria de acessos.",
+      icon: <KeyRound className="w-6 h-6 text-indigo-500" />,
+      url: "/sistemas/g-pass/"
+    },
+    {
+      title: "G-PDV",
+      desc: "Gestão de vendas, caixa e produtos para o varejo, com financeiro, dashboards e relatórios.",
+      icon: <DollarSign className="w-6 h-6 text-green-500" />,
+      url: "/sistemas/g-pdv/"
+    },
+    {
+      title: "G-POINT",
+      desc: "Ponto eletrônico e controle de jornada: banco de horas, atestados, férias, visitas externas, holerites e relatórios para o DP.",
+      icon: <Clock className="w-6 h-6 text-blue-500" />,
+      url: "/sistemas/g-point/"
+    },
+    {
+      title: "FLOW",
+      desc: "Gestão de projetos, tarefas e financeiro integrado para centralizar e acompanhar toda a operação.",
+      icon: <Workflow className="w-6 h-6 text-cyan-500" />,
+      url: "/sistemas/flow/"
     }
   ];
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -250,6 +276,19 @@ export default function GTech() {
                 {item.desc}
               </p>
             </div>
+
+            {item.url ? (
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl font-bold transition-all">
+                  Acessar {item.title}
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
+            ) : (
+              <Button disabled className="w-full rounded-xl font-bold">
+                Em breve
+              </Button>
+            )}
           </div>
         ))}
       </div>

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* As landing pages dos sistemas têm o próprio CSS (client/sistemas/<sistema>/src/styles.css) */
+@source not "../sistemas";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
