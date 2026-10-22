@@ -46,7 +46,7 @@ const gcrm: LandingConfig = {
     ),
     subtitle:
       "O G-CRM acelera o seu time de vendas e mantém o relacionamento próximo com cada cliente — do primeiro contato ao negócio fechado.",
-    cta: "Falar com o comercial",
+    cta: "Ver demonstração",
     image: "/sistemas/g-crm/G-CRM1.png",
     imageAlt:
       "Dashboard do G-CRM com pipeline aberto, valor ganho, conversão, tarefas pendentes e metas do time",
@@ -146,16 +146,10 @@ const gcrm: LandingConfig = {
     },
     plan: {
       name: "Plano G-CRM Completo",
-      setup: { label: "Implantação / Dev", price: "R$ 0", note: "Sem taxa de adesão" },
-      options: [
-        { label: "Mensal", price: "R$ 149,99", period: "/ mês" },
-        {
-          label: "Anual",
-          price: "R$ 1.200,00",
-          period: "/ ano",
-          note: "Equivale a R$ 100,00 por mês",
-        },
-      ],
+      mensal: "149,99",
+      anual: "1.199,99",
+      perMonth: "99,99",
+      savings: "599,89", // 12 × R$ 149,99 = R$ 1.799,88
       includes: [
         "Funil de vendas em Kanban",
         "Gestão de leads",

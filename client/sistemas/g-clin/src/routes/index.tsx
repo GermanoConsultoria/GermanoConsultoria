@@ -79,28 +79,28 @@ const plans = [
     id: "A",
     name: "Gestão Essencial",
     mensal: "109,99",
-    anual: "1.000,00",
+    anual: "999,99",
     perMonth: "83,33",
-    savings: "319,88",
+    savings: "319,89",
     items: ["Gestão financeira completa", "Agendamento e agenda médica"],
   },
   {
     id: "B",
     name: "Agendamento Online",
     mensal: "149,99",
-    anual: "1.400,00",
-    perMonth: "116,67",
-    savings: "399,88",
+    anual: "1.399,99",
+    perMonth: "116,66",
+    savings: "399,89",
     items: ["Tudo do Plano A", "Link exclusivo de agendamento online para o paciente"],
   },
   {
     id: "C",
     name: "Inteligência Artificial",
     featured: true,
-    mensal: "199,00",
-    anual: "1.800,00",
-    perMonth: "150,00",
-    savings: "588,00",
+    mensal: "199,99",
+    anual: "1.799,99",
+    perMonth: "149,99",
+    savings: "599,89",
     items: ["Tudo dos Planos A e B", "IA no WhatsApp para confirmação automática e triagem"],
   },
 ];
@@ -161,11 +161,14 @@ function Index() {
               <div className="hero-actions">
                 <Button asChild className="cta">
                   <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer">
-                    <WhatsAppIcon /> Falar no WhatsApp
+                    <WhatsAppIcon /> Ver demonstração
                   </a>
                 </Button>
                 <a className="link-arrow" href="#planos">
-                  Ver planos <ArrowRight size={16} />
+                  Ver preços <ArrowRight size={16} />
+                </a>
+                <a className="link-arrow" href="#telas">
+                  Conhecer o G-CLIN <ArrowRight size={16} />
                 </a>
               </div>
               <ul className="hero-points">
@@ -349,11 +352,11 @@ function Index() {
               <MapPin size={18} /> Rua Santa Julia, 259 - Santa Julia, Mogi Guaçu - SP
             </p>
             <div className="footer-social">
-              <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer">
-                <WhatsAppIcon size={18} /> WhatsApp
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                <Instagram size={20} />
               </a>
-              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
-                <Instagram size={18} /> Instagram
+              <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+                <WhatsAppIcon size={20} />
               </a>
             </div>
           </div>

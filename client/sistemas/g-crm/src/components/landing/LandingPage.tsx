@@ -46,8 +46,10 @@ export type LandingConfig = {
     highlight: { title: string; copy: string };
     plan: {
       name: string;
-      setup: { label: string; price: string; note: string };
-      options: { label: string; price: string; period: string; note?: string }[];
+      mensal: string;
+      anual: string;
+      perMonth: string;
+      savings: string;
       includes: string[];
       cta: string;
     };
@@ -155,17 +157,6 @@ function BrandLockup({ c, size = "md" }: { c: LandingConfig; size?: "md" | "sm" 
   );
 }
 
-function PriceTag({ price, period }: { price: string; period: string }) {
-  return (
-    <p className="mt-2 flex flex-wrap items-baseline gap-x-1">
-      <span className="whitespace-nowrap text-2xl font-extrabold text-brand-strong lg:text-3xl">
-        {price}
-      </span>
-      <span className="whitespace-nowrap text-sm font-medium text-muted-foreground">{period}</span>
-    </p>
-  );
-}
-
 export function LandingPage({ c }: { c: LandingConfig }) {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState(0);
@@ -182,6 +173,7 @@ export function LandingPage({ c }: { c: LandingConfig }) {
 
   const screen = c.screens.items[tab] ?? c.screens.items[0];
   const { plan } = c.pricing;
+  const [period, setPeriod] = useState<"mensal" | "anual">("mensal");
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
@@ -253,8 +245,11 @@ export function LandingPage({ c }: { c: LandingConfig }) {
               </a>
             </Button>
             <Button asChild variant="hero" size="xl">
-              <a href="#planos">
-                Ver planos <ArrowRight />
+              <a href="#planos">Ver preços</a>
+            </Button>
+            <Button asChild variant="hero" size="xl">
+              <a href="#telas">
+                Conhecer o {c.name} <ArrowRight />
               </a>
             </Button>
           </div>
@@ -382,27 +377,50 @@ export function LandingPage({ c }: { c: LandingConfig }) {
           </Reveal>
 
           <Reveal>
-            <article className="rounded-xl bg-card p-6 shadow-xl sm:p-10">
-              <h3 className="text-2xl font-extrabold text-brand-strong">{plan.name}</h3>
+            <div
+              className="mx-auto mb-7 flex w-fit rounded-full border border-primary-foreground/30 bg-primary-foreground/10 p-1"
+              role="group"
+              aria-label="Período de pagamento"
+            >
+              {(["mensal", "anual"] as const).map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  aria-pressed={period === p}
+                  onClick={() => setPeriod(p)}
+                  className={`rounded-full px-7 py-2 text-sm font-bold transition-colors ${
+                    period === p
+                      ? "bg-card text-brand-strong shadow"
+                      : "text-primary-foreground hover:bg-primary-foreground/10"
+                  }`}
+                >
+                  {p === "mensal" ? "Mensal" : "Anual"}
+                </button>
+              ))}
+            </div>
+          </Reveal>
 
-              <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-lg border border-border bg-accent p-5">
-                  <p className="text-xs font-bold uppercase tracking-wide">{plan.setup.label}</p>
-                  <PriceTag price={plan.setup.price} period="" />
-                  <p className="mt-1 text-xs font-semibold text-brand-strong">{plan.setup.note}</p>
-                </div>
-                {plan.options.map((o) => (
-                  <div key={o.label} className="rounded-lg border-2 border-primary p-5">
-                    <p className="text-xs font-bold uppercase tracking-wide">{o.label}</p>
-                    <PriceTag price={o.price} period={o.period} />
-                    {o.note && (
-                      <p className="mt-1 text-xs font-semibold text-brand-strong">{o.note}</p>
-                    )}
-                  </div>
-                ))}
-              </div>
+          <Reveal>
+            <article className="mx-auto flex max-w-md flex-col rounded-xl border-t-4 border-brand-strong bg-card p-7 shadow-xl sm:p-8">
+              <h3 className="text-2xl font-extrabold">{plan.name}</h3>
+              <p className="mt-5 flex items-baseline gap-1 text-4xl font-extrabold leading-none text-brand-strong sm:text-5xl">
+                <small className="text-base font-semibold text-muted-foreground">R$</small>
+                {period === "mensal" ? plan.mensal : plan.anual}
+                <small className="text-base font-semibold text-muted-foreground">
+                  /{period === "mensal" ? "mês" : "ano"}
+                </small>
+              </p>
+              <p className="mt-3 min-h-5 text-sm text-muted-foreground">
+                {period === "anual"
+                  ? `Equivale a R$ ${plan.perMonth}/mês · economia de R$ ${plan.savings}`
+                  : `ou R$ ${plan.anual} no plano anual`}
+              </p>
+              <p className="mt-4 rounded-lg bg-accent px-3 py-2.5 text-sm">
+                Implantação / Dev: <strong className="text-brand-strong">R$ 0</strong> · sem taxa
+                de adesão
+              </p>
 
-              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              <ul className="mb-8 mt-6 grid gap-3">
                 {plan.includes.map((item) => (
                   <li key={item} className="flex gap-3 text-sm leading-6">
                     <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-brand-strong" />
@@ -411,8 +429,8 @@ export function LandingPage({ c }: { c: LandingConfig }) {
                 ))}
               </ul>
 
-              <Button asChild variant="whatsapp" size="xl" className="mt-9 w-full">
-                <a {...wa(c.whatsappMessages.pricing)}>
+              <Button asChild variant="whatsapp" size="xl" className="mt-auto w-full">
+                <a {...wa(`${c.whatsappMessages.pricing} Pagamento ${period}.`)}>
                   <WhatsAppIcon /> {plan.cta}
                 </a>
               </Button>
@@ -474,9 +492,6 @@ export function LandingPage({ c }: { c: LandingConfig }) {
                 <InstagramIcon />
               </a>
             </div>
-            {c.instagramHandle && (
-              <p className="mt-2 text-xs text-ink-muted">{c.instagramHandle}</p>
-            )}
           </div>
         </div>
         <p className="mx-auto mt-12 max-w-7xl border-t border-white/10 px-5 pt-6 text-center text-xs text-ink-muted lg:px-8">

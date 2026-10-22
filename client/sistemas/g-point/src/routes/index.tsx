@@ -28,9 +28,7 @@ import {
 } from "lucide-react";
 
 import {
-  INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
-  WHATSAPP_NUMBER,
   whatsappUrlFor,
   whatsappUrlWithMessage,
 } from "../lib/contact";
@@ -41,9 +39,6 @@ import {
 
 const WA_GERAL = whatsappUrlFor("G-POINT");
 const WA_DEMO = whatsappUrlWithMessage("Olá! Gostaria de solicitar uma demonstração do G-POINT.");
-const WA_CONSULTOR = whatsappUrlWithMessage(
-  "Olá! Gostaria de falar com um consultor sobre o G-POINT.",
-);
 
 /* Arquivos oficiais em /public (sem imagens externas) */
 const LOGO_GTECH = "/sistemas/g-point/brand/gtech-logo.png"; // recorte de public/LOGO_G-TECH.png
@@ -474,9 +469,9 @@ const plans = [
     id: "A",
     name: "Plano A",
     label: "Essencial / Rotinas de Jornada",
-    monthly: "R$ 99,00",
-    yearly: "R$ 1.000,00",
-    yearlySaving: "R$ 188,00", // 12 × R$ 99,00 = R$ 1.188,00
+    monthly: "R$ 99,99",
+    yearly: "R$ 999,99",
+    yearlySaving: "R$ 199,89", // 12 × R$ 99,99 = R$ 1.199,88
     summary: "Controle de ponto eletrônico completo e rotinas operacionais de jornada.",
     items: ["Controle de ponto eletrônico completo", "Rotinas operacionais de jornada"],
     featured: false,
@@ -485,9 +480,9 @@ const plans = [
     id: "B",
     name: "Plano B",
     label: "Completo / Avançado DP",
-    monthly: "R$ 149,00",
-    yearly: "R$ 1.500,00",
-    yearlySaving: "R$ 288,00", // 12 × R$ 149,00 = R$ 1.788,00
+    monthly: "R$ 149,99",
+    yearly: "R$ 1.499,99",
+    yearlySaving: "R$ 299,89", // 12 × R$ 149,99 = R$ 1.799,88
     summary:
       "Tudo do Plano A + recursos avançados de jornada, gestão de atestados, férias, holerites e rotinas completas de DP.",
     items: [
@@ -670,12 +665,18 @@ function Hero() {
             horas, atestados, férias, visitas externas, holerites e relatórios para a contabilidade.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <WaButton href={WA_DEMO}>Solicitar Demonstração</WaButton>
+            <WaButton href={WA_DEMO}>Ver demonstração</WaButton>
             <a
               href="#planos"
               className="inline-flex items-center gap-2 rounded-full border-2 border-primary/30 px-7 py-3.5 text-sm font-bold text-primary-dark transition-all hover:-translate-y-0.5 hover:border-primary hover:bg-primary-light"
             >
-              Ver planos <ArrowRight className="h-4 w-4" />
+              Ver preços
+            </a>
+            <a
+              href="#sistema"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-primary/30 px-7 py-3.5 text-sm font-bold text-primary-dark transition-all hover:-translate-y-0.5 hover:border-primary hover:bg-primary-light"
+            >
+              Conhecer o G-POINT <ArrowRight className="h-4 w-4" />
             </a>
           </div>
           <UnlimitedSeal className="mt-8 max-w-xl" />
@@ -847,9 +848,6 @@ function SystemTour({ active, setActive }: { active: number; setActive: (i: numb
                 </li>
               ))}
             </ul>
-            <WaButton href={WA_DEMO} className="mt-8">
-              Solicitar Demonstração
-            </WaButton>
           </div>
         </div>
       </div>
@@ -874,9 +872,6 @@ function UnlimitedBand() {
               Sua equipe cresceu? O valor continua o mesmo. Sua empresa não paga a mais por
               adicionar novos colaboradores.
             </p>
-            <WaButton href={WA_CONSULTOR} variant="light" className="mt-8">
-              Falar com Consultor
-            </WaButton>
           </div>
         </Reveal>
       </div>
@@ -1037,8 +1032,8 @@ function Pricing() {
               <tbody className="text-ink">
                 {[
                   ["Implantação / Dev", "R$ 0", "R$ 0"],
-                  ["Mensal", "R$ 99,00/mês", "R$ 149,00/mês"],
-                  ["Anual", "R$ 1.000,00/ano", "R$ 1.500,00/ano"],
+                  ["Mensal", "R$ 99,99/mês", "R$ 149,99/mês"],
+                  ["Anual", "R$ 999,99/ano", "R$ 1.499,99/ano"],
                   ["Usuários", "Ilimitados", "Ilimitados"],
                   ["Ponto eletrônico e rotinas de jornada", "✓", "✓"],
                   ["Recursos avançados de jornada", "—", "✓"],
@@ -1057,10 +1052,6 @@ function Pricing() {
             </table>
           </div>
         </Reveal>
-
-        <div className="mt-10 flex justify-center">
-          <WaButton href={WA_CONSULTOR}>Falar com Consultor</WaButton>
-        </div>
       </div>
     </section>
   );
@@ -1108,14 +1099,6 @@ function FinalCta() {
                   Solicitar Demonstração
                 </WaButton>
               </div>
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/90 hover:text-white"
-              >
-                <Instagram className="h-4 w-4" /> Siga no Instagram {INSTAGRAM_HANDLE}
-              </a>
             </div>
             <div className="mx-auto w-full max-w-[220px]">
               <PhoneMockup
@@ -1160,24 +1143,26 @@ function Footer() {
         <div>
           <h4 className="text-sm font-bold text-white">Contato</h4>
           <ul className="mt-4 space-y-3 text-sm">
-            <li>
-              <a
-                href={WA_GERAL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 transition-colors hover:text-white"
-              >
-                <WhatsAppIcon /> WhatsApp Comercial · {WHATSAPP_NUMBER}
-              </a>
-            </li>
-            <li>
+            <li className="flex gap-2">
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 transition-colors hover:text-white"
+                aria-label="Instagram"
+                title="Instagram"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/25 transition-colors hover:bg-white/10 hover:text-white"
               >
-                <Instagram className="h-4 w-4" /> Instagram · {INSTAGRAM_HANDLE}
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href={WA_GERAL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                title="WhatsApp"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/25 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
               </a>
             </li>
             <li className="flex items-start gap-2">
@@ -1225,10 +1210,10 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar com o comercial pelo WhatsApp"
-      className="group fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-[#25D366] p-4 text-white shadow-2xl transition-transform hover:scale-105"
+      title="WhatsApp"
+      className="fixed bottom-5 right-5 z-50 flex items-center rounded-full bg-[#25D366] p-4 text-white shadow-2xl transition-transform hover:scale-105"
     >
       <WhatsAppIcon className="h-7 w-7" />
-      <span className="hidden pr-1 text-sm font-bold sm:group-hover:inline">Fale conosco</span>
     </a>
   );
 }

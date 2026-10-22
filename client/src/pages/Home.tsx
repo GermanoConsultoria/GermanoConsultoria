@@ -7,8 +7,11 @@ import logoGcon from "@/Image/logoGcon.png";
 import logoGtech from "@/Image/logoGtech.png";
 import logoGbank from "@/Image/logoGbank.png";
 import logoAngelita from "@/Image/logoAngelita.png";
-import lavinia from "@/Image/Lavinia.png";
-import gabriel from "@/Image/Gabriel.png";
+import lavinia from "@/Image/lavinia.png";
+import gabriel from "@/Image/gabriel.png";
+import amanda from "@/Image/amanda.jpeg";
+import thiago from "@/Image/thiago.jpeg";
+import guilherme from "@/Image/guilherme.jpeg";
 import vini from "@/Image/vini.png";
 import caique from "@/Image/caique.png";
 import rafa from "@/Image/rafa.png";
@@ -118,18 +121,6 @@ export default function Home() {
                 <Moon className="w-5 h-5 text-primary" />
               )}
             </button>
-            <a
-              href="https://wa.me/5519981640280"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition duration-300"
-            >
-              <img
-                src={whatsappLogo}
-                alt="WhatsApp"
-                className="w-8 h-8"
-              />
-            </a>
             <a
               href="https://wa.me/5519981640280"
               target="_blank"
@@ -721,19 +712,29 @@ export default function Home() {
                   image: caique,
                 },
                 {
+                  name: "Amanda Pepino",
+                  role: "Comercial ",
+                  image: amanda,
+                },
+                {
                   name: "Lavinia Bueno",
                   role: "TI ",
                   image: lavinia,
                 },
                 {
-                  name: "Gabriel",
-                  role: "TI ",
+                  name: "Gabriel Vinholi",
+                  role: "Desenvolvedor Full Stack",
                   image: gabriel,
                 },
                 {
-                  name: "Vinicius",
+                  name: "Thiago Lopes",
                   role: "Desenvolvedor Full Stack",
-                  image: vini,
+                  image: thiago,
+                },
+                {
+                  name: "Guilherme Crispim",
+                  role: "Suporte",
+                  image: guilherme,
                 },
                 {
                   name: "Joaquim",
@@ -820,21 +821,6 @@ export default function Home() {
               Agendar Diagnóstico Gratuito
             </Button>
           </a>
-
-          <a
-            href="https://wa.me/5519981640280"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button className="bg-white text-black hover:bg-gray-100 px-8 py-6 min-w-[280px] border border-gray-200 shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
-              <img
-                src={whatsappLogo}
-                alt="WhatsApp"
-                className="w-5 h-5 object-contain"
-              />
-              Fale via WhatsApp
-            </Button>
-          </a>
         </div>
         </div>
       </section>
@@ -864,7 +850,6 @@ export default function Home() {
               <h4 className="font-bold mb-4">Contato</h4>
               <ul className="space-y-2 text-base md:text-lg font-medium text-black dark:text-white">
                 <li>📧 contato@germanoconsultoria.com.br</li>
-                <li>📱 (19) 98164-0280</li>
                 <li>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Julia+259+Santa+Julia+Mogi+Guaçu+SP"

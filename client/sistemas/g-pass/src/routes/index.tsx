@@ -27,7 +27,6 @@ import { Button } from "../components/ui/button";
 
 // Contatos comerciais verificados (ver roadmap.md).
 const WHATSAPP_NUMBER = "5519981640280";
-const WHATSAPP_DISPLAY = "+55 (19) 98164-0280";
 const INSTAGRAM_HANDLE = "grupo.germano";
 const INSTAGRAM_URL = INSTAGRAM_HANDLE ? `https://www.instagram.com/${INSTAGRAM_HANDLE}/` : "";
 const ADDRESS = "Rua Santa Julia, 259 - Santa Julia, Mogi Guaçu - SP";
@@ -100,22 +99,14 @@ const features = [
   },
 ];
 
-const plans = [
-  {
-    id: "mensal",
-    name: "Mensal",
-    price: "49,99",
-    period: "/mês",
-    message: "Olá! Tenho interesse no plano Mensal do G-PASS (R$ 49,99).",
-  },
-  {
-    id: "anual",
-    name: "Anual",
-    price: "399,00",
-    period: "/ano",
-    message: "Olá! Tenho interesse no plano Anual do G-PASS (R$ 399,00).",
-  },
-];
+type Period = "mensal" | "anual";
+const plan = {
+  name: "G-PASS Completo",
+  mensal: "49,99",
+  anual: "399,99",
+  perMonth: "33,33",
+  savings: "199,89", // 12 × R$ 49,99 = R$ 599,88
+};
 
 const questions = [
   {
@@ -127,7 +118,7 @@ const questions = [
   {
     question: "Quanto custa?",
     answer:
-      "Plano mensal: R$ 49,99. Plano anual: R$ 399,00. Não há taxa de implantação/adesão (R$ 0). O parcelamento está sujeito aos juros da máquina.",
+      "Plano mensal: R$ 49,99. Plano anual: R$ 399,99. Não há taxa de implantação/adesão (R$ 0). O parcelamento está sujeito aos juros da máquina.",
   },
   {
     question: "Posso controlar quem acessa cada senha?",
@@ -206,6 +197,7 @@ function useHideFloatOnContact() {
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [period, setPeriod] = useState<Period>("mensal");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const hideFloat = useHideFloatOnContact();
 
@@ -289,12 +281,17 @@ function Index() {
               </p>
               <div className="hero-actions">
                 <Button asChild className="cta-button">
-                  <a href="#contato">
-                    Solicitar demonstração <ArrowRight />
+                  <a href={whatsappUrl(DEMO_MESSAGE)} target="_blank" rel="noopener noreferrer">
+                    <WhatsAppIcon size={18} /> Ver demonstração
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="cta-button">
-                  <a href="#planos">Ver planos e preços</a>
+                  <a href="#planos">Ver preços</a>
+                </Button>
+                <Button asChild variant="outline" className="cta-button">
+                  <a href="#demonstracao">
+                    Conhecer o G-PASS <ArrowRight />
+                  </a>
                 </Button>
               </div>
               <p className="hero-unlimited">
@@ -508,30 +505,51 @@ function Index() {
                 Compare os planos mensal e anual. Sem limites de usuários.
               </p>
             </div>
-            <div className="pricing-grid">
-              {plans.map((plan) => (
-                <article className="plan-card" key={plan.id} aria-labelledby={`plano-${plan.id}`}>
-                  <h3 id={`plano-${plan.id}`}>Plano {plan.name}</h3>
-                  <p className="plan-price">
-                    <span className="plan-currency">R$</span>
-                    {plan.price}
-                    <span className="plan-period">{plan.period}</span>
-                  </p>
-                  <ul className="plan-list">
-                    <li>
-                      <Check /> Sem limites de usuários
-                    </li>
-                    <li>
-                      <Check /> Taxa de implantação/adesão: R$ 0
-                    </li>
-                  </ul>
-                  <Button asChild className="cta-button plan-cta">
-                    <a href={whatsappUrl(plan.message)} target="_blank" rel="noreferrer">
-                      <WhatsAppIcon size={16} /> Quero o plano {plan.name}
-                    </a>
-                  </Button>
-                </article>
+            <div className="period-toggle" role="group" aria-label="Período de pagamento">
+              {(["mensal", "anual"] as Period[]).map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  aria-pressed={period === p}
+                  onClick={() => setPeriod(p)}
+                >
+                  {p === "mensal" ? "Mensal" : "Anual"}
+                </button>
               ))}
+            </div>
+            <div className="pricing-grid pricing-grid-single">
+              <article className="plan-card" aria-labelledby="plano-gpass">
+                <h3 id="plano-gpass">{plan.name}</h3>
+                <p className="plan-price">
+                  <span className="plan-currency">R$</span>
+                  {period === "mensal" ? plan.mensal : plan.anual}
+                  <span className="plan-period">/{period === "mensal" ? "mês" : "ano"}</span>
+                </p>
+                <p className="plan-note">
+                  {period === "anual"
+                    ? `Equivale a R$ ${plan.perMonth}/mês · economia de R$ ${plan.savings}`
+                    : `ou R$ ${plan.anual} no plano anual`}
+                </p>
+                <ul className="plan-list">
+                  <li>
+                    <Check /> Sem limites de usuários
+                  </li>
+                  <li>
+                    <Check /> Taxa de implantação/adesão: R$ 0
+                  </li>
+                </ul>
+                <Button asChild className="cta-button plan-cta">
+                  <a
+                    href={whatsappUrl(
+                      `Olá! Tenho interesse no plano ${period === "mensal" ? "Mensal" : "Anual"} do G-PASS (R$ ${period === "mensal" ? plan.mensal : plan.anual}).`,
+                    )}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <WhatsAppIcon size={16} /> Quero o plano {period === "mensal" ? "Mensal" : "Anual"}
+                  </a>
+                </Button>
+              </article>
             </div>
             <div className="pricing-notes">
               <p>
@@ -590,23 +608,15 @@ function Index() {
               </span>
               <h2 className="section-heading">Solicite uma demonstração do G-PASS.</h2>
               <p className="section-copy">
-                Fale direto com o WhatsApp Comercial ou acompanhe o Instagram.
+                Fale direto com nossa equipe comercial pelo WhatsApp.
               </p>
               <div className="contact-actions">
                 <Button asChild className="cta-button whatsapp-button">
                   <a href={whatsappUrl(DEMO_MESSAGE)} target="_blank" rel="noreferrer">
-                    <WhatsAppIcon size={18} /> WhatsApp Comercial
+                    <WhatsAppIcon size={18} /> Solicitar demonstração
                   </a>
                 </Button>
-                {INSTAGRAM_URL && (
-                  <Button asChild variant="outline" className="cta-button">
-                    <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
-                      <Instagram size={16} /> @{INSTAGRAM_HANDLE}
-                    </a>
-                  </Button>
-                )}
               </div>
-              <p className="contact-note">WhatsApp Comercial: {WHATSAPP_DISPLAY}</p>
             </div>
           </div>
         </section>
@@ -644,14 +654,14 @@ function Index() {
               <MapPin /> {ADDRESS}
             </p>
             <p className="footer-links">
-              <a href={whatsappUrl(DEMO_MESSAGE)} target="_blank" rel="noreferrer">
-                <WhatsAppIcon size={15} /> WhatsApp Comercial
-              </a>
               {INSTAGRAM_URL && (
-                <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
-                  <Instagram size={15} /> Instagram
+                <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
+                  <Instagram size={19} />
                 </a>
               )}
+              <a href={whatsappUrl(DEMO_MESSAGE)} target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp">
+                <WhatsAppIcon size={19} />
+              </a>
             </p>
             <p className="footer-copy">
               © 2026 G-Tech · Grupo Germano. Todos os direitos reservados.
@@ -665,10 +675,10 @@ function Index() {
         href={whatsappUrl(DEMO_MESSAGE)}
         target="_blank"
         rel="noreferrer"
-        aria-label={`Falar com o G-PASS no WhatsApp ${WHATSAPP_DISPLAY}`}
+        aria-label="Falar com o G-PASS no WhatsApp"
+        title="WhatsApp"
       >
-        <WhatsAppIcon size={24} />
-        <span>Falar no WhatsApp</span>
+        <WhatsAppIcon size={26} />
       </a>
     </>
   );

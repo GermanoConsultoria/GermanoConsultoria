@@ -1,10 +1,17 @@
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, Barcode, Check, CheckCircle2, ChevronRight, CircleCheck, CreditCard, FileSpreadsheet, Instagram, LayoutDashboard, LockKeyhole, Menu, Monitor, ReceiptText, Search, ShieldCheck, ShoppingCart, Store, Wallet, X, Users, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Barcode, Check, CheckCircle2, ChevronRight, CircleCheck, CreditCard, FileSpreadsheet, Instagram, LayoutDashboard, LockKeyhole, Menu, Monitor, ReceiptText, Search, ShieldCheck, ShoppingCart, Store, Wallet, X, Users, MapPin, Tag } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { BrandLogo, GroupSignature, WhatsAppIcon } from "../components/g-pdv-brand";
 import { ProductFAQ } from "../components/g-pdv-faq";
 import { whatsappUrl, whatsappPlanUrl, instagramUrl } from "../lib/contact";
 import { media } from "../lib/media";
+
+const pdvPlan = {
+  mensal: "129,99",
+  anual: "1.199,99",
+  perMonth: "99,99",
+  savings: "359,89", // 12 × R$ 129,99 = R$ 1.559,88
+};
 
 
 
@@ -26,6 +33,7 @@ function WhatsAppCTA({ children = "Falar com um consultor", dark = false, href =
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [screen, setScreen] = useState(0);
+  const [period, setPeriod] = useState<"mensal" | "anual">("mensal");
   const selected = screens[screen] ?? screens[0];
   return (
     <>
@@ -46,7 +54,7 @@ function Index() {
             <div className="hero-eyebrow inline-flex items-center gap-2 rounded-full border border-brand/30 bg-background/70 px-4 py-2 text-primary"><span className="h-1.5 w-1.5 rounded-full bg-brand" />G-PDV · Gestão para o varejo</div>
             <h1 className="hero-title">Mais agilidade no caixa.<br /> <em>Mais controle na sua loja.</em></h1>
             <p className="hero-description">Do primeiro produto ao fechamento do dia, o G-PDV conecta suas vendas, caixa e financeiro. Menos operação espalhada. Mais clareza para cuidar do seu negócio.</p>
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-3"><WhatsAppCTA>Quero conhecer o G-PDV</WhatsAppCTA><Button asChild variant="outline" size="hero"><a href="#demonstracao"><Monitor />Ver o sistema<ArrowRight /></a></Button></div>
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-3"><WhatsAppCTA>Ver demonstração</WhatsAppCTA><Button asChild variant="outline" size="hero"><a href="#planos"><Tag />Ver preços</a></Button><Button asChild variant="outline" size="hero"><a href="#demonstracao"><Monitor />Conhecer o G-PDV<ArrowRight /></a></Button></div>
             <div className="hero-proof"><span><CheckCircle2 />Vendas e caixa centralizados</span><span><CheckCircle2 />Gestão de múltiplas lojas</span><span><CheckCircle2 />Uma empresa Grupo Germano</span></div>
             <div className="screen-frame"><div className="screen-chrome"><div className="window-dots"><i /><i /><i /></div><span className="flex items-center gap-1.5"><LockKeyhole className="size-2.5" />G-PDV · Frente de caixa</span><Monitor className="size-3" /></div><img src={media.pdvScreen} alt={screens[0].alt} width={1329} height={582} fetchPriority="high" /></div>
           </div>
@@ -74,12 +82,13 @@ function Index() {
         <section id="planos" className="section-space bg-brand-soft"><div className="page-container">
           <div className="mb-10 text-center"><p className="section-eyebrow justify-center">Planos e preços</p><h2 className="section-title">Um plano completo para sua loja.</h2><div className="mt-5"><span className="unlimited-badge"><Users className="size-4" />TODOS OS PLANOS SEM LIMITES DE USUÁRIOS</span></div></div>
           <div className="pricing-card mx-auto max-w-4xl"><div className="grid gap-8 md:grid-cols-[1fr_1.1fr]"><div><h3 className="text-xl font-extrabold text-ink">Plano G-PDV Completo</h3><p className="mt-2 text-sm font-bold text-positive">Taxa de implantação: R$ 0,00 · Sem taxa de adesão</p>
-            <div className="mt-6 grid gap-4"><div className="price-option"><p className="text-xs font-bold text-muted-foreground">PLANO MENSAL</p><p className="price-value">R$ 129,99<span className="text-sm font-semibold text-muted-foreground">/mês</span></p></div><div className="price-option"><p className="text-xs font-bold text-muted-foreground">PLANO ANUAL · ECONOMIA ANUAL</p><p className="price-value">R$ 1.200,00<span className="text-sm font-semibold text-muted-foreground">/ano</span></p></div></div>
+            <div className="period-toggle mt-6" role="group" aria-label="Período de pagamento">{(["mensal", "anual"] as const).map(p => <button key={p} type="button" aria-pressed={period === p} onClick={() => setPeriod(p)}>{p === "mensal" ? "Mensal" : "Anual"}</button>)}</div>
+            <div className="mt-4 price-option"><p className="text-xs font-bold text-muted-foreground">{period === "mensal" ? "PLANO MENSAL" : "PLANO ANUAL"}</p><p className="price-value">R$ {period === "mensal" ? pdvPlan.mensal : pdvPlan.anual}<span className="text-sm font-semibold text-muted-foreground">/{period === "mensal" ? "mês" : "ano"}</span></p><p className="mt-2 text-sm text-muted-foreground">{period === "anual" ? `Equivale a R$ ${pdvPlan.perMonth}/mês · economia de R$ ${pdvPlan.savings}` : `ou R$ ${pdvPlan.anual} no plano anual`}</p></div>
             <div className="mt-6"><WhatsAppCTA dark href={whatsappPlanUrl}>Contratar no WhatsApp</WhatsAppCTA></div></div>
             <ul className="grid content-start gap-3 text-sm">{["Frente de caixa ágil com leitor de código de barras e busca rápida", "Controle de abertura, sangria e fechamento cego de caixa", "Gestão de pagamentos e troco", "Descontos com justificativa e estornos", "Histórico de vendas e reimpressão de cupons", "Catálogo de produtos com importação/exportação XLSX", "Suporte a múltiplas lojas", "Usuários ilimitados"].map(t => <li key={t} className="flex gap-3"><Check className="mt-0.5 size-4 shrink-0 text-primary" />{t}</li>)}</ul></div></div>
         </div></section>
 
-        <section id="faq" className="section-space"><div className="page-container grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20"><div><p className="section-eyebrow">Pode perguntar</p><h2 className="section-title">Tudo claro.<br />Antes de começar.</h2><p className="section-description mt-5 max-w-xs">Cada loja tem sua rotina. Nossa equipe ajuda você a entender se o G-PDV faz sentido para o seu negócio.</p><Button asChild variant="link" className="mt-5 px-0"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Tirar uma dúvida no WhatsApp<ArrowUpRight /></a></Button></div><ProductFAQ /></div></section>
+        <section id="faq" className="section-space"><div className="page-container grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20"><div><p className="section-eyebrow">Pode perguntar</p><h2 className="section-title">Tudo claro.<br />Antes de começar.</h2><p className="section-description mt-5 max-w-xs">Cada loja tem sua rotina. Nossa equipe ajuda você a entender se o G-PDV faz sentido para o seu negócio.</p></div><ProductFAQ /></div></section>
 
         <section className="cta-band"><div className="page-container flex flex-col justify-between gap-7 lg:flex-row lg:items-center"><div><p className="mb-4 text-xs font-bold text-ink">SEU PRÓXIMO PASSO</p><h2>Seu negócio merece<br />uma operação mais organizada.</h2><p className="mt-4 max-w-lg text-sm leading-relaxed text-ink">Conheça o G-PDV em uma demonstração e converse sobre as necessidades da sua loja. Direto com a nossa equipe.</p></div><div className="shrink-0"><WhatsAppCTA dark>Agendar uma demonstração</WhatsAppCTA><p className="mt-3 text-center text-[11px] text-ink">Conversa direta. Sem formulários.</p></div></div></section>
       </main>
