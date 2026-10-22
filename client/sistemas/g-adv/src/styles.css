@@ -150,3 +150,30 @@ html { scroll-behavior: smooth; }
 }
 @utility bg-hero { background: var(--gradient-hero); }
 @utility bg-dark-grad { background: var(--gradient-dark); }
+
+/* ===== Tema escuro (cores da marca G-ADV) ===== */
+html.dark {
+  color-scheme: dark;
+  --background: oklch(0.16 0.03 258);
+  --foreground: oklch(0.88 0.015 250);
+  --card: oklch(0.2 0.035 258);
+  --card-foreground: oklch(0.88 0.015 250);
+  --popover: oklch(0.2 0.035 258);
+  --popover-foreground: oklch(0.88 0.015 250);
+  --primary: oklch(0.57 0.13 252);
+  --primary-foreground: oklch(1 0 0);
+  --brand: oklch(0.74 0.12 250);
+  --brand-soft: oklch(0.22 0.045 255);
+  --secondary: oklch(0.22 0.04 255);
+  --secondary-foreground: oklch(0.86 0.06 250);
+  --muted: oklch(0.22 0.04 255);
+  --muted-foreground: oklch(0.72 0.03 255);
+  --accent: oklch(0.26 0.05 255);
+  --accent-foreground: oklch(0.86 0.06 250);
+  --border: oklch(0.31 0.045 255);
+  --input: oklch(0.31 0.045 255);
+  --ring: oklch(0.74 0.12 250);
+  --shadow-elegant: 0 24px 60px -24px rgb(0 0 0 / 0.6);
+  --gradient-hero: linear-gradient(160deg, oklch(0.22 0.06 255), var(--background) 70%);
+  --gradient-dark: linear-gradient(135deg, oklch(0.32 0.1 254), oklch(0.2 0.06 258));
+}

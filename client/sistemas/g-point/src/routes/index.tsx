@@ -32,6 +32,8 @@ import {
   whatsappUrlFor,
   whatsappUrlWithMessage,
 } from "../lib/contact";
+import { ThemeToggle } from "../../../_shared/theme-toggle";
+import { GTechLogo } from "../../../_shared/gtech-logo";
 
 /* ------------------------------------------------------------------ */
 /* Links de conversão — canal único: WhatsApp comercial (src/lib/contact) */
@@ -558,13 +560,11 @@ const navLinks = [
 function GPointLockup({ compact = false }: { compact?: boolean }) {
   return (
     <span className="flex items-center gap-3 sm:gap-4">
-      <img
-        src={LOGO_GTECH}
-        alt="G-Tech"
-        className={compact ? "h-16 w-auto" : "h-16 w-auto md:h-20"}
-        width={392}
-        height={395}
-      />
+      {compact ? (
+        <img src={LOGO_GTECH} alt="G-Tech" className="h-16 w-auto" width={392} height={395} />
+      ) : (
+        <GTechLogo src="/sistemas/g-point/LOGO_G-TECH.png" />
+      )}
       <span className="h-10 w-px bg-white/25" aria-hidden="true" />
       <span className="leading-none">
         <span className="block font-display text-xl font-extrabold tracking-tight text-white sm:text-2xl">
@@ -616,14 +616,30 @@ function Header() {
               Solicitar Demonstração
             </WaButton>
           </nav>
+          <div className="flex items-center gap-1">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram do Grupo Germano"
+              title="Instagram"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+            <ThemeToggle
+              iconSize={20}
+              className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+            />
           <button
-            className="text-white lg:hidden"
+            className="ml-1 text-white lg:hidden"
             onClick={() => setOpen(!open)}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
           >
             {open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
           </button>
+          </div>
         </div>
         {open && (
           <nav className="border-t border-white/15 px-4 py-4 lg:hidden">

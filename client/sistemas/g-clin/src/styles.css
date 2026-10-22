@@ -61,8 +61,6 @@
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 96px; }
 .brand { display: flex; align-items: center; gap: 16px; color: var(--header-fg); }
 /* Recorta as margens transparentes do PNG (conteúdo em 57..441 x 74..461 de 500px) */
-.gtech-logo { --h: 80px; display: block; width: calc(var(--h) * 384 / 387); height: var(--h); overflow: hidden; flex-shrink: 0; }
-.gtech-logo img { max-width: none; width: calc(var(--h) * 500 / 387); height: auto; margin-left: calc(var(--h) * -57 / 387); margin-top: calc(var(--h) * -74 / 387); }
 .brand-product { display: flex; flex-direction: column; border-left: 1px solid rgb(255 255 255 / .2); padding-left: 16px; line-height: 1.15; }
 .brand-product strong { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: .02em; }
 .brand-product small { font-size: 12px; color: #f9a8c8; font-weight: 600; margin-top: 3px; }
@@ -193,7 +191,6 @@
 @media (max-width: 640px) {
  .container-page { padding-inline: 16px; }
  .header-inner { height: 72px; }
- .gtech-logo { --h: 58px; }
  .brand { gap: 12px; }
  .brand-product { padding-left: 12px; }
  .brand-product strong { font-size: 19px; }
@@ -215,3 +212,37 @@
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* Botão de tema no header */
+.theme-toggle { width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: var(--header-fg); cursor: pointer; transition: color .15s, background .15s; }
+.theme-toggle:hover { color: #f9a8c8; background: rgb(255 255 255 / .08); }
+
+/* ===== Tema escuro ===== */
+html.dark {
+ color-scheme: dark;
+ --background: #16121a;
+ --secondary: #2a1a23;
+ --brand: #f08ab2;
+ --primary: #c9507f;
+ --primary-hover: #d9628f;
+ --primary-foreground: #ffffff;
+ --foreground: #d6d2d8;
+ --heading: #f6f3f5;
+ --muted: #1c1519;
+ --muted-foreground: #a99fa6;
+ --accent: #2a1a23;
+ --card: #201a1e;
+ --border: #3b2b34;
+ --header-bg: #0f0b0e;
+ --success: #34d399; --success-soft: #0f2a20;
+ --shadow-soft: 0 1px 2px rgb(0 0 0 / .3), 0 8px 24px rgb(0 0 0 / .25);
+ --shadow-frame: 0 24px 60px rgb(0 0 0 / .4);
+}
+html.dark .hero { background: linear-gradient(180deg, var(--background) 0%, var(--secondary) 100%); }
+html.dark .browser-frame,
+html.dark .feature,
+html.dark .showcase-tab,
+html.dark .plan { background: var(--card); }
+html.dark .plan-featured { background: linear-gradient(180deg, var(--secondary) 0%, var(--card) 40%); }
+html.dark .period-toggle button[aria-pressed='true'] { background: var(--primary); color: #fff; }
+html.dark .link-arrow { color: var(--brand); }

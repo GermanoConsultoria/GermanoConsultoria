@@ -1180,3 +1180,69 @@
     transition: none !important;
   }
 }
+
+/* Instagram e botão de tema no header */
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.header-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.header-icon:hover {
+  background: var(--secondary);
+}
+.desktop-nav {
+  margin-left: auto;
+}
+@media (max-width: 820px) {
+  .header-tools {
+    margin-left: auto;
+  }
+}
+
+/* ===== Tema escuro ===== */
+html.dark {
+  color-scheme: dark;
+  --background: #141020;
+  --foreground: #d5d0e0;
+  --card: #1c1730;
+  --primary: #7c5ccf;
+  --primary-foreground: #ffffff;
+  --brand: #a68cec;
+  --brand-soft: #251d3c;
+  --secondary: #251d3c;
+  --secondary-foreground: #c9b8f5;
+  --muted: #1f1834;
+  --muted-foreground: #aaa3bf;
+  --accent: #251d3c;
+  --accent-foreground: #c9b8f5;
+  --border: #352b54;
+  --input: #42376a;
+  --heading: #f2eefc;
+  --hero-background: #1a1430;
+  --dark-surface: #3b2972;
+  --dark-surface-deep: #1d1539;
+  --shadow-preview: 0 24px 70px -25px rgb(0 0 0 / 0.6);
+}
+html.dark .unlimited-band,
+html.dark .pricing-section {
+  background: #4f3599;
+}
+html.dark .pricing-section .eyebrow,
+html.dark .pricing-section .section-copy {
+  color: #e3d8fb;
+}
+html.dark .unlimited-band p {
+  color: #e3d8fb;
+}

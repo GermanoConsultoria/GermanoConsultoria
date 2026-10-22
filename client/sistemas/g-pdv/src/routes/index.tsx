@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, Barcode, Check, CheckCircle2, ChevronRight, CircleCheck, CreditCard, FileSpreadsheet, Instagram, LayoutDashboard, LockKeyhole, Menu, Monitor, ReceiptText, Search, ShieldCheck, ShoppingCart, Store, Wallet, X, Users, MapPin, Tag } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { ThemeToggle } from "../../../_shared/theme-toggle";
 import { BrandLogo, GroupSignature, WhatsAppIcon } from "../components/g-pdv-brand";
 import { ProductFAQ } from "../components/g-pdv-faq";
 import { whatsappUrl, whatsappPlanUrl, instagramUrl } from "../lib/contact";
@@ -39,13 +40,13 @@ function Index() {
     <>
       <header className="site-header sticky top-0 z-40 border-b border-border">
         <div className="page-container flex h-full items-center justify-between gap-4">
-          <a href="#inicio" aria-label="G-PDV — início"><BrandLogo /></a>
-          <div className="hidden border-l border-border pl-5 xl:block"><GroupSignature /></div>
-          <nav className="hidden items-center gap-6 lg:flex" aria-label="Menu principal">{navigation.map(([label, id]) => <a className="text-xs font-semibold transition-colors hover:text-primary" href={`#${id}`} key={id}>{label}</a>)}</nav>
-          <div className="hidden sm:block"><Button asChild variant="cta" size="lg"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Falar com consultor<ArrowUpRight /></a></Button></div>
-          <Button variant="ghost" size="icon" className="lg:hidden" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
+          <a href="#inicio" aria-label="G-PDV — início"><BrandLogo header /></a>
+          <div className="hidden border-l border-border pl-5 2xl:block"><GroupSignature /></div>
+          <nav className="hidden items-center gap-6 whitespace-nowrap xl:flex" aria-label="Menu principal">{navigation.map(([label, id]) => <a className="text-xs font-semibold transition-colors hover:text-primary" href={`#${id}`} key={id}>{label}</a>)}</nav>
+          <div className="ml-auto flex items-center gap-1"><Button asChild variant="ghost" size="icon"><a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram do Grupo Germano" title="Instagram"><Instagram /></a></Button><ThemeToggle className="inline-flex size-9 cursor-pointer items-center justify-center rounded-md transition-colors hover:bg-accent hover:text-primary" /></div><div className="hidden sm:block"><Button asChild variant="cta" size="lg"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Falar com consultor<ArrowUpRight /></a></Button></div>
+          <Button variant="ghost" size="icon" className="xl:hidden" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
         </div>
-        {menuOpen && <nav className="mobile-nav lg:hidden" aria-label="Menu móvel">{navigation.map(([label, id]) => <a href={`#${id}`} key={id} onClick={() => setMenuOpen(false)}>{label}</a>)}<WhatsAppCTA /></nav>}
+        {menuOpen && <nav className="mobile-nav xl:hidden" aria-label="Menu móvel">{navigation.map(([label, id]) => <a href={`#${id}`} key={id} onClick={() => setMenuOpen(false)}>{label}</a>)}<WhatsAppCTA /></nav>}
       </header>
 
       <main>

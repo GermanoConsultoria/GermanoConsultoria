@@ -225,3 +225,21 @@
       var(--shadow-success);
   }
 }
+
+/* ===== Tema escuro (cores da marca G-CRM) ===== */
+html.dark {
+  color-scheme: dark;
+  --background: oklch(0.17 0.012 265);
+  --foreground: oklch(0.87 0.01 260);
+  --card: oklch(0.21 0.014 265);
+  --popover: oklch(0.21 0.014 265);
+  --brand-strong: oklch(0.78 0.15 60);
+  --ink: oklch(0.13 0.01 268);
+  --secondary: oklch(0.24 0.035 60);
+  --muted: oklch(0.2 0.012 265);
+  --muted-foreground: oklch(0.72 0.015 264);
+  --accent: oklch(0.24 0.035 60);
+  --border: oklch(0.31 0.012 264);
+  --surface: oklch(0.22 0.03 60);
+  --ring: var(--primary);
+}

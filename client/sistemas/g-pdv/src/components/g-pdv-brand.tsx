@@ -1,8 +1,9 @@
 import { media } from "../lib/media";
+import { GTechLogo } from "../../../_shared/gtech-logo";
 
-export function BrandLogo() {
+export function BrandLogo({ header = false }: { header?: boolean }) {
   return <div className="gtech-lockup">
-    <span className="gtech-badge"><img src={media.gtechLogo} alt="Logo G-Tech" className="gtech-logo" width={500} height={500} /></span>
+    {header ? <GTechLogo src="/sistemas/g-pdv/LOGO_G-TECH.png" /> : <span className="gtech-badge"><img src={media.gtechLogo} alt="Logo G-Tech" className="gtech-logo" width={500} height={500} /></span>}
     <span className="gtech-system"><strong>G-PDV</strong><small>Frente de Caixa e Gestão Comercial</small></span>
   </div>;
 }

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ThemeToggle } from "../../../_shared/theme-toggle";
+import { GTechLogo } from "../../../_shared/gtech-logo";
 import {
   AlarmClock, Users, KanbanSquare, FolderOpen, Wallet, Plug, X, Check,
   ShieldCheck, Clock, TrendingUp, ChevronDown, Instagram, MapPin, Tag, PlayCircle,
@@ -19,9 +21,7 @@ function Logo({ light = false }: { light?: boolean }) {
       {light ? (
         <img src="/sistemas/g-adv/LOGO_G-TECH.png" alt="G-Tech" width={64} height={64} className="h-16 w-16 shrink-0 object-contain" />
       ) : (
-        <div className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl bg-primary ring-1 ring-primary/15">
-          <img src="/sistemas/g-adv/LOGO_G-TECH.png" alt="G-Tech" width={52} height={52} className="h-full w-full object-contain p-1" />
-        </div>
+        <GTechLogo src="/sistemas/g-adv/LOGO_G-TECH.png" />
       )}
       <div className="leading-none">
         <div className={`font-sans text-xl font-extrabold tracking-tight ${light ? "text-primary-foreground" : "text-primary"}`}>G-ADV</div>
@@ -135,6 +135,7 @@ function Index() {
           </nav>
           <div className="flex shrink-0 items-center gap-2">
             <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-lg p-2 text-brand hover:bg-brand-soft"><Instagram className="h-5 w-5" /></a>
+            <ThemeToggle iconSize={20} className="cursor-pointer rounded-lg p-2 text-brand hover:bg-brand-soft" />
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="hidden rounded-lg border border-primary px-3 py-2 text-sm font-semibold text-primary hover:bg-brand-soft sm:inline-flex">Falar com consultor</a>
           </div>
         </div>

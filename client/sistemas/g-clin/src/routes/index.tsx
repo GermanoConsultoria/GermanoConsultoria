@@ -18,6 +18,8 @@ import {
 import { Button } from "../components/ui/button";
 import { BrowserFrame, ClinicPreview } from "../components/clinic-preview";
 import { WhatsAppIcon } from "../components/brand-icons";
+import { ThemeToggle } from "../../../_shared/theme-toggle";
+import { GTechLogo } from "../../../_shared/gtech-logo";
 
 
 
@@ -105,14 +107,6 @@ const plans = [
   },
 ];
 
-function GTechLogo() {
-  return (
-    <span className="gtech-logo">
-      <img src="/sistemas/g-clin/LOGO_G-TECH.png" width={500} height={500} alt="G-Tech" />
-    </span>
-  );
-}
-
 function Index() {
   const [period, setPeriod] = useState<Period>("mensal");
   return (
@@ -120,7 +114,7 @@ function Index() {
       <header className="site-header">
         <div className="container-page header-inner">
           <a href="#" className="brand" aria-label="G-CLIN by G-Tech — início">
-            <GTechLogo />
+            <GTechLogo src="/sistemas/g-clin/LOGO_G-TECH.png" />
             <span className="brand-product">
               <strong>G-CLIN</strong>
               <small>by G-Tech</small>
@@ -142,6 +136,7 @@ function Index() {
             >
               <Instagram size={20} />
             </a>
+            <ThemeToggle iconSize={20} className="nav-icon theme-toggle" />
           </nav>
         </div>
       </header>

@@ -256,3 +256,32 @@ html { scroll-behavior: smooth; scroll-padding-top: 100px; }
  html { scroll-behavior: auto; }
  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* ===== Tema escuro (cores da marca G-PDV) ===== */
+html.dark {
+  color-scheme: dark;
+  --brand-soft: oklch(0.24 0.04 85);
+  --logo-surface: oklch(0.25 0.012 255);
+  --ink: oklch(0.95 0.005 256);
+  --background: oklch(0.17 0.012 256);
+  --foreground: oklch(0.86 0.01 256);
+  --card: oklch(0.21 0.014 256);
+  --card-foreground: oklch(0.95 0.005 256);
+  --popover: oklch(0.21 0.014 256);
+  --popover-foreground: oklch(0.95 0.005 256);
+  --primary: oklch(0.74 0.14 82);
+  --primary-foreground: oklch(0.2 0.02 80);
+  --secondary: oklch(0.24 0.04 85);
+  --secondary-foreground: oklch(0.93 0.02 90);
+  --muted: oklch(0.21 0.012 256);
+  --muted-foreground: oklch(0.72 0.02 257);
+  --accent: oklch(0.24 0.04 85);
+  --accent-foreground: oklch(0.93 0.02 90);
+  --border: oklch(0.31 0.015 256);
+  --input: oklch(0.31 0.015 256);
+  --shadow-screen: 0 24px 65px rgb(0 0 0 / 0.45);
+}
+/* Botões "escuros" viram claros no tema escuro */
+html.dark { --inverse: oklch(0.2 0.015 256); }
+/* A faixa amarela mantém texto e botão escuros */
+html.dark .cta-band { --ink: oklch(0.244 0.012 256); --inverse: oklch(1 0 0); }

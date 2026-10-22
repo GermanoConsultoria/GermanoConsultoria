@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, ChartNoAxesCombined, Check, CircleCheck, Clock3, FolderKanban, Instagram, LayoutDashboard, ListTodo, MapPin, Menu, Play, ShieldCheck, Tag, Users, Wallet, X, type LucideIcon } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { ThemeToggle } from "../../../_shared/theme-toggle";
+import { GTechLogo } from "../../../_shared/gtech-logo";
 
 // Local copies in /public so the images also load outside Lovable hosting.
 const germanoLogo = { url: "/sistemas/flow/Logo_Germano.png" };
@@ -62,7 +64,7 @@ function FlowLanding() {
     <header className="site-header">
       <div className="page-width header-inner">
         <a href="#inicio" className="brand-group" aria-label="G-Tech — início">
-          <img className="gtech-logo" src="/sistemas/flow/gtech-logo.png" alt="G-Tech" width="384" height="387" />
+          <GTechLogo src="/sistemas/flow/LOGO_G-TECH.png" />
           <span className="brand-signature">Uma solução do<strong>Grupo Germano</strong></span>
         </a>
         <nav className={`header-nav ${menuOpen ? "is-open" : ""}`} aria-label="Navegação principal">
@@ -73,6 +75,7 @@ function FlowLanding() {
           <Button asChild variant="ghost" size="icon"><a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram do Grupo Germano" title="Instagram do Grupo Germano"><Instagram /></a></Button>
           <Button asChild><a href={whatsapp} target="_blank" rel="noopener noreferrer">Falar com especialista<ArrowUpRight /></a></Button>
         </nav>
+        <ThemeToggle className="theme-toggle" />
         <Button variant="ghost" size="icon" className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</Button>
       </div>
     </header>

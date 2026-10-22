@@ -8,6 +8,8 @@ import {
   X,
   type LucideIcon,
 } from "lucide-react";
+import { ThemeToggle } from "../../../../_shared/theme-toggle";
+import { GTechLogo } from "../../../../_shared/gtech-logo";
 import { Button } from "../ui/button";
 
 export type IconItem = { icon: LucideIcon; title: string; copy: string };
@@ -145,12 +147,14 @@ function BrandLockup({ c, size = "md" }: { c: LandingConfig; size?: "md" | "sm" 
   const md = size === "md";
   return (
     <span className="flex items-center gap-2.5 sm:gap-3">
-      <img src={c.brand.icon} alt="" className={md ? "h-10 w-auto sm:h-12" : "h-10 w-auto"} />
-      <img
-        src={c.brand.wordmark}
-        alt={c.brand.name}
-        className={md ? "h-4 w-auto sm:h-6" : "h-5 w-auto"}
-      />
+      {md ? (
+        <GTechLogo src="/sistemas/g-crm/LOGO_G-TECH.png" />
+      ) : (
+        <>
+          <img src={c.brand.icon} alt="" className="h-10 w-auto" />
+          <img src={c.brand.wordmark} alt={c.brand.name} className="h-5 w-auto" />
+        </>
+      )}
       <span className="h-7 w-px bg-white/25" aria-hidden="true" />
       <span className="text-lg font-extrabold leading-none text-primary sm:text-xl">{c.name}</span>
     </span>
@@ -197,6 +201,19 @@ export function LandingPage({ c }: { c: LandingConfig }) {
               </a>
             ))}
           </nav>
+          <div className="flex items-center gap-1">
+            <a
+              {...ig}
+              aria-label={`Instagram ${c.instagramHandle}`}
+              title="Instagram"
+              className="inline-flex size-10 items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-white/10 hover:text-primary"
+            >
+              <InstagramIcon />
+            </a>
+            <ThemeToggle
+              iconSize={20}
+              className="inline-flex size-10 cursor-pointer items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-white/10 hover:text-primary"
+            />
           <Button
             variant="ghost"
             size="icon"
@@ -207,6 +224,7 @@ export function LandingPage({ c }: { c: LandingConfig }) {
           >
             {open ? <X /> : <Menu />}
           </Button>
+          </div>
         </div>
         {open && (
           <nav className="border-t border-white/10 px-5 py-3 md:hidden" aria-label="Menu mobile">

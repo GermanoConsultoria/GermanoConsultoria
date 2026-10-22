@@ -208,3 +208,25 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .whatsapp-float { right: 17px; bottom: 17px; width: 48px; height: 48px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+/* Botão de tema no header */
+.theme-toggle { display: inline-grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border: 0; border-radius: 8px; background: transparent; color: var(--header-fg); cursor: pointer; transition: background .2s; }
+.theme-toggle:hover { background: color-mix(in oklab, var(--header-fg) 12%, transparent); }
+@media (min-width: 641px) { .header-nav { margin-left: auto; } }
+@media (max-width: 640px) { .theme-toggle { margin-left: auto; } }
+
+/* ===== Tema escuro ===== */
+html.dark {
+  color-scheme: dark;
+  --background: oklch(0.17 0.02 210);
+  --foreground: oklch(0.86 0.015 200);
+  --card: oklch(0.21 0.025 205);
+  --primary: oklch(0.55 0.09 194.8);
+  --primary-foreground: oklch(1 0 0);
+  --brand: oklch(0.76 0.11 194.8);
+  --secondary: oklch(0.235 0.03 200);
+  --heading: oklch(0.96 0.012 194.8);
+  --muted-foreground: oklch(0.72 0.02 215);
+  --border: oklch(0.31 0.03 200);
+}
+html.dark .site-header { --header-bg: oklch(0.13 0.025 205); }
+html.dark .contact-section { background: oklch(0.4 0.075 194.8); }

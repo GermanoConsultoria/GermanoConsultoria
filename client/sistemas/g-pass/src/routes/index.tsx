@@ -22,6 +22,8 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { ThemeToggle } from "../../../_shared/theme-toggle";
+import { GTechLogo } from "../../../_shared/gtech-logo";
 
 
 
@@ -143,9 +145,7 @@ function WhatsAppIcon({ size = 18 }: { size?: number }) {
 function Brand() {
   return (
     <a href="#inicio" aria-label="G-PASS por G-Tech — início" className="brand-logo">
-      <span className="brand-tile">
-        <img src={GTECH_LOGO} alt="" width={52} height={52} />
-      </span>
+      <GTechLogo src={GTECH_LOGO} />
       <span className="brand-name">G-PASS</span>
       <span className="brand-divider" />
       <span className="brand-company">
@@ -220,6 +220,19 @@ function Index() {
               </a>
             ))}
           </nav>
+          <div className="header-tools">
+            <a
+              className="header-icon"
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram do Grupo Germano"
+              title="Instagram"
+            >
+              <Instagram size={20} />
+            </a>
+            <ThemeToggle iconSize={20} className="header-icon" />
+          </div>
           <Button asChild className="header-cta">
             <a href="#contato">Solicitar demonstração</a>
           </Button>
