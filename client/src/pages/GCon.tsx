@@ -17,8 +17,8 @@ import {
   HelpCircle
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "@/Image/logo.png";
-import logoGcon from "@/Image/logoGcon.png";
+import logo from "@/Image/otimizadas/logo.webp";
+import logoGcon from "@/Image/otimizadas/logoGcon.webp";
 
 
 export default function Gcon() {

@@ -3,37 +3,37 @@ import { useState } from "react";
 // Telas reais do G-CLIN (arquivos da pasta public). Os dados exibidos são de exemplo.
 const screens = [
   {
-    src: "/sistemas/g-clin/G-CLIN1.png",
+    src: "/sistemas/g-clin/G-CLIN1.webp",
     label: "Painel",
     title: "Painel de informações",
     text: "Visão do dia: agendamentos, confirmações, faltas e resultado do período.",
   },
   {
-    src: "/sistemas/g-clin/G-CLIN2.png",
+    src: "/sistemas/g-clin/G-CLIN2.webp",
     label: "Agendamentos",
     title: "Agendamentos",
     text: "Consultas em lista ou calendário, com filtros por período e status.",
   },
   {
-    src: "/sistemas/g-clin/G-CLIN3.png",
+    src: "/sistemas/g-clin/G-CLIN3.webp",
     label: "Horários livres",
     title: "Encontrar horário",
     text: "Localize o próximo horário disponível para encaixar o paciente.",
   },
   {
-    src: "/sistemas/g-clin/G-CLIN4.png",
+    src: "/sistemas/g-clin/G-CLIN4.webp",
     label: "Funcionamento",
     title: "Horário de funcionamento",
     text: "Expediente e intervalos configurados para cada dia da semana.",
   },
   {
-    src: "/sistemas/g-clin/G-CLIN5.png",
+    src: "/sistemas/g-clin/G-CLIN5.webp",
     label: "Serviços",
     title: "Serviços",
     text: "Serviços com preço, custo, margem e duração em um só cadastro.",
   },
   {
-    src: "/sistemas/g-clin/G-CLIN6.png",
+    src: "/sistemas/g-clin/G-CLIN6.webp",
     label: "Pacientes",
     title: "Pacientes",
     text: "Cadastro centralizado com busca por nome, telefone ou e-mail.",

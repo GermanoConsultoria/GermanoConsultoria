@@ -2,32 +2,32 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ChevronRight, Code, Users, TrendingUp, DollarSign, Zap, CheckCircle2, MessageCircle, Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "@/Image/logo.png";
-import logoGcon from "@/Image/logoGcon.png";
-import logoGtech from "@/Image/logoGtech.png";
-import logoGbank from "@/Image/logoGbank.png";
-import logoAngelita from "@/Image/logoAngelita.png";
-import lavinia from "@/Image/lavinia.png";
-import gabriel from "@/Image/gabriel.png";
-import amanda from "@/Image/amanda.jpeg";
-import thiago from "@/Image/thiago.jpeg";
-import guilherme from "@/Image/guilherme.jpeg";
+import logo from "@/Image/otimizadas/logo.webp";
+import logoGcon from "@/Image/otimizadas/logoGcon.webp";
+import logoGtech from "@/Image/otimizadas/logoGtech.webp";
+import logoGbank from "@/Image/otimizadas/logoGbank.webp";
+import logoAngelita from "@/Image/otimizadas/logoAngelita.webp";
+import lavinia from "@/Image/otimizadas/lavinia.webp";
+import gabriel from "@/Image/otimizadas/gabriel.webp";
+import amanda from "@/Image/otimizadas/amanda.webp";
+import thiago from "@/Image/otimizadas/thiago.webp";
+import guilherme from "@/Image/otimizadas/guilherme.webp";
 import vini from "@/Image/vini.png";
-import caique from "@/Image/caique.png";
+import caique from "@/Image/otimizadas/caique.webp";
 import rafa from "@/Image/rafa.png";
 import matheus from "@/Image/matheus.png";
 import sofia from "@/Image/sofia.png";
-import joaquim from "@/Image/joaquim.png";
+import joaquim from "@/Image/otimizadas/joaquim.webp";
 import felipe from "@/Image/felipe.jpeg";
-import ruanita from "@/Image/ruanita.png";
+import ruanita from "@/Image/otimizadas/ruanita.webp";
 import angelita from "@/Image/angelita.png";
-import artilimpLogo from "@/Image/artilimp.png";
-import palacioDasFestas from "@/Image/palacioDasFestas.png";
-import starJeansLogo from "@/Image/starjeans.png";
-import SOSLogo from "@/Image/SOS.png";
-import solucoes from "@/Image/solucoes.png";
-import whatsappLogo from "@/Image/whatsapp.png";
-import instagramLogo from "@/Image/instagram.png";
+import artilimpLogo from "@/Image/otimizadas/artilimp.webp";
+import palacioDasFestas from "@/Image/otimizadas/palacioDasFestas.webp";
+import starJeansLogo from "@/Image/otimizadas/starjeans.webp";
+import SOSLogo from "@/Image/otimizadas/SOS.webp";
+import solucoes from "@/Image/otimizadas/solucoes.webp";
+import whatsappLogo from "@/Image/otimizadas/whatsapp.webp";
+import instagramLogo from "@/Image/otimizadas/instagram.webp";
 import { MessageCircleMore } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -219,6 +219,8 @@ export default function Home() {
             <div>
               <img 
                   src={solucoes}
+                  loading="lazy"
+                  decoding="async"
                   alt="Soluções Integradas"
                   className="w-full rounded-xl"
               />
@@ -260,6 +262,8 @@ export default function Home() {
               <div className="flex justify-start mb-4">
                 <img
                   src={logoGcon}
+                  loading="lazy"
+                  decoding="async"
                   alt="G-Con"
                   className="w-30 object-contain"
                 />
@@ -293,6 +297,8 @@ export default function Home() {
               <div className="flex justify-start mb-4">
                 <img
                   src={logoGtech}
+                  loading="lazy"
+                  decoding="async"
                   alt="G-Con"
                   className="w-30 object-contain"
                 />  
@@ -326,6 +332,8 @@ export default function Home() {
               <div className="flex justify-start mb-4">
                 <img
                   src={logoGcon}
+                  loading="lazy"
+                  decoding="async"
                   alt="G-Con"
                   className="w-30 object-contain"
                 />
@@ -359,6 +367,8 @@ export default function Home() {
               <div className="flex justify-start mb-4">
                 <img
                   src={logoGbank}
+                  loading="lazy"
+                  decoding="async"
                   alt="G-Bank"
                   className="w-30 object-contain"
                 />
@@ -445,6 +455,8 @@ export default function Home() {
               {/* FOTO/LOGO */}
               <img
                 src={artilimpLogo}
+                loading="lazy"
+                decoding="async"
                 alt="Artilimp"
                  className="w-16 h-16 object-cover rounded-full"
               />
@@ -504,6 +516,8 @@ export default function Home() {
               {/* FOTO/LOGO */}
               <img
                 src={starJeansLogo}
+                loading="lazy"
+                decoding="async"
                 alt="StarJeans"
                 className="w-20 h-20 object-cover rounded-full border-2[#00D9FF]"
               />
@@ -565,6 +579,8 @@ export default function Home() {
               {/* FOTO/LOGO */}
               <img
                 src={SOSLogo}
+                loading="lazy"
+                decoding="async"
                 alt="SOS suplementos"
                 className="w-20 h-20 object-cover rounded-full border-2-[#00D9FF]"
               />
@@ -627,6 +643,8 @@ export default function Home() {
               {/* FOTO/LOGO */}
               <img
                 src={palacioDasFestas}
+                loading="lazy"
+                decoding="async"
                 alt="StarJeans"
                 className="w-20 h-20 object-cover rounded-full border-2 -[#00D9FF]"
               />
@@ -766,6 +784,8 @@ export default function Home() {
 
                     <img
                       src={member.image}
+                      loading="lazy"
+                      decoding="async"
                       alt={member.name}
                       className="
                         w-full h-full
@@ -831,7 +851,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Grupo Germano" className=" w-36 md:w-44 h-auto object-contain "/>
+              <img src={logo} alt="Grupo Germano" loading="lazy" decoding="async" className=" w-36 md:w-44 h-auto object-contain "/>
             </div>
               <p className="text-base md:text-lg font-medium text-black dark:text-white">Ecossistema integrado de soluções para performance empresarial.</p>
             </div>
@@ -876,6 +896,8 @@ export default function Home() {
                 >
                   <img
                     src={instagramLogo}
+                    loading="lazy"
+                    decoding="async"
                     alt="Instagram"
                     className="w-8 h-8 object-contain"
                   />
@@ -888,6 +910,8 @@ export default function Home() {
                 >
                   <img
                     src={whatsappLogo}
+                    loading="lazy"
+                    decoding="async"
                     alt="WhatsApp"
                     className="w-7 h-7 object-contain"
                   />

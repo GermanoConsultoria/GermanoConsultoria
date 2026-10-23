@@ -19,9 +19,9 @@ function Logo({ light = false }: { light?: boolean }) {
   return (
     <div className="flex items-center gap-3">
       {light ? (
-        <img src="/sistemas/g-adv/LOGO_G-TECH.png" alt="G-Tech" width={64} height={64} className="h-16 w-16 shrink-0 object-contain" />
+        <img src="/sistemas/marca/LOGO_G-TECH.webp" alt="G-Tech" width={64} height={64} className="h-16 w-16 shrink-0 object-contain" />
       ) : (
-        <GTechLogo src="/sistemas/g-adv/LOGO_G-TECH.png" />
+        <GTechLogo src="/sistemas/marca/LOGO_G-TECH.webp" />
       )}
       <div className="leading-none">
         <div className={`font-sans text-xl font-extrabold tracking-tight ${light ? "text-primary-foreground" : "text-primary"}`}>G-ADV</div>
@@ -89,7 +89,7 @@ function PricingAndForm() {
 function Seal({ light = false }: { light?: boolean }) {
   return (
     <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${light ? "border-primary-foreground/30 text-primary-foreground/80" : "border-border bg-card text-muted-foreground"}`}>
-      <img src="/sistemas/g-adv/Logo_Germano.png" alt="Grupo Germano" className="h-4 w-4 object-contain" />
+      <img src="/sistemas/marca/Logo_Germano.webp" alt="Grupo Germano" className="h-4 w-4 object-contain" />
       Uma solução do Grupo Germano
     </span>
   );
@@ -164,7 +164,7 @@ function Index() {
                   <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
                 </div>
                 <div className="relative">
-                  <img src="/sistemas/g-adv/G-ADV.png" alt="Tela real do painel do G-ADV" width={1334} height={574} className="block w-full" />
+                  <img src="/sistemas/g-adv/G-ADV.webp" alt="Tela real do painel do G-ADV" width={1334} height={574} className="block w-full" />
                   <div className="absolute left-0 top-0 h-[12%] w-[19%] backdrop-blur-md bg-primary/40" />
                 </div>
               </div>

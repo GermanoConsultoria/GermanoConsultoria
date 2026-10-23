@@ -202,12 +202,45 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
+/**
+ * Analytics (Umami): o index.html usa %VITE_ANALYTICS_ENDPOINT% e %VITE_ANALYTICS_WEBSITE_ID%.
+ * O Vite só substitui esses textos quando as variáveis existem; sem elas, o placeholder
+ * ia literal para o site e gerava uma requisição inválida (HTTP 400) em cada visita.
+ * Este plugin remove a tag enquanto as duas variáveis não estiverem definidas (ver .env.example).
+ */
+function vitePluginOptionalAnalytics(): Plugin {
+  let enabled = false;
+  return {
+    name: "optional-analytics",
+    configResolved(config) {
+      enabled = Boolean(
+        config.env.VITE_ANALYTICS_ENDPOINT && config.env.VITE_ANALYTICS_WEBSITE_ID
+      );
+    },
+    transformIndexHtml: {
+      order: "pre",
+      handler(html) {
+        if (enabled) return html;
+        return html.replace(
+          /\s*<script\b[^>]*%VITE_ANALYTICS_ENDPOINT%[^>]*>\s*<\/script>/g,
+          ""
+        );
+      },
+    },
+  };
+}
+
+// O runtime da Manus (editor visual, ~367 KB colados em cada HTML, com uma cópia própria do React)
+// só funciona dentro do painel da Manus. Fica ativo apenas no servidor de desenvolvimento.
+const manusRuntime: Plugin = { ...vitePluginManusRuntime(), apply: "serve" };
+
 const plugins = [
   react(),
   tailwindcss(),
-  vitePluginManusRuntime(),
+  manusRuntime,
   vitePluginManusDebugCollector(),
   vitePluginStorageProxy(),
+  vitePluginOptionalAnalytics(),
 ];
 
 export default defineConfig({

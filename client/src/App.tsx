@@ -1,5 +1,3 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -36,11 +34,11 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light" switchable>
-        <TooltipProvider>
-          <Toaster />
-          <ThemeToggle />
-          <Router />
-        </TooltipProvider>
+        {/* Toaster (sonner) e TooltipProvider foram retirados: nenhuma página usa toast() ou <Tooltip>,
+            e juntos acrescentavam ~56 KB de JS a todas as páginas. Os componentes continuam em
+            components/ui caso sejam necessários no futuro. */}
+        <ThemeToggle />
+        <Router />
       </ThemeProvider>
     </ErrorBoundary>
   );

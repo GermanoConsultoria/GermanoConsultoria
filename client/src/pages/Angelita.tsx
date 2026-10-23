@@ -13,7 +13,7 @@ import {
   Settings,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import logoAngelita from "@/Image/logoAngelita.png";
+import logoAngelita from "@/Image/otimizadas/logoAngelita.webp";
 
 export default function Angelita() {
   const [darkMode, setDarkMode] = useState(false);

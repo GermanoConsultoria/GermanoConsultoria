@@ -1,5 +1,6 @@
 /* Logo G-Tech do header: mesmo tamanho em todas as landing pages.
-   O desenho ocupa 384×387 px dentro do arquivo de 500×500 (borda transparente). */
+   O desenho ocupa 384×387 de cada 500×500 do arquivo (borda transparente).
+   Os cálculos abaixo usam só a proporção, então valem para qualquer resolução do arquivo. */
 .gtech-header-logo {
   --gtech-logo-h: 64px;
   display: block;

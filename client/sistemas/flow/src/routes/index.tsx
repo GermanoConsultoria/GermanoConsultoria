@@ -5,10 +5,10 @@ import { ThemeToggle } from "../../../_shared/theme-toggle";
 import { GTechLogo } from "../../../_shared/gtech-logo";
 
 // Local copies in /public so the images also load outside Lovable hosting.
-const germanoLogo = { url: "/sistemas/flow/Logo_Germano.png" };
-const overview = { url: "/sistemas/flow/flow1.png" };
-const projects = { url: "/sistemas/flow/flow2.png" };
-const tasks = { url: "/sistemas/flow/flow3.png" };
+const germanoLogo = { url: "/sistemas/marca/Logo_Germano.webp" };
+const overview = { url: "/sistemas/flow/flow1.webp" };
+const projects = { url: "/sistemas/flow/flow2.webp" };
+const tasks = { url: "/sistemas/flow/flow3.webp" };
 
 const whatsapp = "https://wa.me/5519981640280";
 const instagram = "https://www.instagram.com/grupo.germano/";
@@ -64,7 +64,7 @@ function FlowLanding() {
     <header className="site-header">
       <div className="page-width header-inner">
         <a href="#inicio" className="brand-group" aria-label="G-Tech — início">
-          <GTechLogo src="/sistemas/flow/LOGO_G-TECH.png" />
+          <GTechLogo src="/sistemas/marca/LOGO_G-TECH.webp" />
           <span className="brand-signature">Uma solução do<strong>Grupo Germano</strong></span>
         </a>
         <nav className={`header-nav ${menuOpen ? "is-open" : ""}`} aria-label="Navegação principal">
@@ -148,7 +148,7 @@ function FlowLanding() {
       <section className="contact-section" id="contato"><div className="page-width contact-inner"><div><span className="eyebrow">Vamos colocar seus projetos em movimento?</span><h2>Conheça o próximo FLOW<br />da sua equipe.</h2><p>Converse com nosso time e agende uma apresentação do sistema.</p></div><div className="contact-actions"><WhatsAppButton>Agendar demonstração</WhatsAppButton><p>Direto pelo WhatsApp. Sem complicação.</p></div></div></section>
     </main>
 
-    <footer className="site-footer"><div className="page-width"><div className="footer-main"><div className="footer-brand"><a href="#inicio" aria-label="G-Tech — início" className="footer-logo"><img src="/sistemas/flow/gtech-logo.png" alt="G-Tech" className="gtech-logo" width="384" height="387" loading="lazy" /></a><p>Projetos conectados. Trabalho em movimento.</p><address className="footer-address"><MapPin aria-hidden="true" />Rua Santa Julia, 259 - Santa Julia, Mogi Guaçu - SP</address></div><div className="germano-lockup"><img src={germanoLogo.url} alt="Logo Grupo Germano" loading="lazy" /><span>Uma solução do<strong>Grupo Germano</strong></span></div><div className="footer-socials"><a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram do Grupo Germano" title="Instagram"><Instagram /></a><a href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><WhatsAppIcon /></a></div></div><div className="footer-bottom"><span>© 2026 Grupo Germano. Todos os direitos reservados.</span><span>Tecnologia que conecta. Gestão que transforma.</span></div></div></footer>
+    <footer className="site-footer"><div className="page-width"><div className="footer-main"><div className="footer-brand"><a href="#inicio" aria-label="G-Tech — início" className="footer-logo"><img src="/sistemas/flow/gtech-logo.webp" alt="G-Tech" className="gtech-logo" width="384" height="387" loading="lazy" /></a><p>Projetos conectados. Trabalho em movimento.</p><address className="footer-address"><MapPin aria-hidden="true" />Rua Santa Julia, 259 - Santa Julia, Mogi Guaçu - SP</address></div><div className="germano-lockup"><img src={germanoLogo.url} alt="Logo Grupo Germano" loading="lazy" /><span>Uma solução do<strong>Grupo Germano</strong></span></div><div className="footer-socials"><a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram do Grupo Germano" title="Instagram"><Instagram /></a><a href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><WhatsAppIcon /></a></div></div><div className="footer-bottom"><span>© 2026 Grupo Germano. Todos os direitos reservados.</span><span>Tecnologia que conecta. Gestão que transforma.</span></div></div></footer>
     <Button asChild className="whatsapp-float" size="icon"><a href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp" title="Conversar no WhatsApp"><WhatsAppIcon /></a></Button>
   </>;
 }

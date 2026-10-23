@@ -1,4 +1,4 @@
-import whatsappLogo from "@/Image/whatsapp.png";
+import whatsappLogo from "@/Image/otimizadas/whatsapp.webp";
 
 export default function ThemeToggle() {
   return (

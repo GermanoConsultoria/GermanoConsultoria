@@ -1,6 +1,10 @@
 @import "tailwindcss";
 /* As landing pages dos sistemas têm o próprio CSS (client/sistemas/<sistema>/src/styles.css) */
 @source not "../sistemas";
+/* Componentes que nenhuma página importa: sem esta exclusão, as classes deles entravam no CSS
+   publicado (~70 KB a mais). Ao começar a usar um destes componentes, tire o nome da lista. */
+@source not "./components/ui/{accordion,alert,alert-dialog,aspect-ratio,avatar,badge,breadcrumb,button-group,calendar,carousel,chart,checkbox,collapsible,command,context-menu,dialog,drawer,dropdown-menu,empty,field,form,hover-card,input,input-group,input-otp,item,kbd,label,menubar,navigation-menu,pagination,popover,progress,radio-group,resizable,scroll-area,select,separator,sheet,sidebar,skeleton,slider,sonner,spinner,switch,table,tabs,textarea,toggle,toggle-group,tooltip}.tsx";
+@source not "./components/{ManusDialog,Map}.tsx";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));

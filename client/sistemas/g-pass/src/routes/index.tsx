@@ -34,9 +34,9 @@ const INSTAGRAM_URL = INSTAGRAM_HANDLE ? `https://www.instagram.com/${INSTAGRAM_
 const ADDRESS = "Rua Santa Julia, 259 - Santa Julia, Mogi Guaçu - SP";
 
 // Imagens em /public.
-const GTECH_LOGO = "/sistemas/g-pass/LOGO_G-TECH.png";
-const GERMANO_LOGO = "/sistemas/g-pass/Logo_Germano.png";
-const SYSTEM_SCREENSHOT = "/sistemas/g-pass/g-pass-system.png";
+const GTECH_LOGO = "/sistemas/marca/LOGO_G-TECH.webp";
+const GERMANO_LOGO = "/sistemas/marca/Logo_Germano.webp";
+const SYSTEM_SCREENSHOT = "/sistemas/g-pass/g-pass-system.webp";
 
 function whatsappUrl(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

@@ -43,8 +43,8 @@ const WA_GERAL = whatsappUrlFor("G-POINT");
 const WA_DEMO = whatsappUrlWithMessage("Olá! Gostaria de solicitar uma demonstração do G-POINT.");
 
 /* Arquivos oficiais em /public (sem imagens externas) */
-const LOGO_GTECH = "/sistemas/g-point/brand/gtech-logo.png"; // recorte de public/LOGO_G-TECH.png
-const LOGO_GERMANO = "/sistemas/g-point/brand/grupo-germano-logo.png"; // recorte de public/Logo_Germano.png
+const LOGO_GTECH = "/sistemas/g-point/brand/gtech-logo.webp"; // recorte de public/LOGO_G-TECH.png
+const LOGO_GERMANO = "/sistemas/g-point/brand/grupo-germano-logo.webp"; // recorte de public/Logo_Germano.png
 
 const UNLIMITED = "TODOS OS SISTEMAS SEM LIMITES DE USUÁRIOS";
 
@@ -265,7 +265,7 @@ const screens = [
     description:
       "Compare a jornada prevista com as horas efetivamente registradas e acompanhe de forma clara as horas excedentes, horas faltantes e o saldo do período — com detalhes diários de previsto, trabalhado e saldo.",
     bullets: ["Horas excedentes", "Horas faltantes", "Saldo do período", "Detalhe diário"],
-    img: "/sistemas/g-point/G-Point2.png",
+    img: "/sistemas/g-point/G-Point2.webp",
   },
   {
     icon: FileText,
@@ -279,7 +279,7 @@ const screens = [
       "Status de aprovação",
       "Dias aprovados abonados no banco de horas",
     ],
-    img: "/sistemas/g-point/G-Point3.png",
+    img: "/sistemas/g-point/G-Point3.webp",
   },
   {
     icon: Palmtree,
@@ -293,7 +293,7 @@ const screens = [
       "Acompanhamento de status",
       "Dias aprovados não geram horas faltantes",
     ],
-    img: "/sistemas/g-point/G-Point4.png",
+    img: "/sistemas/g-point/G-Point4.webp",
   },
   {
     icon: MapPin,
@@ -307,7 +307,7 @@ const screens = [
       "Visitas programadas em um só lugar",
       "Escala atualizada automaticamente",
     ],
-    img: "/sistemas/g-point/G-Point5.png",
+    img: "/sistemas/g-point/G-Point5.webp",
   },
   {
     icon: CalendarDays,
@@ -321,7 +321,7 @@ const screens = [
       "Status dos colaboradores",
       "Agenda de escala",
     ],
-    img: "/sistemas/g-point/G-Point6.png",
+    img: "/sistemas/g-point/G-Point6.webp",
   },
   {
     icon: Wallet,
@@ -335,7 +335,7 @@ const screens = [
       "Consulta dos emitidos",
       "Impressão quando necessário",
     ],
-    img: "/sistemas/g-point/G-Point7.png",
+    img: "/sistemas/g-point/G-Point7.webp",
   },
   {
     icon: BarChart3,
@@ -344,7 +344,7 @@ const screens = [
     description:
       "Centralize as principais informações da equipe em relatórios mensais para facilitar o acompanhamento, a gestão e o envio ao DP e à contabilidade.",
     bullets: ["Espelho mensal", "Férias e atestados", "Holerites", "Exportação em PDF"],
-    img: "/sistemas/g-point/G-Point8.png",
+    img: "/sistemas/g-point/G-Point8.webp",
   },
   {
     icon: Users,
@@ -353,7 +353,7 @@ const screens = [
     description:
       "Cadastre jornadas e mantenha os dados dos colaboradores atualizados em um único lugar.",
     bullets: ["Colaboradores", "Dados cadastrais", "Jornadas", "Perfis de acesso"],
-    img: "/sistemas/g-point/G-Point9.png",
+    img: "/sistemas/g-point/G-Point9.webp",
   },
 ];
 
@@ -563,7 +563,7 @@ function GPointLockup({ compact = false }: { compact?: boolean }) {
       {compact ? (
         <img src={LOGO_GTECH} alt="G-Tech" className="h-16 w-auto" width={392} height={395} />
       ) : (
-        <GTechLogo src="/sistemas/g-point/LOGO_G-TECH.png" />
+        <GTechLogo src="/sistemas/marca/LOGO_G-TECH.webp" />
       )}
       <span className="h-10 w-px bg-white/25" aria-hidden="true" />
       <span className="leading-none">
@@ -703,7 +703,7 @@ function Hero() {
             <LaptopMockup src="/sistemas/g-point/G-Point1.webp" alt="Tela de registro de ponto do G-POINT" />
             <div className="absolute -bottom-2 right-0 w-[30%] max-w-[170px] sm:-bottom-4">
               <PhoneMockup
-                src="/sistemas/g-point/G-Point2.png"
+                src="/sistemas/g-point/G-Point2.webp"
                 alt="Saldo do período no banco de horas do G-POINT"
                 position="89% 0%"
               />

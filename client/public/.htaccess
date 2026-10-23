@@ -15,3 +15,33 @@ RewriteRule ^ - [L]
 # Qualquer outra rota vai para o index.html (rotas do React)
 RewriteRule ^ index.html [L]
 </IfModule>
+
+# ---------------------------------------------------------------------------
+# Performance (cada bloco só vale se o módulo existir no servidor; apagar um
+# bloco desfaz a regra sem afetar o resto)
+# ---------------------------------------------------------------------------
+
+# Tipos de arquivo (o .webmanifest era entregue sem Content-Type)
+<IfModule mod_mime.c>
+AddType application/manifest+json .webmanifest
+AddType image/webp .webp
+</IfModule>
+
+# Compressão gzip: HTML, CSS e JS já saem comprimidos pela configuração da
+# HostGator; aqui entram só os tipos de texto que ainda não estavam cobertos.
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE image/svg+xml image/x-icon image/vnd.microsoft.icon application/json application/manifest+json
+</IfModule>
+
+# Cache do navegador. Os arquivos com hash em /assets têm regra própria
+# (cache de 1 ano) em assets/.htaccess.
+<IfModule mod_headers.c>
+# HTML: o navegador sempre confere se há versão nova (publicações aparecem na hora)
+<FilesMatch "\.html?$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+# Imagens, ícones, fontes e manifest sem hash no nome: 7 dias
+<FilesMatch "\.(png|jpe?g|webp|avif|gif|svg|ico|woff2?|webmanifest)$">
+Header set Cache-Control "public, max-age=604800"
+</FilesMatch>
+</IfModule>

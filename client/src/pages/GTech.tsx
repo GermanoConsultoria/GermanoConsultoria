@@ -20,7 +20,7 @@ import {
   ChevronLeft
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import logoGtech from "@/Image/logoGtech.png";
+import logoGtech from "@/Image/otimizadas/logoGtech.webp";
 import { useRef } from "react";
 
 export default function GTech() {

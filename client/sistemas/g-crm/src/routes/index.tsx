@@ -19,8 +19,8 @@ const description =
 
 const gcrm: LandingConfig = {
   name: "G-CRM",
-  brand: { name: "G-Tech", icon: "/sistemas/g-crm/brand/gtech-icon.png", wordmark: "/sistemas/g-crm/brand/gtech-wordmark.png" },
-  group: { name: "Grupo Germano", logo: "/sistemas/g-crm/brand/grupo-germano.png" },
+  brand: { name: "G-Tech", icon: "/sistemas/g-crm/brand/gtech-icon.webp", wordmark: "/sistemas/g-crm/brand/gtech-wordmark.webp" },
+  group: { name: "Grupo Germano", logo: "/sistemas/g-crm/brand/grupo-germano.webp" },
 
   // ── CONTATO COMERCIAL ──────────────────────────────────────────────
   // WhatsApp Comercial: número com DDI + DDD, só dígitos. Deixe "" se ainda não houver.
@@ -47,7 +47,7 @@ const gcrm: LandingConfig = {
     subtitle:
       "O G-CRM acelera o seu time de vendas e mantém o relacionamento próximo com cada cliente — do primeiro contato ao negócio fechado.",
     cta: "Ver demonstração",
-    image: "/sistemas/g-crm/G-CRM1.png",
+    image: "/sistemas/g-crm/G-CRM1.webp",
     imageAlt:
       "Dashboard do G-CRM com pipeline aberto, valor ganho, conversão, tarefas pendentes e metas do time",
   },
@@ -118,19 +118,19 @@ const gcrm: LandingConfig = {
     items: [
       {
         tab: "Clientes",
-        image: "/sistemas/g-crm/G-CRM2.png",
+        image: "/sistemas/g-crm/G-CRM2.webp",
         alt: "Tela de clientes do G-CRM com nome, empresa, contato e tipo de lead",
         caption: "Base de clientes com empresa, contato e tipo de lead.",
       },
       {
         tab: "Funis de vendas",
-        image: "/sistemas/g-crm/G-CRM3.png",
+        image: "/sistemas/g-crm/G-CRM3.webp",
         alt: "Tela de funis de vendas do G-CRM com quatro funis cadastrados",
         caption: "Vários funis em paralelo, cada um com suas etapas e negócios abertos.",
       },
       {
         tab: "Relatórios",
-        image: "/sistemas/g-crm/G-CRM4.png",
+        image: "/sistemas/g-crm/G-CRM4.webp",
         alt: "Tela de relatórios do G-CRM com taxa de conversão por tipo de lead",
         caption: "Conversão por tipo de lead e desempenho do time.",
       },

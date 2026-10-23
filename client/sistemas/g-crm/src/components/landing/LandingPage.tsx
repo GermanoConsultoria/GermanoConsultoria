@@ -148,7 +148,7 @@ function BrandLockup({ c, size = "md" }: { c: LandingConfig; size?: "md" | "sm" 
   return (
     <span className="flex items-center gap-2.5 sm:gap-3">
       {md ? (
-        <GTechLogo src="/sistemas/g-crm/LOGO_G-TECH.png" />
+        <GTechLogo src="/sistemas/marca/LOGO_G-TECH.webp" />
       ) : (
         <>
           <img src={c.brand.icon} alt="" className="h-10 w-auto" />

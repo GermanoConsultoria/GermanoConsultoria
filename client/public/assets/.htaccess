@@ -1,0 +1,6 @@
+# Arquivos gerados pelo Vite: o nome contém um hash do conteúdo (ex.: main-BA_bp0Vi.js).
+# Quando o conteúdo muda, o nome muda, então o navegador pode guardá-los por 1 ano.
+# Apagar este arquivo desfaz a regra.
+<IfModule mod_headers.c>
+Header set Cache-Control "public, max-age=31536000, immutable"
+</IfModule>

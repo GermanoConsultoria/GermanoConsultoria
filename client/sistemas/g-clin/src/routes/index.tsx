@@ -114,7 +114,7 @@ function Index() {
       <header className="site-header">
         <div className="container-page header-inner">
           <a href="#" className="brand" aria-label="G-CLIN by G-Tech — início">
-            <GTechLogo src="/sistemas/g-clin/LOGO_G-TECH.png" />
+            <GTechLogo src="/sistemas/marca/LOGO_G-TECH.webp" />
             <span className="brand-product">
               <strong>G-CLIN</strong>
               <small>by G-Tech</small>
@@ -176,7 +176,7 @@ function Index() {
               </ul>
             </div>
             <BrowserFrame
-              src="/sistemas/g-clin/G-CLIN6.png"
+              src="/sistemas/g-clin/G-CLIN6.webp"
               alt="Tela de pacientes do G-CLIN com dados de exemplo"
               eager
             />
@@ -322,7 +322,7 @@ function Index() {
           <div className="footer-brand">
             <span className="germano-logo">
               <img
-                src="/sistemas/g-clin/Logo_Germano.png"
+                src="/sistemas/marca/Logo_Germano.webp"
                 width={603}
                 height={414}
                 alt="Grupo Germano"
