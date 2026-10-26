@@ -180,7 +180,7 @@ export function LandingPage({ c }: { c: LandingConfig }) {
   const [period, setPeriod] = useState<"mensal" | "anual">("mensal");
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <main className="min-h-screen overflow-x-clip bg-background text-foreground">
       {/* HEADER — fundo escuro para a logo prateada da G-Tech ficar nítida */}
       <header className="sticky top-0 z-50 border-b-2 border-primary bg-ink text-ink-foreground">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">

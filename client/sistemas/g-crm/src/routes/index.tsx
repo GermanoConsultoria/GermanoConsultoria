@@ -147,9 +147,9 @@ const gcrm: LandingConfig = {
     plan: {
       name: "Plano G-CRM Completo",
       mensal: "149,99",
-      anual: "1.199,99",
-      perMonth: "99,99",
-      savings: "599,89", // 12 × R$ 149,99 = R$ 1.799,88
+      anual: "1.499,99",
+      perMonth: "124,99",
+      savings: "299,89", // 12 × R$ 149,99 = R$ 1.799,88
       includes: [
         "Funil de vendas em Kanban",
         "Gestão de leads",

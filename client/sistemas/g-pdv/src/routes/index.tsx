@@ -9,9 +9,9 @@ import { media } from "../lib/media";
 
 const pdvPlan = {
   mensal: "129,99",
-  anual: "1.199,99",
-  perMonth: "99,99",
-  savings: "359,89", // 12 × R$ 129,99 = R$ 1.559,88
+  anual: "1.299,99",
+  perMonth: "108,33",
+  savings: "259,89", // 12 × R$ 129,99 = R$ 1.559,88
 };
 
 

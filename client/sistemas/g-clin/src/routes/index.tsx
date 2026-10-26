@@ -81,18 +81,18 @@ const plans = [
     id: "A",
     name: "Gestão Essencial",
     mensal: "109,99",
-    anual: "999,99",
-    perMonth: "83,33",
-    savings: "319,89",
+    anual: "1.099,99",
+    perMonth: "91,66",
+    savings: "219,89",
     items: ["Gestão financeira completa", "Agendamento e agenda médica"],
   },
   {
     id: "B",
     name: "Agendamento Online",
     mensal: "149,99",
-    anual: "1.399,99",
-    perMonth: "116,66",
-    savings: "399,89",
+    anual: "1.499,99",
+    perMonth: "124,99",
+    savings: "299,89",
     items: ["Tudo do Plano A", "Link exclusivo de agendamento online para o paciente"],
   },
   {
@@ -100,9 +100,9 @@ const plans = [
     name: "Inteligência Artificial",
     featured: true,
     mensal: "199,99",
-    anual: "1.799,99",
-    perMonth: "149,99",
-    savings: "599,89",
+    anual: "1.999,99",
+    perMonth: "166,66",
+    savings: "399,89",
     items: ["Tudo dos Planos A e B", "IA no WhatsApp para confirmação automática e triagem"],
   },
 ];
@@ -159,10 +159,10 @@ function Index() {
                     <WhatsAppIcon /> Ver demonstração
                   </a>
                 </Button>
-                <a className="link-arrow" href="#planos">
+                <a className="cta-outline" href="#planos">
                   Ver preços <ArrowRight size={16} />
                 </a>
-                <a className="link-arrow" href="#telas">
+                <a className="cta-outline" href="#telas">
                   Conhecer o G-CLIN <ArrowRight size={16} />
                 </a>
               </div>

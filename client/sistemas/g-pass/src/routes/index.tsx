@@ -105,9 +105,9 @@ type Period = "mensal" | "anual";
 const plan = {
   name: "G-PASS Completo",
   mensal: "49,99",
-  anual: "399,99",
-  perMonth: "33,33",
-  savings: "199,89", // 12 × R$ 49,99 = R$ 599,88
+  anual: "499,99",
+  perMonth: "41,66",
+  savings: "99,89", // 12 × R$ 49,99 = R$ 599,88
 };
 
 const questions = [
@@ -120,7 +120,7 @@ const questions = [
   {
     question: "Quanto custa?",
     answer:
-      "Plano mensal: R$ 49,99. Plano anual: R$ 399,99. Não há taxa de implantação/adesão (R$ 0). O parcelamento está sujeito aos juros da máquina.",
+      "Plano mensal: R$ 49,99. Plano anual: R$ 499,99. Não há taxa de implantação/adesão (R$ 0). O parcelamento está sujeito aos juros da máquina.",
   },
   {
     question: "Posso controlar quem acessa cada senha?",
