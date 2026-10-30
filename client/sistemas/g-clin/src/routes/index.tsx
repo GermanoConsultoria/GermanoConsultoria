@@ -168,7 +168,7 @@ function Index() {
               </div>
               <ul className="hero-points">
                 <li>
-                  <Check size={16} /> Sem taxa de implantação
+                  <Check size={16} /> Taxa de implantação: R$ 999,99
                 </li>
                 <li>
                   <Check size={16} /> Usuários ilimitados
@@ -252,7 +252,7 @@ function Index() {
             <div className="section-head">
               <p className="eyebrow">Planos</p>
               <h2>Escolha o plano da sua clínica</h2>
-              <p>Implantação sem custo em todos os planos.</p>
+              <p>Taxa de implantação única de R$ 999,99 em todos os planos.</p>
             </div>
 
             <div className="period-toggle" role="group" aria-label="Período de pagamento">
@@ -285,7 +285,7 @@ function Index() {
                       : `ou R$ ${plan.anual} no plano anual`}
                   </p>
                   <p className="plan-setup">
-                    Implantação: <strong>R$ 0</strong> · sem taxa de adesão
+                    Taxa de implantação: <strong>R$ 999,99</strong> · pagamento único
                   </p>
                   <ul>
                     {plan.items.map((item) => (

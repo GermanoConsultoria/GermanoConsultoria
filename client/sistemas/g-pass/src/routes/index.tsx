@@ -120,7 +120,7 @@ const questions = [
   {
     question: "Quanto custa?",
     answer:
-      "Plano mensal: R$ 49,99. Plano anual: R$ 499,99. Não há taxa de implantação/adesão (R$ 0). O parcelamento está sujeito aos juros da máquina.",
+      "Plano mensal: R$ 49,99. Plano anual: R$ 499,99. Taxa de implantação: R$ 999,99 (pagamento único). O parcelamento está sujeito aos juros da máquina.",
   },
   {
     question: "Posso controlar quem acessa cada senha?",
@@ -325,7 +325,7 @@ function Index() {
             </div>
             <ul className="unlimited-list">
               <li>
-                <Check /> Taxa de implantação: R$ 0
+                <Check /> Taxa de implantação: R$ 999,99
               </li>
               <li>
                 <Check /> 2FA nativa
@@ -548,7 +548,7 @@ function Index() {
                     <Check /> Sem limites de usuários
                   </li>
                   <li>
-                    <Check /> Taxa de implantação/adesão: R$ 0
+                    <Check /> Taxa de implantação: R$ 999,99
                   </li>
                 </ul>
                 <Button asChild className="cta-button plan-cta">
@@ -566,7 +566,7 @@ function Index() {
             </div>
             <div className="pricing-notes">
               <p>
-                <strong>Sem taxa de implantação/adesão: R$ 0.</strong>
+                <strong>Taxa de implantação: R$ 999,99 (pagamento único).</strong>
               </p>
               <p>Parcelamento sujeito aos juros da máquina.</p>
             </div>

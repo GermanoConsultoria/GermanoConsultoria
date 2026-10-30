@@ -13,7 +13,7 @@ const plan = {
   savings: "499,89", // 12 × R$ 249,99 = R$ 2.999,88
 };
 
-const planIncludes = ["Sem taxa de implantação", "Sem limite de usuários"];
+const planIncludes = ["Taxa de implantação: R$ 999,99", "Sem limite de usuários"];
 
 export function GCheckPricing() {
   const [period, setPeriod] = useState<Period>("mensal");
@@ -26,7 +26,7 @@ export function GCheckPricing() {
         <span className="eyebrow">PLANOS E VALORES</span>
         <h2>Investimento simples e transparente.</h2>
         <p>
-          Sem taxa de implantação e sem limite de usuários. Escolha o plano ideal para sua operação.
+          Sem limite de usuários e taxa de implantação única de R$ 999,99. Escolha o plano ideal para sua operação.
         </p>
       </div>
       <div className="pricing-highlights">

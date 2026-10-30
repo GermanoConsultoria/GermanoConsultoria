@@ -510,7 +510,7 @@ const faqs = [
   },
   {
     q: "Há taxa de implantação?",
-    a: "Não. A taxa de implantação é R$ 0 nos dois planos — sem taxa de adesão.",
+    a: "Sim. A taxa de implantação é de R$ 999,99, cobrada uma única vez, nos dois planos.",
   },
   {
     q: "Qual a diferença entre o Plano A e o Plano B?",
@@ -903,7 +903,7 @@ function Pricing() {
         <SectionTitle
           eyebrow="PLANOS E PREÇOS"
           title="Escolha o plano ideal para a sua empresa"
-          text="Sem taxa de implantação e sem cobrança por colaborador."
+          text="Taxa de implantação única de R$ 999,99 e sem cobrança por colaborador."
         />
 
         <Reveal className="mx-auto mt-8 max-w-2xl">
@@ -995,7 +995,7 @@ function Pricing() {
                     className={`mt-5 flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold ${f ? "bg-white/15" : "bg-primary-light text-primary-dark"}`}
                   >
                     <BadgeCheck className="h-4 w-4 shrink-0" />
-                    Taxa de Implantação / Dev: R$ 0 (sem taxa de adesão)
+                    Taxa de implantação: R$ 999,99 (pagamento único)
                   </div>
                   <div
                     className={`mt-2 flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-extrabold ${f ? "bg-white text-primary-dark" : "bg-primary text-white"}`}
@@ -1047,7 +1047,7 @@ function Pricing() {
               </thead>
               <tbody className="text-ink">
                 {[
-                  ["Implantação / Dev", "R$ 0", "R$ 0"],
+                  ["Taxa de implantação", "R$ 999,99", "R$ 999,99"],
                   ["Mensal", "R$ 99,99/mês", "R$ 149,99/mês"],
                   ["Anual", "R$ 999,99/ano", "R$ 1.499,99/ano"],
                   ["Usuários", "Ilimitados", "Ilimitados"],

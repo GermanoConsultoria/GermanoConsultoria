@@ -434,8 +434,8 @@ export function LandingPage({ c }: { c: LandingConfig }) {
                   : `ou R$ ${plan.anual} no plano anual`}
               </p>
               <p className="mt-4 rounded-lg bg-accent px-3 py-2.5 text-sm">
-                Implantação / Dev: <strong className="text-brand-strong">R$ 0</strong> · sem taxa
-                de adesão
+                Taxa de implantação: <strong className="text-brand-strong">R$ 999,99</strong> ·
+                pagamento único
               </p>
 
               <ul className="mb-8 mt-6 grid gap-3">

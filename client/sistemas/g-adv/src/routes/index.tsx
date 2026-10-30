@@ -69,7 +69,7 @@ function PricingAndForm() {
                 <h3 className="mt-1 text-2xl font-semibold">{pl.s}</h3>
                 <div className="mt-5 flex items-end gap-1"><span className="text-sm">R$</span><span className="text-5xl font-extrabold text-primary">{period === "mensal" ? pl.p : pl.a}</span><span className="pb-1 text-sm">/{period === "mensal" ? "mês" : "ano"}</span></div>
                 <p className="mt-2 text-sm text-muted-foreground">{period === "anual" ? `Equivale a R$ ${pl.pm}/mês` : `ou R$ ${pl.a} no plano anual`}</p>
-                <p className="mt-1 text-sm text-muted-foreground">Implantação: R$ 999,99 (NF + Banco)</p>
+                <p className="mt-1 text-sm text-muted-foreground">Taxa de implantação: <strong className="text-foreground">R$ 999,99</strong> (NF + Banco)</p>
                 <ul className="mt-6 flex-1 space-y-3">
                   {pl.items.map((t) => <li key={t} className="flex gap-3 text-sm"><Check className="mt-0.5 h-5 w-5 shrink-0 text-brand" />{t}</li>)}
                 </ul>

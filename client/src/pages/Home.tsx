@@ -1,34 +1,41 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ChevronRight, Code, Users, TrendingUp, DollarSign, Zap, CheckCircle2, MessageCircle, Moon, Sun } from "lucide-react";
+import {
+  ChevronRight,
+  CheckCircle2,
+  Moon,
+  Sun,
+  Menu,
+  X,
+  ArrowRight,
+  KeyRound,
+  ClipboardCheck,
+  Stethoscope,
+  Scale,
+  Handshake,
+  Clock,
+  ShoppingCart,
+  Workflow,
+  type LucideIcon,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "@/Image/otimizadas/logo.webp";
-import logoGcon from "@/Image/otimizadas/logoGcon.webp";
 import logoGtech from "@/Image/otimizadas/logoGtech.webp";
-import logoGbank from "@/Image/otimizadas/logoGbank.webp";
-import logoAngelita from "@/Image/otimizadas/logoAngelita.webp";
 import lavinia from "@/Image/otimizadas/lavinia.webp";
 import gabriel from "@/Image/otimizadas/gabriel.webp";
 import amanda from "@/Image/otimizadas/amanda.webp";
 import thiago from "@/Image/otimizadas/thiago.webp";
 import guilherme from "@/Image/otimizadas/guilherme.webp";
-import vini from "@/Image/vini.png";
 import caique from "@/Image/otimizadas/caique.webp";
-import rafa from "@/Image/rafa.png";
-import matheus from "@/Image/matheus.png";
-import sofia from "@/Image/sofia.png";
 import joaquim from "@/Image/otimizadas/joaquim.webp";
-import felipe from "@/Image/felipe.jpeg";
 import ruanita from "@/Image/otimizadas/ruanita.webp";
-import angelita from "@/Image/angelita.png";
 import artilimpLogo from "@/Image/otimizadas/artilimp.webp";
 import palacioDasFestas from "@/Image/otimizadas/palacioDasFestas.webp";
 import starJeansLogo from "@/Image/otimizadas/starjeans.webp";
 import SOSLogo from "@/Image/otimizadas/SOS.webp";
 import solucoes from "@/Image/otimizadas/solucoes.webp";
+import solucoesMobile from "@/Image/otimizadas/solucoes-mobile.webp";
 import whatsappLogo from "@/Image/otimizadas/whatsapp.webp";
 import instagramLogo from "@/Image/otimizadas/instagram.webp";
-import { MessageCircleMore } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
@@ -50,18 +57,183 @@ import "swiper/css/navigation";
  * - Body: Inter Regular
  */
 
+const WHATSAPP_URL = "https://wa.me/5519981640280";
+
+const NAV_LINKS = [
+  { href: "#inicio", label: "Início" },
+  { href: "#sistemas", label: "Sistemas" },
+  { href: "#sobre", label: "Sobre nós" },
+  { href: "#depoimentos", label: "Depoimentos" },
+  { href: "#contato", label: "Contato" },
+];
+
+type Sistema = {
+  nome: string;
+  segmento: string;
+  desc: string;
+  icon: LucideIcon;
+  cor: string;
+  /** Landing page do sistema (client/sistemas/<sistema>). */
+  url: string;
+  /** Funcionalidades e benefícios, retirados das páginas individuais de cada sistema. */
+  funcionalidades?: string[];
+  beneficios?: string[];
+};
+
+// Ordem e textos dos sistemas G-Tech. As descrições vêm das próprias landing pages.
+const SISTEMAS: Sistema[] = [
+  {
+    nome: "G-PASS",
+    segmento: "Segurança de acessos",
+    desc: "Cofre corporativo de senhas: centralização de credenciais, compartilhamento controlado, 2FA e auditoria de acessos.",
+    icon: KeyRound,
+    cor: "text-indigo-500",
+    url: "/sistemas/g-pass/",
+    funcionalidades: [
+      "Cofre central criptografado",
+      "Compartilhamento granular de credenciais",
+      "Autenticação de dois fatores (2FA) nativa",
+      "Auditoria de acessos e importação de dados",
+    ],
+    beneficios: [
+      "Fim das senhas em papéis, planilhas e WhatsApp",
+      "Toda a equipe no mesmo cofre, com cada acesso controlado por permissão",
+    ],
+  },
+  {
+    nome: "G-CHECK",
+    segmento: "Rotinas operacionais",
+    desc: "Gestão de rotinas operacionais e checklists, com controle, padronização e produtividade para a sua operação.",
+    icon: ClipboardCheck,
+    cor: "text-teal-500",
+    url: "/sistemas/g-check/",
+    funcionalidades: [
+      "Checklists por setor e turno",
+      "Responsáveis e prazos para cada atividade",
+      "Alertas em tempo real e histórico auditável",
+      "Calendário visual e dashboards gerenciais",
+    ],
+    beneficios: [
+      "Padronização de ponta a ponta e menos esquecimentos",
+      "Decisões com mais visibilidade sobre a operação",
+    ],
+  },
+  {
+    nome: "G-CLIN",
+    segmento: "Clínicas médicas e odontológicas",
+    desc: "Sistema de gestão médica e odontológica: cuidado com o paciente, organização clínica e controle financeiro.",
+    icon: Stethoscope,
+    cor: "text-red-500",
+    url: "/sistemas/g-clin/",
+    funcionalidades: [
+      "Agenda para múltiplos profissionais",
+      "Prontuário eletrônico completo",
+      "Financeiro integrado à rotina da clínica",
+      "Agendamento online e IA no WhatsApp",
+    ],
+    beneficios: [
+      "Menos faltas com confirmação automática pelo WhatsApp",
+      "Atendimentos e caixa no mesmo sistema",
+    ],
+  },
+  {
+    nome: "G-ADV",
+    segmento: "Escritórios de advocacia",
+    desc: "Gestão jurídica estratégica para escritórios: prazos fatais com alertas, portal do cliente, peças e financeiro jurídico em um só lugar.",
+    icon: Scale,
+    cor: "text-purple-500",
+    url: "/sistemas/g-adv/",
+    funcionalidades: [
+      "Controle e cálculo de prazos fatais",
+      "Portal do Cliente e Kanban de tarefas e audiências",
+      "Gestão documental e de peças",
+      "Financeiro jurídico com boletos, PIX e NFS-e",
+    ],
+    beneficios: [
+      "Alertas preventivos para não perder prazos",
+      "Integrações nativas com Banco Inter, Focus NFe e WhatsApp",
+    ],
+  },
+  {
+    nome: "G-CRM",
+    segmento: "Vendas e relacionamento",
+    desc: "Organize contatos, funil de vendas, negociações, tarefas e resultados comerciais da sua equipe.",
+    icon: Handshake,
+    cor: "text-orange-500",
+    url: "/sistemas/g-crm/",
+    funcionalidades: [
+      "Funil de vendas em Kanban",
+      "Contatos, empresas e parceiros centralizados",
+      "Reuniões e tarefas vinculadas ao lead",
+      "Relatórios de desempenho e comissões",
+    ],
+    beneficios: [
+      "Nenhum lead esquecido sem follow-up",
+      "Histórico completo de cada negociação",
+    ],
+  },
+  {
+    nome: "G-POINT",
+    segmento: "Ponto e departamento pessoal",
+    desc: "Ponto eletrônico e controle de jornada: banco de horas, atestados, férias, visitas externas, holerites e relatórios para o DP.",
+    icon: Clock,
+    cor: "text-blue-500",
+    url: "/sistemas/g-point/",
+    funcionalidades: [
+      "Registro de ponto com cálculo diário automatizado",
+      "Banco de horas flexível",
+      "Atestados digitais, férias e visitas externas",
+      "Holerites e relatórios mensais para o DP",
+    ],
+    beneficios: [
+      "Menos planilhas e processos manuais",
+      "Mais transparência para empresa e colaboradores",
+    ],
+  },
+  {
+    nome: "G-PDV",
+    segmento: "Varejo e frente de caixa",
+    desc: "Gestão de vendas, caixa e produtos para o varejo, com financeiro, dashboards e relatórios.",
+    icon: ShoppingCart,
+    cor: "text-green-500",
+    url: "/sistemas/g-pdv/",
+    funcionalidades: [
+      "Frente de caixa com busca por nome, SKU ou código de barras",
+      "Controle de caixa: abertura, sangria e fechamento",
+      "Pagamentos, descontos, estornos e histórico de vendas",
+      "Catálogo de produtos com planilhas XLSX e campos fiscais",
+    ],
+    beneficios: [
+      "Financeiro, dashboards e relatórios em um só sistema",
+      "Múltiplas lojas, usuários e permissões",
+    ],
+  },
+  {
+    nome: "FLOW",
+    segmento: "Projetos e tarefas",
+    desc: "Gestão de projetos, tarefas e financeiro integrado para centralizar e acompanhar toda a operação.",
+    icon: Workflow,
+    cor: "text-cyan-500",
+    url: "/sistemas/flow/",
+    funcionalidades: [
+      "Projetos com escopos, etapas e entregas",
+      "Tarefas com responsáveis, prazos e status",
+      "Financeiro por projeto",
+      "Progresso e métricas em tempo real",
+    ],
+    beneficios: [
+      "Cada entrega com um responsável definido",
+      "Atrasos identificados antes de impactar as entregas",
+    ],
+  },
+];
+
+const SISTEMAS_DETALHADOS = SISTEMAS.filter(s => s.funcionalidades);
+
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
   const [darkMode, setDarkMode] = useState(true);
-
-  // Scroll
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [sistemaAtivo, setSistemaAtivo] = useState(0);
 
   // Carregar tema salvo
   useEffect(() => {
@@ -77,6 +249,13 @@ export default function Home() {
     }
   }, []);
 
+  // Rotas antigas (/gtech etc.) redirecionam para "/#secao": rola até a seção ao abrir a página.
+  useEffect(() => {
+    if (!window.location.hash) return;
+    const alvo = document.querySelector(window.location.hash);
+    if (alvo) setTimeout(() => alvo.scrollIntoView({ behavior: "smooth" }), 100);
+  }, []);
+
   const toggleTheme = () => {
     if (darkMode) {
       document.documentElement.classList.remove("dark");
@@ -89,30 +268,34 @@ export default function Home() {
     }
   };
 
+  const detalhe = SISTEMAS_DETALHADOS[sistemaAtivo];
+  const DetalheIcon = detalhe.icon;
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden transition-colors duration-300">
-      
+
       {/* HEADER/NAVIGATION */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-2xl border-b border-white/10 shadow-sm h-20">        
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2 h-full">
-            <img 
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-2xl border-b border-white/10 shadow-sm">
+        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+          <a href="#inicio" className="flex items-center gap-2 h-full">
+            <img
               src={logo}
               alt="Grupo Germano"
               className="h-15 w-auto object-contain"
             />
-          </div>
-          <nav className="hidden md:flex items-center gap-8 font-bold">
-            <a href="#sobre" className="text-foreground/80 hover:text-primary transition">Sobre</a>
-            <a href="#solucoes" className="text-foreground/80 hover:text-primary transition">Soluções</a>
-            <a href="#resultados" className="text-foreground/80 hover:text-primary transition">Resultados</a>
-            <a href="#equipe" className="text-foreground/80 hover:text-primary transition">Equipe</a>
-            <a href="#contato" className="text-foreground/80 hover:text-primary transition">Contato</a>
+          </a>
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 font-bold">
+            {NAV_LINKS.map(link => (
+              <a key={link.href} href={link.href} className="text-foreground/80 hover:text-primary transition">
+                {link.label}
+              </a>
+            ))}
           </nav>
 
           <div className="flex items-center gap-3">
             <button
               onClick={toggleTheme}
+              aria-label="Alternar tema"
               className="p-2 rounded-xl border bg-card hover:scale-105 transition"
             >
               {darkMode ? (
@@ -122,61 +305,101 @@ export default function Home() {
               )}
             </button>
             <a
-              href="https://wa.me/5519981640280"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              className="hidden sm:block"
             >
               <Button className="btn-primary text-sm">
-                Agendar Diagnóstico
+                Fale Conosco
               </Button>
             </a>
+            <button
+              onClick={() => setMenuOpen(open => !open)}
+              aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={menuOpen}
+              className="md:hidden p-2 rounded-xl border bg-card hover:scale-105 transition"
+            >
+              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* MENU MOBILE */}
+        {menuOpen && (
+          <nav className="md:hidden border-t border-border bg-background/95 backdrop-blur-2xl fade-in">
+            <div className="container mx-auto px-4 py-4 flex flex-col gap-1 font-bold">
+              {NAV_LINKS.map(link => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-3 px-2 rounded-xl text-foreground/80 hover:text-primary hover:bg-muted transition"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mt-2 sm:hidden">
+                <Button className="btn-primary w-full">Fale Conosco</Button>
+              </a>
+            </div>
+          </nav>
+        )}
       </header>
-      
+
       {/* HERO SECTION */}
-      <section className="pt-32 pb-24 gradient-hero">
+      <section id="inicio" className="pt-32 pb-24 gradient-hero scroll-mt-20">
         <div className="container mx-auto px-2">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* LADO ESQUERDO */}
-            <div className="container mx-auto px-5   lg:px-8">
+            <div className="container mx-auto px-5 lg:px-8 slide-up">
               <div className="inline-block mb-6 px-4 py-2 bg-accent/20 rounded-full">
                 <span className="text-primary text-sm font-medium">
-                  ✨ Transformação Empresarial Comprovada
+                  ✨ Tecnologia para gestão empresarial
                 </span>
               </div>
 
               <h1 className="display-lg text-primary mb-6 leading-tight">
-                Transforme Seu Negócio em Uma Máquina de Lucro
+                Sistemas Que Organizam, Automatizam e Fazem Sua Empresa Crescer
               </h1>
 
               <p className="text-lg md:text-xl leading-relaxed text-black dark:text-white mb-10 max-w-2xl">
-                Consultoria estratégica + Tecnologia + Fintech. Tudo integrado para o crescimento exponencial da sua empresa. Já ajudamos dezenas de empresas a aumentar lucro, reduzir custos e profissionalizar operações.
+                O Grupo Germano desenvolve soluções tecnológicas para empresas. Com os sistemas do G-Tech, sua gestão fica mais simples, segura e eficiente — do caixa ao ponto, da clínica ao escritório.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="https://wa.me/5519981640280" target="_blank" rel="noopener noreferrer">
-                  <Button className="btn-primary text-lg px-10 py-6">
-                    Agendar Diagnóstico Gratuito
+                <a href="#sistemas">
+                  <Button className="btn-primary text-lg px-10 py-6 w-full sm:w-auto">
+                    Conhecer os Sistemas
                     <ChevronRight className="w-5 h-5 ml-2" />
                   </Button>
                 </a>
-                <a href="#resultados">
-                  <Button className="btn-outline text-lg px-10 py-6">
-                    Ver Casos de Sucesso
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  <Button className="btn-outline text-lg px-10 py-6 w-full sm:w-auto">
+                    Falar com um Especialista
                   </Button>
                 </a>
               </div>
             </div>
 
             {/* LADO DIREITO */}
-            <div className="space-y-8">
+            <div className="space-y-8 px-3 lg:px-0">
+              <div className="card-elevated p-6">
+                <div className="flex items-center gap-4">
+                  <div className="text-5xl font-bold text-primary">8</div>
+                  <div>
+                    <h3 className="font-semibold text-lg text-black dark:text-white">💻 Sistemas Especializados</h3>
+                    <p className="text-muted-foreground">Soluções para diferentes segmentos e áreas da empresa.</p>
+                  </div>
+                </div>
+              </div>
+
               <div className="card-elevated p-6">
                 <div className="flex items-center gap-4">
                   <div className="text-5xl font-bold text-primary">50+</div>
                   <div>
-                    <h3 className="font-semibold text-lg text-black dark:text-white">🏆 Empresas Transformadas</h3>
-                    <p className="text-muted-foreground">Processos estruturados e crescimento sustentável.</p>
+                    <h3 className="font-semibold text-lg text-black dark:text-white">🏆 Empresas Atendidas</h3>
+                    <p className="text-muted-foreground">Negócios que confiam no Grupo Germano.</p>
                   </div>
                 </div>
               </div>
@@ -190,49 +413,98 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              <div className="card-elevated p-6">
-                <div className="flex items-center gap-4">
-                  <div className="text-5xl font-bold text-primary">200+</div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-black dark:text-white">🚀 Treinamentos Realizados</h3>
-                    <p className="text-muted-foreground">Equipes capacitadas para alta performance.</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SOBRE SEÇÃO */}
-     <section id="sobre" className="section-spacing gradient-hero">
+      {/* SISTEMAS - CARDS INDIVIDUAIS */}
+      <section id="sistemas" className="section-spacing bg-background scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="display-md text-primary mb-4">O Ecossistema Completo Para Performance Empresarial</h2>
-            <p className="body-lg text-blue/80 max-w-2xl mx-auto">
-              Fundado em 2018, o Grupo Germano é mais que uma consultoria. É um ecossistema integrado de soluções para empresas que querem crescer com inteligência.
+            <img
+              src={logoGtech}
+              loading="lazy"
+              decoding="async"
+              alt="G-Tech"
+              className="w-28 md:w-32 h-auto object-contain mx-auto mb-6"
+            />
+            <h2 className="display-md text-primary mb-4">Nossos Sistemas</h2>
+            <p className="body-lg text-black/70 dark:text-white/80 max-w-2xl mx-auto">
+              Conheça as soluções do G-Tech e escolha o sistema ideal para a gestão da sua empresa.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            {SISTEMAS.map(sistema => {
+              const Icon = sistema.icon;
+              return (
+                <div
+                  key={sistema.nome}
+                  className="card-elevated group p-6 md:p-8 flex flex-col border-l-4 border-l-primary bg-[#f3f4f6] dark:bg-[#111827]"
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="p-3 bg-primary/10 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                      <Icon className={`w-7 h-7 ${sistema.cor}`} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-primary dark:text-white">{sistema.nome}</h3>
+                      <p className="text-sm font-semibold text-[#066db7] dark:text-[#00D9FF]">{sistema.segmento}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-base leading-relaxed text-black dark:text-white/90 mb-8 flex-grow">
+                    {sistema.desc}
+                  </p>
+
+                  <a href={sistema.url}>
+                    <Button className="btn-primary w-full">
+                      Conhecer o {sistema.nome}
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SOBRE SEÇÃO */}
+      <section id="sobre" className="section-spacing gradient-hero scroll-mt-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="display-md text-primary mb-4">Tecnologia Feita Para a Gestão da Sua Empresa</h2>
+            <p className="body-lg text-blue/80 max-w-3xl mx-auto">
+              Fundado em 2018, o Grupo Germano é uma empresa voltada à tecnologia, à inovação e ao desenvolvimento de sistemas para gestão empresarial. Por meio do G-Tech, criamos soluções que organizam processos, automatizam rotinas e dão mais controle ao dia a dia das empresas.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img 
+              {/* Arte do ecossistema G-Tech: versão vertical no celular, horizontal nas demais telas.
+                  Fonte editável em originais/arte-sobre-nos/. */}
+              <picture>
+                <source media="(max-width: 639px)" srcSet={solucoesMobile} width={600} height={900} />
+                <img
                   src={solucoes}
                   loading="lazy"
                   decoding="async"
-                  alt="Soluções Integradas"
-                  className="w-full rounded-xl"
-              />
+                  alt="Ecossistema de sistemas G-Tech do Grupo Germano: G-PASS, G-CHECK, G-CLIN, G-ADV, G-CRM, G-POINT, G-PDV e FLOW integrados"
+                  width={1200}
+                  height={679}
+                  className="w-full h-auto rounded-xl shadow-xl"
+                />
+              </picture>
             </div>
             <div>
-              <h3 className="heading-xl text-primary mb-6">Combinamos Estratégia, Tecnologia e Inovação</h3>
+              <h3 className="heading-xl text-primary mb-6">Inovação Aplicada ao Dia a Dia do Seu Negócio</h3>
               <ul className="space-y-4">
                 {[
-                  "Consultoria estratégica personalizada",
+                  "Sistemas especializados para diferentes segmentos e áreas da empresa",
                   "Desenvolvimento de aplicações customizadas",
-                  "Plataforma de consultoria online",
-                  "Soluções financeiras integradas (em breve)"
+                  "Implantação acompanhada pela nossa equipe",
+                  "Atendimento próximo pelo WhatsApp"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle2 className="w-6 h-6 text-[#00D9FF] flex-shrink-0 mt-0.5" />
@@ -245,185 +517,230 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SOLUÇÕES SEÇÃO */}
-      <section id="solucoes" className="section-spacing bg-background">
+        {/* EQUIPE */}
+        <section
+          id="equipe"
+          aria-label="Nossa equipe"
+          className="
+            relative
+            py-20 px-6
+            bg-gradient-to-b
+            from-background
+            via-background
+            to-muted/30
+            overflow-hidden
+          "
+        >
+
+          {/* Glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/5 blur-[140px] rounded-full"></div>
+
+          <div className="max-w-7xl mx-auto relative z-10">
+
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-black tracking-tight">
+                Nosso Time
+              </h2>
+            </div>
+
+            <Swiper
+              modules={[Navigation]}
+              navigation
+              spaceBetween={30}
+              slidesPerView={1}
+              breakpoints={{
+                768: {
+                  slidesPerView: 2,
+                },
+                1024: {
+                  slidesPerView: 3,
+                },
+              }}
+              className="pb-12"
+            >
+              {[
+                {
+                  name: "Caíque Germano",
+                  role: "Diretor",
+                  image: caique,
+                },
+                {
+                  name: "Amanda Pepino",
+                  role: "Comercial ",
+                  image: amanda,
+                },
+                {
+                  name: "Lavinia Bueno",
+                  role: "TI ",
+                  image: lavinia,
+                },
+                {
+                  name: "Gabriel Vinholi",
+                  role: "Desenvolvedor Full Stack",
+                  image: gabriel,
+                },
+                {
+                  name: "Thiago Lopes",
+                  role: "Desenvolvedor Full Stack",
+                  image: thiago,
+                },
+                {
+                  name: "Guilherme Crispim",
+                  role: "Suporte",
+                  image: guilherme,
+                },
+                {
+                  name: "Joaquim",
+                  role: "Consultor",
+                  image: joaquim,
+                },
+                {
+                  name: "Ruanita Oliveira",
+                  role: "Recursos Humanos",
+                  image: ruanita,
+                },
+              ].map((member, index) => (
+                <SwiperSlide key={index}>
+                  <div
+                    className="
+                      group
+                      relative
+                      overflow-hidden
+                      rounded-3xl
+                      border border-border
+                      bg-card/80
+                      backdrop-blur-xl
+                      shadow-xl
+                      hover:scale-[1.02]
+                      transition-all duration-500
+                    "
+                  >
+                    <div className="relative h-[400px] overflow-hidden">
+
+                    <img
+                      src={member.image}
+                      loading="lazy"
+                      decoding="async"
+                      alt={member.name}
+                      className="
+                        w-full h-full
+                        object-cover object-[center_20%]
+                        group-hover:scale-110
+                        transition-transform
+                        duration-700
+                      "
+                    />
+                  
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+                      <div className="absolute bottom-0 left-0 p-6">
+                        <h3 className="text-2xl font-bold text-white mb-1">
+                          {member.name}
+                        </h3>
+
+                        <p className="text-cyan-300 font-medium">
+                          {member.role}
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+          </div>
+
+        </section>
+
+      {/* SOLUÇÕES SEÇÃO - FUNCIONALIDADES E BENEFÍCIOS DE CADA SISTEMA */}
+      <section id="solucoes" className="section-spacing bg-gradient-to-b from-muted to-background scroll-mt-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="display-md text-primary mb-4">Nossas Soluções</h2>
-            <p className="body-lg text-blue/80 max-w-2xl mx-auto">
-              Cada solução é projetada para resolver desafios específicos do seu negócio
+          <div className="text-center mb-12">
+            <h2 className="display-md text-primary mb-4">Soluções G-Tech</h2>
+            <p className="body-lg text-black/70 dark:text-white/80 max-w-2xl mx-auto">
+              Veja o que cada sistema faz e como ele ajuda a sua empresa no dia a dia.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* SELETOR DE SISTEMA */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10" role="tablist" aria-label="Sistemas G-Tech">
+            {SISTEMAS_DETALHADOS.map((sistema, i) => (
+              <button
+                key={sistema.nome}
+                role="tab"
+                aria-selected={sistemaAtivo === i}
+                onClick={() => setSistemaAtivo(i)}
+                className={`px-4 md:px-5 py-2 rounded-full border text-sm md:text-base font-bold transition-all duration-300 ${
+                  sistemaAtivo === i
+                    ? "bg-[#0F3A7D] text-white border-[#0F3A7D] shadow-[0_10px_30px_rgba(0,217,255,0.25)]"
+                    : "bg-card border-border text-foreground/80 hover:border-[#00D9FF] hover:text-primary"
+                }`}
+              >
+                {sistema.nome}
+              </button>
+            ))}
+          </div>
 
-             {/* G-CON ONLINE */}
-              <Card className=" card-elevated p-8 border border-3 border-gray-300 bg-[#f3f4f6] dark:bg-[#111827] ">
-              <div className="flex justify-start mb-4">
-                <img
-                  src={logoGcon}
-                  loading="lazy"
-                  decoding="async"
-                  alt="G-Con"
-                  className="w-30 object-contain"
-                />
+          {/* DETALHE DO SISTEMA SELECIONADO */}
+          <div key={detalhe.nome} role="tabpanel" className="card-elevated max-w-5xl mx-auto p-6 md:p-10 slide-up">
+            <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mb-8">
+              <div className="p-4 bg-primary/10 dark:bg-white/5 rounded-2xl w-fit">
+                <DetalheIcon className={`w-10 h-10 ${detalhe.cor}`} />
               </div>
-              <h3 className="heading-lg text-primary mb-3">G-Con Online: Consultoria Remota</h3>
-               <p className=" text-base md:text-lg leading-relaxed text-black dark:text-white font-medium  mb-6 ">
-                Acesso a consultoria de qualidade sem sair do seu escritório. Sessões online, flexíveis e com resultados comprovados.
-              </p>
-              <ul className="space-y-2 mb-6">
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <CheckCircle2 className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Flexibilidade de horários</span>
-                </li>
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <DollarSign className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Custo reduzido</span>
-                </li>
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <Zap className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Acesso de qualquer lugar</span>
-                </li>
-              </ul>
-              <a href="/GCon">
-                <Button className="btn-primary w-full"> Explorar G-Con Online 
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-wider text-[#066db7] dark:text-[#00D9FF]">{detalhe.segmento}</p>
+                <h3 className="heading-xl text-primary dark:text-white">{detalhe.nome}</h3>
+                <p className="body-md text-black dark:text-white/90 mt-2 max-w-3xl">{detalhe.desc}</p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h4 className="font-bold text-lg text-primary dark:text-white mb-4">Funcionalidades</h4>
+                <ul className="space-y-3">
+                  {detalhe.funcionalidades?.map(item => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#00D9FF] flex-shrink-0 mt-0.5" />
+                      <span className="body-md text-black dark:text-white">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg text-primary dark:text-white mb-4">Benefícios</h4>
+                <ul className="space-y-3">
+                  {detalhe.beneficios?.map(item => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#00D9FF] flex-shrink-0 mt-0.5" />
+                      <span className="body-md text-black dark:text-white">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <a href={detalhe.url}>
+              <Button className="btn-primary w-full sm:w-auto">
+                Ver detalhes e planos do {detalhe.nome}
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-              </a>
-            </Card>
-
-            {/* G-TECH */}
-              <Card className=" card-elevated p-8 border border-3 border-gray-300 bg-[#f3f4f6] dark:bg-[#111827] ">
-              <div className="flex justify-start mb-4">
-                <img
-                  src={logoGtech}
-                  loading="lazy"
-                  decoding="async"
-                  alt="G-Con"
-                  className="w-30 object-contain"
-                />  
-              </div>
-              <h3 className="heading-lg text-primary mb-3">G-Tech: Desenvolvimento de Apps</h3>
-               <p className=" text-base md:text-lg leading-relaxed text-black dark:text-white font-medium  mb-6 ">
-                Aplicativos customizados que automatizam seus processos e conectam sua equipe. Tecnologia que funciona para o seu negócio.
-              </p>
-              <ul className="space-y-2 mb-6">
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <Zap className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Automação de processos</span>
-                </li>
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <TrendingUp className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Integração com sistemas</span>
-                </li>
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <CheckCircle2 className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Escalabilidade garantida</span>
-                </li>
-              </ul>
-              <a href="/gtech">
-                  <Button className="btn-primary w-full">Explorar G-Tech</Button>
-              </a>
-              
-            </Card>
-
-           {/* G-CON ONLINE */}
-              <Card className=" card-elevated p-8 border border-3 border-gray-300 bg-[#f3f4f6] dark:bg-[#111827] ">
-              <div className="flex justify-start mb-4">
-                <img
-                  src={logoGcon}
-                  loading="lazy"
-                  decoding="async"
-                  alt="G-Con"
-                  className="w-30 object-contain"
-                />
-              </div>
-              <h3 className="heading-lg text-primary mb-3">G-Con: Consultoria empresarial</h3>
-               <p className=" text-base md:text-lg leading-relaxed text-black dark:text-white font-medium  mb-6 ">
-                Consultoria presencial diretamente na sua empresa, com análise do negócio, identificação de oportunidades e orientação estratégica para melhorar seus resultados.
-              </p>
-              <ul className="space-y-2 mb-6">
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <CheckCircle2 className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Atendimento personalizado no local</span>
-                </li>
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <DollarSign className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Análise da realidade da empresa</span>
-                </li>
-                <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <Zap className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Estratégias práticas e direcionadas</span>
-                </li>
-              </ul>
-              <a href="/GCon">
-                <Button className="btn-primary w-full"> Explorar G-Con- Consultoria empresarial
-              </Button>
-              </a>
-            </Card>
-            
-            {/* G-BANK */}
-              <Card className=" card-elevated p-8 border border-3 border-gray-300 bg-[#c2d2ed] dark:bg-[#324165] ">
-              <div className="flex justify-start mb-4">
-                <img
-                  src={logoGbank}
-                  loading="lazy"
-                  decoding="async"
-                  alt="G-Bank"
-                  className="w-30 object-contain"
-                />
-              </div>
-         
-              <h3 className="heading-lg text-primary mb-3">G-Bank: Soluções Financeiras</h3>
-               <p className=" text-base md:text-lg leading-relaxed text-black dark:text-white font-medium  mb-6 ">
-                Em breve. Banco digital + máquina de cartão integrada. Gerenciar finanças da empresa com uma única plataforma.
-              </p>
-              <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <CheckCircle2 className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Solução Estratégica</span>
-                </li>
-              <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <TrendingUp className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Menos taxas abusivas</span>
-                </li>
-              <li className=" flex items-center gap-3 text-black dark:text-white text-base md:text-lg font-medium ">
-                  <Zap className="w-4 h-4 text-[#00D9FF]" />
-                  <span>Agilidade</span>
-                </li>
-              <Button className="btn-outline w-full">  🚧 Em desenvolvimento</Button>
-            </Card>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* RESULTADOS SEÇÃO */}
-      <section id="resultados"className="section-spacing bg-gradient-to-b from-muted to-background">
+      {/* DEPOIMENTOS */}
+      <section id="depoimentos" className="section-spacing bg-background scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="display-md text-primary mb-4">Resultados Comprovados</h2>
+            <h2 className="display-md text-primary mb-4">O Que Nossos Clientes Dizem</h2>
              <p className="body-lg text-blue/80 max-w-2xl mx-auto">
-              Números reais de empresas que transformaram seu negócio com o Grupo Germano
+              Empresas que confiam no Grupo Germano
             </p>
           </div>
           </div>
-
-          <div className="grid md:grid-cols-4 gap-8 mb-1">
-            {[
-              { number: "50+", label: "Empresas Transformadas" },
-              { number: "100+", label: "Projetos Realizados" },
-              { number: "200+", label: "Treinamentos Prestados" },
-              { number: "28.6%", label: "Crescimento Médio" }
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                <div className="text-black dark:text-white">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-          <br>
-          </br>
-          <br></br>
-         
 
           {/* CLIENTES COM LOGOS E DEPOIMENTOS */}
           
@@ -683,162 +1000,27 @@ export default function Home() {
         </div>
          </section>
 
-        {/* EQUIPE */}
-        <section
-          id="equipe"
-          className="
-            relative
-            py-20 px-6
-            bg-gradient-to-b
-            from-background
-            via-background
-            to-muted/30
-            overflow-hidden
-          "
-        >
-
-          {/* Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/5 blur-[140px] rounded-full"></div>
-
-          <div className="max-w-7xl mx-auto relative z-10">
-
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black tracking-tight">
-                Nosso Time
-              </h2>
-            </div>
-
-            <Swiper
-              modules={[Navigation]}
-              navigation
-              spaceBetween={30}
-              slidesPerView={1}
-              breakpoints={{
-                768: {
-                  slidesPerView: 2,
-                },
-                1024: {
-                  slidesPerView: 3,
-                },
-              }}
-              className="pb-12"
-            >
-              {[
-                {
-                  name: "Caíque Germano",
-                  role: "Diretor",
-                  image: caique,
-                },
-                {
-                  name: "Amanda Pepino",
-                  role: "Comercial ",
-                  image: amanda,
-                },
-                {
-                  name: "Lavinia Bueno",
-                  role: "TI ",
-                  image: lavinia,
-                },
-                {
-                  name: "Gabriel Vinholi",
-                  role: "Desenvolvedor Full Stack",
-                  image: gabriel,
-                },
-                {
-                  name: "Thiago Lopes",
-                  role: "Desenvolvedor Full Stack",
-                  image: thiago,
-                },
-                {
-                  name: "Guilherme Crispim",
-                  role: "Suporte",
-                  image: guilherme,
-                },
-                {
-                  name: "Joaquim",
-                  role: "Consultor",
-                  image: joaquim,
-                },
-                {
-                  name: "Ruanita Oliveira",
-                  role: "Recursos Humanos",
-                  image: ruanita,
-                },
-              ].map((member, index) => (
-                <SwiperSlide key={index}>
-                  <div
-                    className="
-                      group
-                      relative
-                      overflow-hidden
-                      rounded-3xl
-                      border border-border
-                      bg-card/80
-                      backdrop-blur-xl
-                      shadow-xl
-                      hover:scale-[1.02]
-                      transition-all duration-500
-                    "
-                  >
-                    <div className="relative h-[400px] overflow-hidden">
-
-                    <img
-                      src={member.image}
-                      loading="lazy"
-                      decoding="async"
-                      alt={member.name}
-                      className="
-                        w-full h-full
-                        object-cover object-[center_20%]
-                        group-hover:scale-110
-                        transition-transform
-                        duration-700
-                      "
-                    />
-                  
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-
-                      <div className="absolute bottom-0 left-0 p-6">
-                        <h3 className="text-2xl font-bold text-white mb-1">
-                          {member.name}
-                        </h3>
-
-                        <p className="text-cyan-300 font-medium">
-                          {member.role}
-                        </p>
-                      </div>
-
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-          </div>
-
-        </section>
-                <br>
-                </br>
-                <br>
-                </br>
-
       {/* CTA FINAL */}
-      <section id="contato" className=" section-spacing bg-gradient-to-br from-[#0F3A7D] via-[#0e3c82] to-[#066db7] text-white">
+      <section id="contato" className="section-spacing bg-gradient-to-br from-[#0F3A7D] via-[#0e3c82] to-[#066db7] text-white scroll-mt-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="display-md text-white mb-4"> Pronto Para Transformar Seu Negócio?</h2>
+          <h2 className="display-md text-white mb-4">Pronto Para Modernizar a Gestão da Sua Empresa?</h2>
           <p className="body-lg max-w-2xl mx-auto mb-8 text-white">
-            Agende um diagnóstico gratuito e descubra o potencial oculto da sua empresa. Sem compromisso. Sem custo. Apenas insights valiosos.
+            Fale com a nossa equipe, conheça os sistemas do G-Tech e descubra qual solução se encaixa melhor no seu negócio.
           </p>
-          
+
          <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/5519981640280"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
           >
              <Button className="bg-white text-black hover:bg-gray-100 px-8 py-6 min-w-[280px] border border-gray-200 shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
-              Agendar Diagnóstico Gratuito
+              Falar com um Especialista
+            </Button>
+          </a>
+          <a href="#sistemas">
+             <Button className="bg-transparent text-white hover:bg-white/10 px-8 py-6 min-w-[280px] border border-white/60 hover:-translate-y-2 transition-all duration-300">
+              Ver Todos os Sistemas
             </Button>
           </a>
         </div>
@@ -853,16 +1035,15 @@ export default function Home() {
             <div className="flex items-center gap-2 mb-4">
               <img src={logo} alt="Grupo Germano" loading="lazy" decoding="async" className=" w-36 md:w-44 h-auto object-contain "/>
             </div>
-              <p className="text-base md:text-lg font-medium text-black dark:text-white">Ecossistema integrado de soluções para performance empresarial.</p>
+              <p className="text-base md:text-lg font-medium text-black dark:text-white">Tecnologia e sistemas para gestão empresarial.</p>
             </div>
             
             <div>
-              <h4 className="font-bold">Links Rápidos</h4>
+              <h4 className="font-bold mb-4">Links Rápidos</h4>
               <ul className="space-y-2 text-base md:text-lg font-medium text-black dark:text-white">
-                <li><a href="#sobre" className="hover:text-[#00D9FF] transition">Sobre</a></li>
-                <li><a href="#solucoes" className="hover:text-[#00D9FF] transition">Soluções</a></li>
-                <li><a href="#resultados" className="hover:text-[#00D9FF] transition">Resultados</a></li>
-                <li><a href="#contato" className="hover:text-[#00D9FF] transition">Contato</a></li>
+                {NAV_LINKS.map(link => (
+                  <li key={link.href}><a href={link.href} className="hover:text-[#00D9FF] transition">{link.label}</a></li>
+                ))}
               </ul>
             </div>
             
@@ -903,7 +1084,7 @@ export default function Home() {
                   />
                 </a>
                <a
-                  href="https://wa.me/5519981640280"
+                  href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:scale-110 transition"

@@ -130,7 +130,7 @@ function FlowLanding() {
 
       <section id="planos" className="section-space plans-section">
         <div className="page-width">
-          <div className="section-heading centered"><span className="eyebrow">Planos</span><h2>Um plano completo.<br /><span>Sem surpresas.</span></h2><p>Implantação sem custo e sem limite de usuários.</p></div>
+          <div className="section-heading centered"><span className="eyebrow">Planos</span><h2>Um plano completo.<br /><span>Sem surpresas.</span></h2><p>Sem limite de usuários. Taxa de implantação única de R$ 999,99.</p></div>
           <div className="period-toggle" role="group" aria-label="Período de pagamento">
             {(["mensal", "anual"] as Period[]).map((p) => <button key={p} type="button" aria-pressed={period === p} onClick={() => setPeriod(p)}>{p === "mensal" ? "Mensal" : "Anual"}</button>)}
           </div>
@@ -138,7 +138,7 @@ function FlowLanding() {
             <span className="plan-label">{plan.name}</span>
             <p className="plan-price"><small>R$</small>{period === "mensal" ? plan.mensal : plan.anual}<small>/{period === "mensal" ? "mês" : "ano"}</small></p>
             <p className="plan-note">{period === "anual" ? `Equivale a R$ ${plan.perMonth}/mês · economia de R$ ${plan.savings}` : `ou R$ ${plan.anual} no plano anual`}</p>
-            <p className="plan-setup">Implantação / Dev: <strong>R$ 0</strong> · sem taxa de adesão</p>
+            <p className="plan-setup">Taxa de implantação: <strong>R$ 999,99</strong> · pagamento único</p>
             <ul>{plan.items.map((item) => <li key={item}><Check />{item}</li>)}</ul>
             <Button asChild className="cta-button plan-cta"><a href={planWhatsapp(period)} target="_blank" rel="noopener noreferrer"><WhatsAppIcon />Contratar pelo WhatsApp<ArrowUpRight /></a></Button>
           </article>
