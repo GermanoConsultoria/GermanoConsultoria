@@ -15,6 +15,7 @@ import {
   Clock,
   ShoppingCart,
   Workflow,
+  Landmark,
   type LucideIcon,
 } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -224,6 +225,24 @@ const SISTEMAS: Sistema[] = [
     beneficios: [
       "Cada entrega com um responsável definido",
       "Atrasos identificados antes de impactar as entregas",
+    ],
+  },
+  {
+    nome: "BPO",
+    segmento: "BPO financeiro",
+    desc: "Financeiro de todos os seus clientes em um só sistema: contas a pagar e a receber, bancos, investimentos e balancete.",
+    icon: Landmark,
+    cor: "text-violet-500",
+    url: "/sistemas/bpo/",
+    funcionalidades: [
+      "Financeiro isolado para cada cliente",
+      "Contas a pagar e a receber com parcelas e pagamentos parciais",
+      "Bancos com saldo atualizado a cada pagamento",
+      "Balancete com gráficos e exportação em PDF e Excel",
+    ],
+    beneficios: [
+      "Todos os clientes atendidos com o mesmo padrão",
+      "Relatórios prontos sem montar planilha à mão",
     ],
   },
 ];
