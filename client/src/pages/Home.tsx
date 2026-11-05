@@ -16,6 +16,8 @@ import {
   ShoppingCart,
   Workflow,
   Landmark,
+  Mail,
+  MapPin,
   type LucideIcon,
 } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -405,7 +407,7 @@ export default function Home() {
             <div className="space-y-8 px-3 lg:px-0">
               <div className="card-elevated p-6">
                 <div className="flex items-center gap-4">
-                  <div className="text-5xl font-bold text-primary">8</div>
+                  <div className="text-5xl font-bold text-primary">9</div>
                   <div>
                     <h3 className="font-semibold text-lg text-black dark:text-white">💻 Sistemas Especializados</h3>
                     <p className="text-muted-foreground">Soluções para diferentes segmentos e áreas da empresa.</p>
@@ -499,26 +501,27 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Arte do ecossistema G-Tech na largura toda, para o texto ficar legível.
+              Versão vertical no celular. Fonte editável em originais/arte-sobre-nos/. */}
+          <div className="max-w-5xl mx-auto">
+            <picture>
+              <source media="(max-width: 639px)" srcSet={solucoesMobile} width={600} height={1100} />
+              <img
+                src={solucoes}
+                loading="lazy"
+                decoding="async"
+                alt="Ecossistema de sistemas G-Tech do Grupo Germano: G-PASS, G-CHECK, G-CLIN, G-ADV, G-CRM, G-POINT, G-PDV, FLOW e BPO integrados"
+                width={1200}
+                height={679}
+                className="w-full h-auto rounded-xl shadow-xl"
+              />
+            </picture>
+          </div>
+
+          <div className="max-w-5xl mx-auto mt-12">
             <div>
-              {/* Arte do ecossistema G-Tech: versão vertical no celular, horizontal nas demais telas.
-                  Fonte editável em originais/arte-sobre-nos/. */}
-              <picture>
-                <source media="(max-width: 639px)" srcSet={solucoesMobile} width={600} height={900} />
-                <img
-                  src={solucoes}
-                  loading="lazy"
-                  decoding="async"
-                  alt="Ecossistema de sistemas G-Tech do Grupo Germano: G-PASS, G-CHECK, G-CLIN, G-ADV, G-CRM, G-POINT, G-PDV e FLOW integrados"
-                  width={1200}
-                  height={679}
-                  className="w-full h-auto rounded-xl shadow-xl"
-                />
-              </picture>
-            </div>
-            <div>
-              <h3 className="heading-xl text-primary mb-6">Inovação Aplicada ao Dia a Dia do Seu Negócio</h3>
-              <ul className="space-y-4">
+              <h3 className="heading-xl text-primary mb-6 text-center">Inovação Aplicada ao Dia a Dia do Seu Negócio</h3>
+              <ul className="grid sm:grid-cols-2 gap-4">
                 {[
                   "Sistemas especializados para diferentes segmentos e áreas da empresa",
                   "Desenvolvimento de aplicações customizadas",
@@ -605,7 +608,7 @@ export default function Home() {
                 },
                 {
                   name: "Guilherme Crispim",
-                  role: "Suporte",
+                  role: "TI",
                   image: guilherme,
                 },
                 {
@@ -1047,51 +1050,71 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-card/60 text-foreground py-12 backdrop-blur-xl">
+      <footer className="bg-card/60 text-foreground pt-14 pb-8 backdrop-blur-xl">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.1fr_0.8fr_1.4fr_0.7fr] lg:gap-12">
             <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Grupo Germano" loading="lazy" decoding="async" className=" w-36 md:w-44 h-auto object-contain "/>
+              <img
+                src={logo}
+                alt="Grupo Germano"
+                loading="lazy"
+                decoding="async"
+                className="w-24 md:w-28 h-auto object-contain mb-5"
+              />
+              <p className="text-base leading-relaxed text-black/80 dark:text-white/80 max-w-xs">
+                Tecnologia e sistemas para gestão empresarial.
+              </p>
             </div>
-              <p className="text-base md:text-lg font-medium text-black dark:text-white">Tecnologia e sistemas para gestão empresarial.</p>
-            </div>
-            
+
             <div>
-              <h4 className="font-bold mb-4">Links Rápidos</h4>
-              <ul className="space-y-2 text-base md:text-lg font-medium text-black dark:text-white">
+              <h4 className="text-lg font-bold mb-5">Links Rápidos</h4>
+              <ul className="space-y-3 text-base text-black/80 dark:text-white/80">
                 {NAV_LINKS.map(link => (
-                  <li key={link.href}><a href={link.href} className="hover:text-[#00D9FF] transition">{link.label}</a></li>
+                  <li key={link.href}>
+                    <a href={link.href} className="hover:text-[#00D9FF] transition">{link.label}</a>
+                  </li>
                 ))}
               </ul>
             </div>
-            
+
             <div>
-              <h4 className="font-bold mb-4">Contato</h4>
-              <ul className="space-y-2 text-base md:text-lg font-medium text-black dark:text-white">
-                <li>📧 contato@germanoconsultoria.com.br</li>
+              <h4 className="text-lg font-bold mb-5">Contato</h4>
+              <ul className="space-y-4 text-base text-black/80 dark:text-white/80">
                 <li>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Julia+259+Santa+Julia+Mogi+Guaçu+SP"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#00D9FF] transition cursor-pointer"
-                >
-                  📍 Rua Santa Julia, 259
-                  <br />
-                  Santa Julia, Mogi Guaçu - SP
-                </a>
-              </li>
+                  <a
+                    href="mailto:contato@germanoconsultoria.com.br"
+                    className="flex items-start gap-3 hover:text-[#00D9FF] transition break-all"
+                  >
+                    <Mail className="w-5 h-5 mt-0.5 flex-shrink-0 text-primary dark:text-[#00D9FF]" />
+                    contato@germanoconsultoria.com.br
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Julia+259+Santa+Julia+Mogi+Guaçu+SP"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 leading-relaxed hover:text-[#00D9FF] transition"
+                  >
+                    <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 text-primary dark:text-[#00D9FF]" />
+                    <span>
+                      Rua Santa Julia, 259
+                      <br />
+                      Santa Julia, Mogi Guaçu - SP
+                    </span>
+                  </a>
+                </li>
               </ul>
             </div>
-            
+
             <div>
-              <h4 className="font-bold mb-4">Redes Sociais</h4>
-              <div className="flex gap-4">
+              <h4 className="text-lg font-bold mb-5">Redes Sociais</h4>
+              <div className="flex items-center gap-4">
                 <a
                   href="https://instagram.com/grupo.germano"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Instagram"
                   className="transition hover:scale-110"
                 >
                   <img
@@ -1102,10 +1125,11 @@ export default function Home() {
                     className="w-8 h-8 object-contain"
                   />
                 </a>
-               <a
+                <a
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="WhatsApp"
                   className="hover:scale-110 transition"
                 >
                   <img
@@ -1113,15 +1137,15 @@ export default function Home() {
                     loading="lazy"
                     decoding="async"
                     alt="WhatsApp"
-                    className="w-7 h-7 object-contain"
+                    className="w-8 h-8 object-contain"
                   />
                 </a>
               </div>
             </div>
           </div>
-          
-          <div className="border-t pt-8 text-center text-sm font-bold text-black dark:text-white">
-            <p>© 2026 Grupo Germano</p>
+
+          <div className="mt-12 border-t border-border pt-6 text-center text-sm font-medium text-black/70 dark:text-white/70">
+            <p>© 2026 Grupo Germano. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

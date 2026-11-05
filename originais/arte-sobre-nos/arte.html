@@ -30,10 +30,10 @@
 
   /* Cabeçalho */
   .brand { position: absolute; left: 36px; top: 26px; display: flex; align-items: center; gap: 12px; }
-  .brand img { width: 52px; height: 52px; }
-  .brand b { display: block; font-family: Poppins; font-weight: 800; font-size: 19px; letter-spacing: .06em; color: #0F3A7D; }
-  .brand span { font-size: 12.5px; color: #3c5a86; font-weight: 500; }
-  .trajetoria { position: absolute; right: 36px; top: 36px; display: flex; align-items: center; gap: 10px; font-size: 12px; }
+  .brand img { width: 60px; height: 60px; }
+  .brand b { display: block; font-family: Poppins; font-weight: 800; font-size: 23px; letter-spacing: .06em; color: #0F3A7D; }
+  .brand span { font-size: 15px; color: #3c5a86; font-weight: 500; }
+  .trajetoria { position: absolute; right: 30px; top: 38px; display: flex; align-items: center; gap: 10px; font-size: 14.5px; }
   .trajetoria .antes { color: #6b7f9e; font-weight: 500; }
   .trajetoria .antes b { color: #4f6687; font-weight: 700; }
   .trajetoria .seta { width: 44px; height: 2px; background: linear-gradient(90deg, #9fb3cf, #00b8e6); position: relative; }
@@ -42,17 +42,17 @@
   .trajetoria .hoje b { color: #7fe9ff; }
 
   /* Sistemas */
-  .node { position: absolute; width: 236px; height: 70px; display: flex; align-items: center; gap: 13px; padding: 0 16px;
+  .node { position: absolute; width: 270px; height: 80px; display: flex; align-items: center; gap: 14px; padding: 0 16px;
     background: rgba(255,255,255,.88); border: 1px solid rgba(15,58,125,.12); border-radius: 16px;
     box-shadow: 0 12px 30px rgba(15,58,125,.10), inset 0 1px 0 #fff; }
-  .node .ic { flex: none; width: 42px; height: 42px; border-radius: 12px; padding: 10px; color: #fff;
+  .node .ic { flex: none; width: 48px; height: 48px; border-radius: 13px; padding: 11px; color: #fff;
     background: linear-gradient(135deg, #0F3A7D, #066db7); box-shadow: 0 6px 16px rgba(6,109,183,.35); }
-  .node b { display: block; font-family: Poppins; font-weight: 700; font-size: 17px; color: #0F3A7D; line-height: 1.15; }
-  .node span { font-size: 12px; color: #066db7; font-weight: 600; }
+  .node b { display: block; font-family: Poppins; font-weight: 700; font-size: 22px; color: #0F3A7D; line-height: 1.15; }
+  .node span { font-size: 15px; color: #066db7; font-weight: 600; }
 
   /* Notebook */
-  .laptop { position: absolute; left: 404px; top: 128px; width: 392px; }
-  .screen { height: 246px; border-radius: 16px 16px 4px 4px; background: #0b1f44; padding: 9px; box-shadow: 0 30px 60px rgba(15,58,125,.30); }
+  .laptop { position: absolute; left: 418px; top: 118px; width: 364px; }
+  .screen { height: 228px; border-radius: 16px 16px 4px 4px; background: #0b1f44; padding: 9px; box-shadow: 0 30px 60px rgba(15,58,125,.30); }
   .screen-in { position: relative; height: 100%; border-radius: 8px; overflow: hidden;
     background: linear-gradient(160deg, #0f2d5e 0%, #0b2350 60%, #0a1d42 100%); }
   .topbar { height: 22px; display: flex; align-items: center; gap: 5px; padding: 0 10px; background: rgba(255,255,255,.06); }
@@ -73,7 +73,7 @@
   .base::before { content: ""; position: absolute; left: 50%; top: 0; width: 70px; height: 6px; margin-left: -35px; border-radius: 0 0 6px 6px; background: #9fb2cf; }
 
   /* Celular */
-  .phone { position: absolute; left: 752px; top: 262px; width: 96px; height: 178px; border-radius: 18px; background: #0b1f44; padding: 6px;
+  .phone { position: absolute; left: 744px; top: 236px; width: 96px; height: 178px; border-radius: 18px; background: #0b1f44; padding: 6px;
     box-shadow: 0 22px 44px rgba(15,58,125,.35); }
   .phone-in { height: 100%; border-radius: 13px; background: linear-gradient(180deg, #f4f8ff, #e6effb); padding: 14px 8px 8px; }
   .phone-in .notch { width: 30px; height: 4px; border-radius: 3px; background: #c8d5e8; margin: -8px auto 9px; }
@@ -85,14 +85,14 @@
   .alerta i { height: 4px; border-radius: 2px; background: rgba(255,255,255,.5); flex: 1; }
 
   /* Rodapé da arte */
-  .tagline { position: absolute; left: 0; right: 0; top: 520px; text-align: center; font-family: Poppins; font-weight: 600; font-size: 13px; letter-spacing: .22em; color: #0F3A7D; }
+  .tagline { position: absolute; left: 0; right: 0; top: 512px; text-align: center; font-family: Poppins; font-weight: 600; font-size: 16px; letter-spacing: .22em; color: #0F3A7D; }
   .tagline span { color: #066db7; }
-  .pilares { position: absolute; left: 80px; right: 80px; top: 554px; height: 78px; display: flex; align-items: center;
+  .pilares { position: absolute; left: 30px; right: 30px; top: 552px; height: 92px; display: flex; align-items: center;
     background: rgba(255,255,255,.9); border: 1px solid rgba(15,58,125,.10); border-radius: 18px; box-shadow: 0 14px 34px rgba(15,58,125,.10); }
   .pilar { flex: 1; display: flex; align-items: center; justify-content: center; gap: 11px; height: 44px; }
   .pilar + .pilar { border-left: 1px solid rgba(15,58,125,.12); }
-  .pilar .ic { width: 38px; height: 38px; border-radius: 50%; padding: 9px; color: #0F3A7D; background: rgba(0,217,255,.16); border: 1px solid rgba(0,184,230,.35); flex: none; }
-  .pilar b { font-family: Poppins; font-weight: 600; font-size: 13.5px; color: #0F3A7D; line-height: 1.2; }
+  .pilar .ic { width: 46px; height: 46px; border-radius: 50%; padding: 11px; color: #0F3A7D; background: rgba(0,217,255,.16); border: 1px solid rgba(0,184,230,.35); flex: none; }
+  .pilar b { font-family: Poppins; font-weight: 600; font-size: 17px; color: #0F3A7D; line-height: 1.2; }
   .barras { position: absolute; right: 22px; bottom: 120px; display: flex; align-items: flex-end; gap: 8px; opacity: .22; }
   .barras i { width: 16px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, #3b82f6, transparent); }
 </style>
@@ -175,22 +175,32 @@
     ["G-CHECK", "Rotinas operacionais", "clipboard-check"],
     ["G-CLIN", "Gestão clínica", "stethoscope"],
     ["G-ADV", "Gestão jurídica", "scale"],
-    ["G-CRM", "Vendas e relacionamento", "handshake"],
+    ["G-CRM", "Vendas e clientes", "handshake"],
     ["G-POINT", "Ponto e jornada", "clock"],
     ["G-PDV", "Varejo e frente de caixa", "shopping-cart"],
     ["FLOW", "Projetos e tarefas", "workflow"],
+    ["BPO", "Gestão financeira", "landmark"],
   ];
-  const tops = [128, 226, 324, 422];
-  const portsY = [196, 250, 304, 358];
+  const tops = [112, 206, 300, 394];
+  const portsY = [176, 226, 276, 326];
   const nodes = document.getElementById("nodes");
   const links = document.getElementById("links");
   let svg = "";
   sistemas.forEach(([nome, seg, ic], i) => {
+    // O 9º sistema (BPO) fica centralizado abaixo do notebook.
+    if (i === 8) {
+      nodes.insertAdjacentHTML("beforeend",
+        `<div class="node" style="left:465px;top:394px"><span class="ic">${svgIcon(ic)}</span><div><b>${nome}</b><span>${seg}</span></div></div>`);
+      svg += `<path d="M600,362 L600,394" stroke="#00D9FF" stroke-width="6" opacity=".25" filter="url(#glow)"/>`;
+      svg += `<path d="M600,362 L600,394" stroke="#00b8e6" stroke-width="2"/>`;
+      svg += `<circle cx="600" cy="394" r="5" fill="#fff" stroke="#00b8e6" stroke-width="2.5"/>`;
+      return;
+    }
     const esq = i < 4, k = i % 4;
-    const x = esq ? 36 : 928, y = tops[k], cy = y + 35;
+    const x = esq ? 30 : 900, y = tops[k], cy = y + 40;
     nodes.insertAdjacentHTML("beforeend",
       `<div class="node" style="left:${x}px;top:${y}px"><span class="ic">${svgIcon(ic)}</span><div><b>${nome}</b><span>${seg}</span></div></div>`);
-    const x1 = esq ? 272 : 928, x2 = esq ? 412 : 788, y2 = portsY[k];
+    const x1 = esq ? 300 : 900, x2 = esq ? 426 : 774, y2 = portsY[k];
     const c1 = esq ? x1 + 70 : x1 - 70, c2 = esq ? x2 - 70 : x2 + 70;
     const d = `M${x1},${cy} C${c1},${cy} ${c2},${y2} ${x2},${y2}`;
     svg += `<path d="${d}" fill="none" stroke="#00D9FF" stroke-width="6" opacity=".25" filter="url(#glow)"/>`;

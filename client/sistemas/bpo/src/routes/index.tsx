@@ -30,6 +30,7 @@ const WHATSAPP_DEFAULT = whatsapp("Olá! Gostaria de conhecer o BPO Financeiro."
 const nav = [
   ["Recursos", "recursos"],
   ["Telas", "telas"],
+  ["Planos", "planos"],
   ["Contato", "contato"],
 ];
 
@@ -70,6 +71,40 @@ const features = [
     icon: ShieldCheck,
     title: "Usuários e permissões",
     text: "Equipe com permissões individuais e acesso do cliente restrito ao próprio financeiro.",
+  },
+];
+
+// Preços do BPO: o anual cobre até 15 empresas (equivale a 999,99 / 12 por mês).
+const plans = [
+  {
+    id: "mensal",
+    label: "Mensal",
+    name: "Por empresa",
+    price: "99,99",
+    unit: "/mês por empresa",
+    note: "Pague só pelas empresas que você atende",
+    items: [
+      "Financeiro isolado para cada empresa",
+      "Contas a pagar e a receber, bancos e investimentos",
+      "Balancete com exportação em PDF e Excel",
+    ],
+    message: "Olá! Quero contratar o BPO Financeiro no plano mensal (R$ 99,99 por empresa).",
+  },
+  {
+    id: "anual",
+    label: "Anual",
+    name: "Até 15 empresas",
+    price: "999,99",
+    unit: "/ano",
+    note: "Equivale a R$ 83,33/mês para até 15 empresas",
+    featured: true,
+    items: [
+      "Até 15 empresas no mesmo plano",
+      "Financeiro isolado para cada empresa",
+      "Contas a pagar e a receber, bancos e investimentos",
+      "Balancete com exportação em PDF e Excel",
+    ],
+    message: "Olá! Quero contratar o BPO Financeiro no plano anual (R$ 999,99 para até 15 empresas).",
   },
 ];
 
@@ -124,6 +159,9 @@ function Index() {
                     <WhatsAppIcon /> Ver demonstração
                   </a>
                 </Button>
+                <a className="cta-outline" href="#planos">
+                  Ver preços <ArrowRight size={16} />
+                </a>
                 <a className="cta-outline" href="#telas">
                   Conhecer o BPO <ArrowRight size={16} />
                 </a>
@@ -198,7 +236,45 @@ function Index() {
           </div>
         </section>
 
-        <section className="section" id="proposta">
+        <section className="section" id="planos">
+          <div className="container-page">
+            <div className="section-head">
+              <p className="eyebrow">Planos</p>
+              <h2>Escolha como pagar</h2>
+              <p>Mensal por empresa atendida ou anual para até 15 empresas.</p>
+            </div>
+            <div className="plan-grid plan-grid-two">
+              {plans.map((plan) => (
+                <article className={`plan ${plan.featured ? "plan-featured" : ""}`} key={plan.id}>
+                  {plan.featured && <span className="plan-badge">Melhor custo</span>}
+                  <p className="plan-label">Plano {plan.label}</p>
+                  <h3>{plan.name}</h3>
+                  <p className="plan-price">
+                    <small>R$</small>
+                    {plan.price}
+                    <small>{plan.unit}</small>
+                  </p>
+                  <p className="plan-note">{plan.note}</p>
+                  <ul>
+                    {plan.items.map((item) => (
+                      <li key={item}>
+                        <Check size={16} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button asChild className="cta plan-cta">
+                    <a href={whatsapp(plan.message)} target="_blank" rel="noopener noreferrer">
+                      <WhatsAppIcon /> Contratar pelo WhatsApp
+                    </a>
+                  </Button>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-soft" id="proposta">
           <div className="container-page">
             <div className="unlimited">
               <Layers className="unlimited-icon" />
