@@ -86,42 +86,6 @@ type Sistema = {
 // Ordem e textos dos sistemas G-Tech. As descrições vêm das próprias landing pages.
 const SISTEMAS: Sistema[] = [
   {
-    nome: "G-PASS",
-    segmento: "Segurança de acessos",
-    desc: "Cofre corporativo de senhas: centralização de credenciais, compartilhamento controlado, 2FA e auditoria de acessos.",
-    icon: KeyRound,
-    cor: "text-indigo-500",
-    url: "/sistemas/g-pass/",
-    funcionalidades: [
-      "Cofre central criptografado",
-      "Compartilhamento granular de credenciais",
-      "Autenticação de dois fatores (2FA) nativa",
-      "Auditoria de acessos e importação de dados",
-    ],
-    beneficios: [
-      "Fim das senhas em papéis, planilhas e WhatsApp",
-      "Toda a equipe no mesmo cofre, com cada acesso controlado por permissão",
-    ],
-  },
-  {
-    nome: "G-CHECK",
-    segmento: "Rotinas operacionais",
-    desc: "Gestão de rotinas operacionais e checklists, com controle, padronização e produtividade para a sua operação.",
-    icon: ClipboardCheck,
-    cor: "text-teal-500",
-    url: "/sistemas/g-check/",
-    funcionalidades: [
-      "Checklists por setor e turno",
-      "Responsáveis e prazos para cada atividade",
-      "Alertas em tempo real e histórico auditável",
-      "Calendário visual e dashboards gerenciais",
-    ],
-    beneficios: [
-      "Padronização de ponta a ponta e menos esquecimentos",
-      "Decisões com mais visibilidade sobre a operação",
-    ],
-  },
-  {
     nome: "G-CLIN",
     segmento: "Clínicas médicas e odontológicas",
     desc: "Sistema de gestão médica e odontológica: cuidado com o paciente, organização clínica e controle financeiro.",
@@ -155,6 +119,42 @@ const SISTEMAS: Sistema[] = [
     beneficios: [
       "Alertas preventivos para não perder prazos",
       "Integrações nativas com Banco Inter, Focus NFe e WhatsApp",
+    ],
+  },
+  {
+    nome: "G-PDV",
+    segmento: "Varejo e frente de caixa",
+    desc: "Gestão de vendas, caixa e produtos para o varejo, com financeiro, dashboards e relatórios.",
+    icon: ShoppingCart,
+    cor: "text-green-500",
+    url: "/sistemas/g-pdv/",
+    funcionalidades: [
+      "Frente de caixa com busca por nome, SKU ou código de barras",
+      "Controle de caixa: abertura, sangria e fechamento",
+      "Pagamentos, descontos, estornos e histórico de vendas",
+      "Catálogo de produtos com planilhas XLSX e campos fiscais",
+    ],
+    beneficios: [
+      "Financeiro, dashboards e relatórios em um só sistema",
+      "Múltiplas lojas, usuários e permissões",
+    ],
+  },
+  {
+    nome: "G-CHECK",
+    segmento: "Rotinas operacionais",
+    desc: "Gestão de rotinas operacionais e checklists, com controle, padronização e produtividade para a sua operação.",
+    icon: ClipboardCheck,
+    cor: "text-teal-500",
+    url: "/sistemas/g-check/",
+    funcionalidades: [
+      "Checklists por setor e turno",
+      "Responsáveis e prazos para cada atividade",
+      "Alertas em tempo real e histórico auditável",
+      "Calendário visual e dashboards gerenciais",
+    ],
+    beneficios: [
+      "Padronização de ponta a ponta e menos esquecimentos",
+      "Decisões com mais visibilidade sobre a operação",
     ],
   },
   {
@@ -194,21 +194,21 @@ const SISTEMAS: Sistema[] = [
     ],
   },
   {
-    nome: "G-PDV",
-    segmento: "Varejo e frente de caixa",
-    desc: "Gestão de vendas, caixa e produtos para o varejo, com financeiro, dashboards e relatórios.",
-    icon: ShoppingCart,
-    cor: "text-green-500",
-    url: "/sistemas/g-pdv/",
+    nome: "G-PASS",
+    segmento: "Segurança de acessos",
+    desc: "Cofre corporativo de senhas: centralização de credenciais, compartilhamento controlado, 2FA e auditoria de acessos.",
+    icon: KeyRound,
+    cor: "text-indigo-500",
+    url: "/sistemas/g-pass/",
     funcionalidades: [
-      "Frente de caixa com busca por nome, SKU ou código de barras",
-      "Controle de caixa: abertura, sangria e fechamento",
-      "Pagamentos, descontos, estornos e histórico de vendas",
-      "Catálogo de produtos com planilhas XLSX e campos fiscais",
+      "Cofre central criptografado",
+      "Compartilhamento granular de credenciais",
+      "Autenticação de dois fatores (2FA) nativa",
+      "Auditoria de acessos e importação de dados",
     ],
     beneficios: [
-      "Financeiro, dashboards e relatórios em um só sistema",
-      "Múltiplas lojas, usuários e permissões",
+      "Fim das senhas em papéis, planilhas e WhatsApp",
+      "Toda a equipe no mesmo cofre, com cada acesso controlado por permissão",
     ],
   },
   {
@@ -510,7 +510,7 @@ export default function Home() {
                 src={solucoes}
                 loading="lazy"
                 decoding="async"
-                alt="Ecossistema de sistemas G-Tech do Grupo Germano: G-PASS, G-CHECK, G-CLIN, G-ADV, G-CRM, G-POINT, G-PDV, FLOW e BPO integrados"
+                alt="Ecossistema de sistemas G-Tech do Grupo Germano: G-CLIN, G-ADV, G-PDV, G-CHECK, G-CRM, G-POINT, G-PASS, FLOW e BPO integrados"
                 width={1200}
                 height={679}
                 className="w-full h-auto rounded-xl shadow-xl"

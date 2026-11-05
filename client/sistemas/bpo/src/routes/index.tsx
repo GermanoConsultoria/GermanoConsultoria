@@ -14,6 +14,7 @@ import {
   Shuffle,
   TableProperties,
 } from "lucide-react";
+import { useState } from "react";
 import { Button } from "../components/ui/button";
 import { BrowserFrame, BpoPreview } from "../components/bpo-preview";
 import { WhatsAppIcon } from "../components/brand-icons";
@@ -75,9 +76,19 @@ const features = [
 ];
 
 // Preços do BPO: o anual cobre até 15 empresas (equivale a 999,99 / 12 por mês).
-const plans = [
-  {
-    id: "mensal",
+type Period = "mensal" | "anual";
+
+const plans: Record<Period, {
+  label: string;
+  name: string;
+  price: string;
+  unit: string;
+  note: string;
+  featured?: boolean;
+  items: string[];
+  message: string;
+}> = {
+  mensal: {
     label: "Mensal",
     name: "Por empresa",
     price: "99,99",
@@ -90,8 +101,7 @@ const plans = [
     ],
     message: "Olá! Quero contratar o BPO Financeiro no plano mensal (R$ 99,99 por empresa).",
   },
-  {
-    id: "anual",
+  anual: {
     label: "Anual",
     name: "Até 15 empresas",
     price: "999,99",
@@ -106,9 +116,11 @@ const plans = [
     ],
     message: "Olá! Quero contratar o BPO Financeiro no plano anual (R$ 999,99 para até 15 empresas).",
   },
-];
+};
 
 function Index() {
+  const [period, setPeriod] = useState<Period>("mensal");
+  const plan = plans[period];
   return (
     <>
       <header className="site-header">
@@ -243,33 +255,44 @@ function Index() {
               <h2>Escolha como pagar</h2>
               <p>Mensal por empresa atendida ou anual para até 15 empresas.</p>
             </div>
-            <div className="plan-grid plan-grid-two">
-              {plans.map((plan) => (
-                <article className={`plan ${plan.featured ? "plan-featured" : ""}`} key={plan.id}>
-                  {plan.featured && <span className="plan-badge">Melhor custo</span>}
-                  <p className="plan-label">Plano {plan.label}</p>
-                  <h3>{plan.name}</h3>
-                  <p className="plan-price">
-                    <small>R$</small>
-                    {plan.price}
-                    <small>{plan.unit}</small>
-                  </p>
-                  <p className="plan-note">{plan.note}</p>
-                  <ul>
-                    {plan.items.map((item) => (
-                      <li key={item}>
-                        <Check size={16} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button asChild className="cta plan-cta">
-                    <a href={whatsapp(plan.message)} target="_blank" rel="noopener noreferrer">
-                      <WhatsAppIcon /> Contratar pelo WhatsApp
-                    </a>
-                  </Button>
-                </article>
+            <div className="period-toggle" role="group" aria-label="Período de pagamento">
+              {(["mensal", "anual"] as Period[]).map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  aria-pressed={period === p}
+                  onClick={() => setPeriod(p)}
+                >
+                  {plans[p].label}
+                </button>
               ))}
+            </div>
+
+            <div className="plan-grid plan-grid-one">
+              <article className={`plan ${plan.featured ? "plan-featured" : ""}`}>
+                {plan.featured && <span className="plan-badge">Melhor custo</span>}
+                <p className="plan-label">Plano {plan.label}</p>
+                <h3>{plan.name}</h3>
+                <p className="plan-price">
+                  <small>R$</small>
+                  {plan.price}
+                  <small>{plan.unit}</small>
+                </p>
+                <p className="plan-note">{plan.note}</p>
+                <ul>
+                  {plan.items.map((item) => (
+                    <li key={item}>
+                      <Check size={16} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild className="cta plan-cta">
+                  <a href={whatsapp(plan.message)} target="_blank" rel="noopener noreferrer">
+                    <WhatsAppIcon /> Contratar pelo WhatsApp
+                  </a>
+                </Button>
+              </article>
             </div>
           </div>
         </section>
