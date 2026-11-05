@@ -129,7 +129,7 @@ function Index() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3">
           <div className="flex min-w-0 items-center gap-4"><Logo /><div className="hidden lg:block"><Seal /></div></div>
           <nav className="hidden gap-7 text-sm font-medium md:flex">
-            {[["recursos", "Recursos"], ["prazos", "Prazos"], ["planos", "Planos"], ["faq", "FAQ"], ["contato", "Contato"]].map(([id, l]) => (
+            {[["recursos", "Recursos"], ["telas", "Telas"], ["planos", "Planos"], ["faq", "FAQ"], ["contato", "Contato"]].map(([id, l]) => (
               <a key={id} href={`#${id}`} className="hover:text-brand">{l}</a>
             ))}
           </nav>
@@ -219,8 +219,28 @@ function Index() {
         </div>
       </section>
 
+      {/* TELAS */}
+      <section id="telas" className="scroll-mt-20 bg-background py-20">
+        <div className="mx-auto max-w-5xl px-5">
+          <h2 className="text-center text-3xl font-bold md:text-5xl">Conheça o G-ADV por dentro</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">Veja como o G-ADV organiza o dia a dia do escritório em uma única tela.</p>
+          <div className="mt-10 overflow-hidden rounded-xl border border-border bg-card shadow-elegant">
+            <div className="flex items-center gap-1.5 border-b border-border bg-muted px-3 py-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+              <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+              <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+            </div>
+            <div className="relative">
+              <img src="/sistemas/g-adv/G-ADV.webp" alt="Tela real do painel do G-ADV" width={1334} height={574} loading="lazy" className="block w-full" />
+              <div className="absolute left-0 top-0 h-[12%] w-[19%] backdrop-blur-md bg-primary/40" />
+            </div>
+          </div>
+          <p className="mt-3 text-center text-xs text-muted-foreground">Tela real do sistema G-ADV.</p>
+        </div>
+      </section>
+
       {/* MÉTRICAS */}
-      <section id="financeiro" className="scroll-mt-20 bg-background py-20">
+      <section id="financeiro" className="scroll-mt-20 bg-brand-soft py-20">
         <div className="mx-auto max-w-6xl px-5">
           <h2 className="text-center text-3xl font-bold md:text-5xl">Segurança que se mede</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -240,6 +260,8 @@ function Index() {
         </div>
       </section>
 
+      <PricingAndForm />
+
       {/* FAQ */}
       <section id="faq" className="scroll-mt-20 bg-brand-soft py-20">
         <div className="mx-auto max-w-3xl px-5">
@@ -257,7 +279,6 @@ function Index() {
         </div>
       </section>
 
-      <PricingAndForm />
 
       {/* CTA FINAL + FOOTER */}
       <footer className="bg-dark-grad text-primary-foreground">

@@ -80,6 +80,7 @@
 .hero h1 span { color: var(--primary); display: block; }
 .hero-text { font-size: 18px; max-width: 480px; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.proposal-actions { justify-content: center; margin-top: 0; }
 .cta-outline { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 12px 24px; font-size: 15px; font-weight: 700; border-radius: 10px; border: 1px solid var(--primary); background: var(--background); color: var(--primary); transition: background .15s, transform .15s; }
 .cta-outline:hover { background: var(--secondary); transform: translateY(-1px); }
 .hero-points { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px; font-size: 14px; font-weight: 600; }

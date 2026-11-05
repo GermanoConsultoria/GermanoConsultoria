@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, ChartNoAxesCombined, Check, CircleCheck, Cloc
 import { Button } from "../components/ui/button";
 import { ThemeToggle } from "../../../_shared/theme-toggle";
 import { GTechLogo } from "../../../_shared/gtech-logo";
+import { Faq, type FaqItem } from "../../../_shared/faq";
 
 // Local copies in /public so the images also load outside Lovable hosting.
 const germanoLogo = { url: "/sistemas/marca/Logo_Germano.webp" };
@@ -47,6 +48,15 @@ const plan = {
 };
 const planWhatsapp = (period: Period) => `${whatsapp}?text=${encodeURIComponent(`Olá! Tenho interesse no FLOW – ${plan.name}, pagamento ${period}.`)}`;
 
+const faqs: FaqItem[] = [
+  { q: "O que posso gerenciar com o FLOW?", a: "Projetos, tarefas com responsáveis, prazos e status, além do financeiro de cada projeto (custos, receitas e orçamentos) e do acompanhamento do progresso das entregas, tudo em um só lugar." },
+  { q: "Existe limite de usuários?", a: "Não. O plano FLOW Completo não tem limite de usuários, então toda a sua equipe pode participar dos projetos sem custo adicional." },
+  { q: "Quanto custa o FLOW?", a: "O plano custa R$ 99,99 por mês ou R$ 999,99 por ano. No anual, o valor equivale a R$ 83,33 por mês, com economia de R$ 199,89." },
+  { q: "Há taxa de implantação?", a: "Sim. A taxa de implantação é de R$ 999,99, cobrada uma única vez, tanto no plano mensal quanto no anual." },
+  { q: "Consigo controlar o que cada pessoa acessa?", a: "Sim. O FLOW tem níveis de acesso e histórico de atividades, para que cada pessoa veja o que precisa e você acompanhe o que foi feito." },
+  { q: "Posso ver o sistema antes de contratar?", a: "Sim. Fale com nosso time pelo WhatsApp e agende uma demonstração do FLOW funcionando." },
+];
+
 const benefits = [
   { title: "Tudo no mesmo lugar", text: "Informações conectadas, sem depender de planilhas e conversas espalhadas." },
   { title: "Menos gargalos, mais entregas", text: "Prioridades claras e uma equipe alinhada para fazer o trabalho fluir." },
@@ -69,9 +79,10 @@ function FlowLanding() {
         </a>
         <nav className={`header-nav ${menuOpen ? "is-open" : ""}`} aria-label="Navegação principal">
           <a href="#recursos" onClick={() => setMenuOpen(false)}>Recursos</a>
-          <a href="#beneficios" onClick={() => setMenuOpen(false)}>Benefícios</a>
-          <a href="#demonstracao" onClick={() => setMenuOpen(false)}>Demonstração</a>
+          <a href="#telas" onClick={() => setMenuOpen(false)}>Telas</a>
           <a href="#planos" onClick={() => setMenuOpen(false)}>Planos</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#contato" onClick={() => setMenuOpen(false)}>Contato</a>
           <Button asChild variant="ghost" size="icon"><a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram do Grupo Germano" title="Instagram do Grupo Germano"><Instagram /></a></Button>
           <Button asChild><a href={whatsapp} target="_blank" rel="noopener noreferrer">Falar com especialista<ArrowUpRight /></a></Button>
         </nav>
@@ -90,7 +101,7 @@ function FlowLanding() {
             <div className="hero-actions">
               <WhatsAppButton>Ver demonstração</WhatsAppButton>
               <Button asChild variant="outline" className="cta-button"><a href="#planos"><Tag />Ver preços</a></Button>
-              <Button asChild variant="outline" className="cta-button"><a href="#demonstracao"><Play />Conhecer o FLOW</a></Button>
+              <Button asChild variant="outline" className="cta-button"><a href="#telas"><Play />Conhecer o FLOW</a></Button>
             </div>
             <div className="hero-notes"><span><Check />Projetos e tarefas conectados</span><span><Check />Financeiro integrado</span><span><Check />Mais clareza para sua equipe</span></div>
           </div>
@@ -110,7 +121,7 @@ function FlowLanding() {
         </div>
       </section>
 
-      <section id="demonstracao" className="section-space showcase-section">
+      <section id="telas" className="section-space showcase-section">
         <div className="page-width">
           <div className="section-heading centered"><span className="eyebrow">Conheça por dentro</span><h2>Uma visão clara.<br /><span>Do todo ao detalhe.</span></h2><p>Conheça as telas reais do FLOW e veja como o trabalho da sua equipe ganha organização e visibilidade.</p></div>
           <div className="showcase-tabs" role="tablist" aria-label="Telas do FLOW">{screens.map(({ name, icon: Icon }, index) => <Button key={name} id={`screen-tab-${index}`} role="tab" aria-selected={activeScreen === index} aria-controls="screen-panel" variant={activeScreen === index ? "default" : "ghost"} onClick={() => setActiveScreen(index)}><Icon />{name}</Button>)}</div>
@@ -142,6 +153,13 @@ function FlowLanding() {
             <ul>{plan.items.map((item) => <li key={item}><Check />{item}</li>)}</ul>
             <Button asChild className="cta-button plan-cta"><a href={planWhatsapp(period)} target="_blank" rel="noopener noreferrer"><WhatsAppIcon />Contratar pelo WhatsApp<ArrowUpRight /></a></Button>
           </article>
+        </div>
+      </section>
+
+      <section id="faq" className="section-space">
+        <div className="page-width">
+          <div className="section-heading centered"><span className="eyebrow">Perguntas frequentes</span><h2>Ficou alguma dúvida?<br /><span>A gente responde.</span></h2></div>
+          <Faq items={faqs} />
         </div>
       </section>
 

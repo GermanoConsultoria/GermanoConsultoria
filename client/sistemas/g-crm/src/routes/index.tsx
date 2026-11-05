@@ -161,6 +161,19 @@ const gcrm: LandingConfig = {
       cta: "Contratar pelo WhatsApp",
     },
   },
+
+  faq: {
+    eyebrow: "Perguntas frequentes",
+    title: "Tire suas dúvidas sobre o G-CRM.",
+    items: [
+      { q: "O que o G-CRM faz?", a: "Organiza o funil de vendas em Kanban, centraliza contatos, empresas e parceiros, agenda reuniões e tarefas vinculadas a cada lead e guarda o histórico de cada negociação." },
+      { q: "Posso ter mais de um funil de vendas?", a: "Sim. Você pode manter vários funis em paralelo, cada um com suas próprias etapas, como reunião, proposta, negociação e fechamento." },
+      { q: "Existe limite de usuários?", a: "Não. Você cadastra toda a equipe comercial sem cobrança por licença adicional." },
+      { q: "Quanto custa o G-CRM?", a: "O Plano G-CRM Completo custa R$ 149,99 por mês ou R$ 1.499,99 por ano. No anual, o valor equivale a R$ 124,99 por mês." },
+      { q: "Há taxa de implantação?", a: "Sim. A taxa de implantação é de R$ 999,99, cobrada uma única vez, tanto no plano mensal quanto no anual." },
+      { q: "O G-CRM calcula comissões?", a: "Sim. Os relatórios mostram o desempenho de cada vendedor, com cálculo de comissões e conversão por tipo de lead." },
+    ],
+  },
 };
 
 export default function Page() {

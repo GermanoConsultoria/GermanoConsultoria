@@ -1,0 +1,58 @@
+/* Perguntas frequentes das landing pages (componente Faq em faq.tsx). */
+.gtech-faq {
+  max-width: 760px;
+  margin-inline: auto;
+  border-top: 1px solid var(--border);
+}
+.gtech-faq details { border-bottom: 1px solid var(--border); }
+.gtech-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  list-style: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--heading, var(--foreground));
+}
+.gtech-faq summary::-webkit-details-marker { display: none; }
+.gtech-faq summary:hover { color: var(--faq-accent, var(--primary)); }
+.gtech-faq summary:focus-visible {
+  outline: 2px solid var(--faq-accent, var(--primary));
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+/* Ícone "+" que vira "×" quando a pergunta está aberta. */
+.gtech-faq-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: var(--faq-accent, var(--primary));
+  transition: transform 0.2s;
+}
+.gtech-faq-icon::before,
+.gtech-faq-icon::after {
+  content: "";
+  position: absolute;
+  inset: 6px 0 auto;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.gtech-faq-icon::after { transform: rotate(90deg); }
+.gtech-faq details[open] .gtech-faq-icon { transform: rotate(45deg); }
+.gtech-faq details > p {
+  margin: 0;
+  padding: 0 36px 22px 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+@media (max-width: 640px) {
+  .gtech-faq summary { font-size: 15px; padding: 18px 0; }
+  .gtech-faq details > p { padding-right: 0; font-size: 14px; }
+}

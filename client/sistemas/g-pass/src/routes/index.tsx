@@ -203,9 +203,9 @@ function Index() {
 
   const nav = [
     { label: "Recursos", href: "#recursos" },
-    { label: "Demonstração", href: "#demonstracao" },
-    { label: "Segurança", href: "#seguranca" },
+    { label: "Telas", href: "#telas" },
     { label: "Planos", href: "#planos" },
+    { label: "FAQ", href: "#faq" },
     { label: "Contato", href: "#contato" },
   ];
   return (
@@ -302,7 +302,7 @@ function Index() {
                   <a href="#planos">Ver preços</a>
                 </Button>
                 <Button asChild variant="outline" className="cta-button">
-                  <a href="#demonstracao">
+                  <a href="#telas">
                     Conhecer o G-PASS <ArrowRight />
                   </a>
                 </Button>
@@ -387,7 +387,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="section" id="demonstracao">
+        <section className="section" id="telas">
           <div className="page-container">
             <div className="center-heading">
               <span className="eyebrow">Demonstração do produto</span>
@@ -573,7 +573,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="section faq-section" id="duvidas">
+        <section className="section faq-section" id="faq">
           <div className="page-container faq-layout">
             <div>
               <span className="eyebrow">Perguntas frequentes</span>

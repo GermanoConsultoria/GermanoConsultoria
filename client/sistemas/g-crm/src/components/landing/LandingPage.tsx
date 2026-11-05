@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ThemeToggle } from "../../../../_shared/theme-toggle";
 import { GTechLogo } from "../../../../_shared/gtech-logo";
+import { Faq, type FaqItem } from "../../../../_shared/faq";
 import { Button } from "../ui/button";
 
 export type IconItem = { icon: LucideIcon; title: string; copy: string };
@@ -56,12 +57,15 @@ export type LandingConfig = {
       cta: string;
     };
   };
+  faq: { eyebrow: string; title: string; items: FaqItem[] };
 };
 
 const nav = [
   { href: "#recursos", label: "Recursos" },
   { href: "#telas", label: "Telas" },
   { href: "#planos", label: "Planos" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#contato", label: "Contato" },
 ];
 
 export function WhatsAppIcon({ className = "size-5" }: { className?: string }) {
@@ -453,6 +457,35 @@ export function LandingPage({ c }: { c: LandingConfig }) {
                 </a>
               </Button>
             </article>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* PERGUNTAS FREQUENTES */}
+      <section id="faq" className="scroll-mt-18 py-20 lg:py-24">
+        <div className="mx-auto max-w-4xl px-5 lg:px-8">
+          <Reveal>
+            <SectionHead eyebrow={c.faq.eyebrow} title={c.faq.title} center />
+          </Reveal>
+          <Reveal>
+            <Faq items={c.faq.items} className="[--faq-accent:var(--brand-strong)]" />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CONTATO */}
+      <section id="contato" className="scroll-mt-18 bg-accent py-20 lg:py-24">
+        <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
+          <Reveal>
+            <SectionHead eyebrow="Contato" title={`Leve o ${c.name} para o seu time comercial.`} center />
+            <p className="-mt-6 mb-8 text-base leading-7">
+              Fale com um consultor pelo WhatsApp e veja o {c.name} funcionando na sua rotina de vendas.
+            </p>
+            <Button asChild variant="whatsapp" size="xl">
+              <a {...wa(c.whatsappMessages.hero)}>
+                <WhatsAppIcon /> Solicitar demonstração
+              </a>
+            </Button>
           </Reveal>
         </div>
       </section>

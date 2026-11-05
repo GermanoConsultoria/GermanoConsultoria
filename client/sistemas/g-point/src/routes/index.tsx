@@ -548,9 +548,10 @@ const faqs = [
 
 const navLinks = [
   { href: "#recursos", label: "Recursos" },
-  { href: "#sistema", label: "O sistema" },
+  { href: "#telas", label: "Telas" },
   { href: "#planos", label: "Planos" },
   { href: "#faq", label: "FAQ" },
+  { href: "#contato", label: "Contato" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -582,20 +583,6 @@ function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="fixed inset-x-0 top-0 z-50 shadow-lg">
-      {/* Regra comercial — visível em toda a página */}
-      <div className="bg-primary text-white">
-        <div className="mx-auto flex h-9 max-w-7xl items-center justify-center gap-2 px-4 text-center sm:px-6">
-          <InfinityIcon className="hidden h-4 w-4 shrink-0 sm:block" />
-          <p className="text-[11px] font-extrabold tracking-wide sm:text-xs">
-            {UNLIMITED}
-            <span className="hidden font-medium md:inline">
-              {" "}
-              — sua empresa não paga a mais por novos colaboradores
-            </span>
-          </p>
-        </div>
-      </div>
-
       {/* Fundo escuro para garantir o contraste da logo prateada da G-Tech */}
       <div className="bg-primary-dark">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 md:h-24">
@@ -612,9 +599,14 @@ function Header() {
                 {l.label}
               </a>
             ))}
-            <WaButton href={WA_DEMO} variant="light" className="px-5 py-2.5">
-              Solicitar Demonstração
-            </WaButton>
+            <a
+              href={WA_DEMO}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/70 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              <WhatsAppIcon /> Falar com consultor
+            </a>
           </nav>
           <div className="flex items-center gap-1">
             <a
@@ -665,7 +657,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white pt-40 pb-16 sm:pb-24 md:pt-48">
+    <section className="relative overflow-hidden bg-white pt-32 pb-16 sm:pb-24 md:pt-40">
       <div className="pointer-events-none absolute -top-20 right-0 h-[480px] w-[480px] rounded-full bg-primary-light blur-3xl" />
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr]">
         <Reveal>
@@ -689,7 +681,7 @@ function Hero() {
               Ver preços
             </a>
             <a
-              href="#sistema"
+              href="#telas"
               className="inline-flex items-center gap-2 rounded-full border-2 border-primary/30 px-7 py-3.5 text-sm font-bold text-primary-dark transition-all hover:-translate-y-0.5 hover:border-primary hover:bg-primary-light"
             >
               Conhecer o G-POINT <ArrowRight className="h-4 w-4" />
@@ -775,7 +767,7 @@ function Positioning() {
 
 function Resources({ onSelect }: { onSelect: (i: number) => void }) {
   return (
-    <section id="recursos" className="scroll-mt-32 bg-white py-16 sm:py-24 md:scroll-mt-36">
+    <section id="recursos" className="scroll-mt-24 bg-white py-16 sm:py-24 md:scroll-mt-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionTitle
           eyebrow="RECURSOS PRINCIPAIS"
@@ -785,7 +777,7 @@ function Resources({ onSelect }: { onSelect: (i: number) => void }) {
           {resources.map((r, i) => (
             <Reveal key={r.title} delay={(i % 4) * 70}>
               <a
-                href="#sistema"
+                href="#telas"
                 onClick={() => onSelect(r.screen)}
                 className="group flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-[var(--shadow-card)] transition-all hover:-translate-y-1 hover:border-primary/50"
               >
@@ -817,7 +809,7 @@ function Resources({ onSelect }: { onSelect: (i: number) => void }) {
 function SystemTour({ active, setActive }: { active: number; setActive: (i: number) => void }) {
   const s = screens[active]!;
   return (
-    <section id="sistema" className="scroll-mt-32 bg-primary-light py-16 sm:py-24 md:scroll-mt-36">
+    <section id="telas" className="scroll-mt-24 bg-primary-light py-16 sm:py-24 md:scroll-mt-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionTitle
           eyebrow="O SISTEMA EM FUNCIONAMENTO"
@@ -898,7 +890,7 @@ function UnlimitedBand() {
 function Pricing() {
   const [cycle, setCycle] = useState<Cycle>("mensal");
   return (
-    <section id="planos" className="scroll-mt-32 bg-primary-light py-16 sm:py-24 md:scroll-mt-36">
+    <section id="planos" className="scroll-mt-24 bg-primary-light py-16 sm:py-24 md:scroll-mt-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionTitle
           eyebrow="PLANOS E PREÇOS"
@@ -1075,7 +1067,7 @@ function Pricing() {
 
 function Faq() {
   return (
-    <section id="faq" className="scroll-mt-32 bg-white py-16 sm:py-24 md:scroll-mt-36">
+    <section id="faq" className="scroll-mt-24 bg-white py-16 sm:py-24 md:scroll-mt-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionTitle eyebrow="FAQ" title="Perguntas frequentes" />
         <div className="mt-10 space-y-3">
@@ -1098,7 +1090,7 @@ function Faq() {
 
 function FinalCta() {
   return (
-    <section className="bg-white pb-16 sm:pb-24">
+    <section id="contato" className="scroll-mt-24 bg-white pb-16 sm:pb-24 md:scroll-mt-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-primary px-6 py-12 sm:px-12 lg:grid-cols-[1.2fr_1fr]">

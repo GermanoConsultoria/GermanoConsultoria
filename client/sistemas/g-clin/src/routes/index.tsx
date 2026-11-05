@@ -20,6 +20,7 @@ import { BrowserFrame, ClinicPreview } from "../components/clinic-preview";
 import { WhatsAppIcon } from "../components/brand-icons";
 import { ThemeToggle } from "../../../_shared/theme-toggle";
 import { GTechLogo } from "../../../_shared/gtech-logo";
+import { Faq, type FaqItem } from "../../../_shared/faq";
 
 
 
@@ -34,6 +35,8 @@ const nav = [
   ["Recursos", "recursos"],
   ["Telas", "telas"],
   ["Planos", "planos"],
+  ["FAQ", "faq"],
+  ["Contato", "contato"],
 ];
 
 const pains = [
@@ -105,6 +108,15 @@ const plans = [
     savings: "399,89",
     items: ["Tudo dos Planos A e B", "IA no WhatsApp para confirmação automática e triagem"],
   },
+];
+
+const faqs: FaqItem[] = [
+  { q: "O G-CLIN atende clínicas médicas e odontológicas?", a: "Sim. O G-CLIN reúne agenda, prontuário eletrônico e financeiro para clínicas médicas e odontológicas, com agenda para vários profissionais." },
+  { q: "Qual a diferença entre os planos?", a: "O Plano A (Gestão Essencial) traz o financeiro completo e a agenda. O Plano B inclui também o link de agendamento online para o paciente. O Plano C soma a IA no WhatsApp para confirmação automática de consultas e triagem." },
+  { q: "Há taxa de implantação?", a: "Sim. A taxa de implantação é de R$ 999,99, cobrada uma única vez, em todos os planos." },
+  { q: "Existe limite de usuários?", a: "Não. Você cadastra recepcionistas, médicos, dentistas e gestores sem pagar taxa extra por profissional." },
+  { q: "Como funciona o agendamento online?", a: "A clínica recebe um link público para os pacientes marcarem consultas nos horários disponíveis. O recurso está nos Planos B e C." },
+  { q: "Posso ver o sistema antes de contratar?", a: "Sim. Fale com nosso time pelo WhatsApp e solicite uma demonstração do G-CLIN." },
 ];
 
 function Index() {
@@ -315,9 +327,41 @@ function Index() {
             </div>
           </div>
         </section>
+        <section className="section section-soft" id="faq">
+          <div className="container-page">
+            <div className="section-head">
+              <p className="eyebrow">Perguntas frequentes</p>
+              <h2>Tire suas dúvidas sobre o G-CLIN</h2>
+            </div>
+            <Faq items={faqs} />
+          </div>
+        </section>
+
+        <section className="section" id="contato">
+          <div className="container-page">
+            <div className="section-head">
+              <p className="eyebrow">Contato</p>
+              <h2>Leve o G-CLIN para a sua clínica</h2>
+              <p>
+                Fale com um consultor do Grupo Germano pelo WhatsApp e veja o G-CLIN funcionando na
+                rotina da sua clínica.
+              </p>
+            </div>
+            <div className="hero-actions proposal-actions">
+              <Button asChild className="cta">
+                <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon /> Solicitar demonstração
+                </a>
+              </Button>
+              <a className="cta-outline" href="#planos">
+                Ver planos <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
 
-      <footer className="footer" id="contato">
+      <footer className="footer">
         <div className="container-page footer-grid">
           <div className="footer-brand">
             <span className="germano-logo">

@@ -20,6 +20,7 @@ import { BrowserFrame, BpoPreview } from "../components/bpo-preview";
 import { WhatsAppIcon } from "../components/brand-icons";
 import { ThemeToggle } from "../../../_shared/theme-toggle";
 import { GTechLogo } from "../../../_shared/gtech-logo";
+import { Faq, type FaqItem } from "../../../_shared/faq";
 
 // Contatos comerciais: troque aqui as URLs oficiais quando necessário.
 const WHATSAPP_NUMBER = "5519981640280";
@@ -32,6 +33,7 @@ const nav = [
   ["Recursos", "recursos"],
   ["Telas", "telas"],
   ["Planos", "planos"],
+  ["FAQ", "faq"],
   ["Contato", "contato"],
 ];
 
@@ -99,7 +101,7 @@ const plans: Record<Period, {
       "Contas a pagar e a receber, bancos e investimentos",
       "Balancete com exportação em PDF e Excel",
     ],
-    message: "Olá! Quero contratar o BPO Financeiro no plano mensal (R$ 99,99 por empresa).",
+    message: "Olá! Quero contratar o BPO Financeiro no plano mensal (R$ 99,99 por empresa + taxa de implantação de R$ 999,99).",
   },
   anual: {
     label: "Anual",
@@ -114,9 +116,18 @@ const plans: Record<Period, {
       "Contas a pagar e a receber, bancos e investimentos",
       "Balancete com exportação em PDF e Excel",
     ],
-    message: "Olá! Quero contratar o BPO Financeiro no plano anual (R$ 999,99 para até 15 empresas).",
+    message: "Olá! Quero contratar o BPO Financeiro no plano anual (R$ 999,99 para até 15 empresas + taxa de implantação de R$ 999,99).",
   },
 };
+
+const faqs: FaqItem[] = [
+  { q: "Para quem é o BPO?", a: "Para escritórios e profissionais que cuidam do financeiro de várias empresas. Cada cliente tem o financeiro isolado, e a equipe troca de empresa pelo menu sem sair do sistema." },
+  { q: "Como funcionam os planos?", a: "No mensal, você paga R$ 99,99 por empresa atendida. No anual, paga R$ 999,99 por ano para até 15 empresas, o que equivale a R$ 83,33 por mês." },
+  { q: "Há taxa de implantação?", a: "Sim. A taxa de implantação é de R$ 999,99, cobrada uma única vez, tanto no plano mensal quanto no anual." },
+  { q: "Meu cliente pode acessar o sistema?", a: "Sim. A equipe tem permissões individuais e o cliente pode ter acesso restrito apenas ao próprio financeiro." },
+  { q: "Quais relatórios o BPO gera?", a: "O balancete mostra receitas, despesas, lucro e investimentos por mês, ano ou período, com gráficos e exportação em PDF e Excel." },
+  { q: "Posso ver o sistema antes de contratar?", a: "Sim. Fale com um consultor do Grupo Germano pelo WhatsApp para ver o BPO funcionando e receber uma proposta para a sua carteira de clientes." },
+];
 
 function Index() {
   const [period, setPeriod] = useState<Period>("mensal");
@@ -253,7 +264,7 @@ function Index() {
             <div className="section-head">
               <p className="eyebrow">Planos</p>
               <h2>Escolha como pagar</h2>
-              <p>Mensal por empresa atendida ou anual para até 15 empresas.</p>
+              <p>Mensal por empresa atendida ou anual para até 15 empresas. Taxa de implantação única de R$ 999,99.</p>
             </div>
             <div className="period-toggle" role="group" aria-label="Período de pagamento">
               {(["mensal", "anual"] as Period[]).map((p) => (
@@ -279,6 +290,9 @@ function Index() {
                   <small>{plan.unit}</small>
                 </p>
                 <p className="plan-note">{plan.note}</p>
+                <p className="plan-note">
+                  Taxa de implantação: <strong>R$ 999,99</strong> · pagamento único
+                </p>
                 <ul>
                   {plan.items.map((item) => (
                     <li key={item}>
@@ -297,7 +311,17 @@ function Index() {
           </div>
         </section>
 
-        <section className="section section-soft" id="proposta">
+        <section className="section section-soft" id="faq">
+          <div className="container-page">
+            <div className="section-head">
+              <p className="eyebrow">Perguntas frequentes</p>
+              <h2>Tire suas dúvidas sobre o BPO</h2>
+            </div>
+            <Faq items={faqs} />
+          </div>
+        </section>
+
+        <section className="section" id="contato">
           <div className="container-page">
             <div className="unlimited">
               <Layers className="unlimited-icon" />
@@ -336,7 +360,7 @@ function Index() {
         </section>
       </main>
 
-      <footer className="footer" id="contato">
+      <footer className="footer">
         <div className="container-page footer-grid">
           <div className="footer-brand">
             <span className="germano-logo">
